@@ -17,7 +17,9 @@
     "mongodb": "^4.4.0",
     "mongoose": "^6.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
   "description": "For compiling current affairs",
   "keywords": [
     "Exams",
