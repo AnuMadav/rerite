@@ -20,6 +20,9 @@ var supArgument3s = [];
 var opiniondates = [];
 var newspaperjournals = [];
 var chapters = [];
+var termtitles = [];
+var termexplanations = [];
+var uidas = [];
 
 app.set("view engine", "ejs");
 
@@ -44,6 +47,9 @@ const argsSchema = {
   opd: String,
   njs: String,
   id3: String,
+  trm: String,
+  texp: String,
+  ida: String,
 };
 
 const Arg = mongoose.model("Arg", argsSchema);
@@ -56,6 +62,9 @@ const arg1 = new Arg({
   opd: "",
   njs: "",
   id3: "",
+  trm: "",
+  texp: "",
+  ida: "",
 });
 
 const defaultArgs = [];
@@ -79,6 +88,9 @@ Arg.find({}, function (err, args) {
     var opeddate = arg.opd;
     var newsjournal = arg.njs;
     var chapter = arg.id3;
+    var termtitle = arg.trm;
+    var termexplanation = arg.texp;
+    var uida = arg.ida;
 
     mainArguments.push(mainArgument);
     supArgument1s.push(supArgument1);
@@ -87,7 +99,9 @@ Arg.find({}, function (err, args) {
     opiniondates.push(opeddate);
     newspaperjournals.push(newsjournal);
     chapters.push(chapter);
-
+    termtitles.push(termtitle);
+    termexplanations.push(termexplanation);
+    uidas.push(uida);
     //  console.log(mainArguments + supArgument1s + supArgument2s + supArgument3s);
   });
 });
@@ -110,6 +124,9 @@ app.get("/", function (req, res) {
     newspaperjournals: newspaperjournals,
     opiniondates: opiniondates,
     chapters: chapters,
+    termtitles: termtitles,
+    termexplanations: termexplanations,
+    uidas: uidas,
   });
   console.log(margNames + sarg1Names + sarg2Names + sarg3Names);
 });
@@ -138,6 +155,10 @@ app.post("/", function (req, res) {
   var opeddate = req.body.opiniondate;
   var newsjournal = req.body.newspaperjournal;
   var topic = req.body.chapter;
+  var termName = req.body.terminology;
+  var tExpName = req.body.trmexplanation;
+  var uidargName = req.body.uida;
+
   //  margNames.push(margName);
   //  sarg1Names.push(sarg1Name);
   //  sarg2Names.push(sarg2Name);
@@ -151,6 +172,9 @@ app.post("/", function (req, res) {
     opd: opeddate,
     njs: newsjournal,
     id3: topic,
+    trm: termName,
+    texp: tExpName,
+    ida: uidargName,
   });
 
   arg.save();
