@@ -23,6 +23,18 @@ var chapters = [];
 var termtitles = [];
 var termexplanations = [];
 var uidas = [];
+var wnewss = [];
+var wpoint1s = [];
+var wpoint2s = [];
+var wpoint3s = [];
+var wpoint4s = [];
+var wpoint5s = [];
+var wopinionons = [];
+var wopinion1s = [];
+var wopinionbys = [];
+var wbooktitles = [];
+var wauthortitles = [];
+var wpublications = [];
 
 app.set("view engine", "ejs");
 
@@ -50,6 +62,18 @@ const argsSchema = {
   trm: String,
   texp: String,
   ida: String,
+  nws: String,
+  pnt1: String,
+  pnt2: String,
+  pnt3: String,
+  pnt4: String,
+  pnt5: String,
+  opnn: String,
+  opn1: String,
+  opnb: String,
+  btle: String,
+  btar: String,
+  bpne: String,
 };
 
 const Arg = mongoose.model("Arg", argsSchema);
@@ -65,6 +89,18 @@ const arg1 = new Arg({
   trm: "",
   texp: "",
   ida: "",
+  nws: "",
+  pnt1: "",
+  pnt2: "",
+  pnt3: "",
+  pnt4: "",
+  pnt5: "",
+  opnn: "",
+  opn1: "",
+  opnb: "",
+  btle: "",
+  btar: "",
+  bpne: "",
 });
 
 const defaultArgs = [];
@@ -91,6 +127,18 @@ Arg.find({}, function (err, args) {
     var termtitle = arg.trm;
     var termexplanation = arg.texp;
     var uida = arg.ida;
+    var wnew = arg.nws;
+    var wpoint1 = arg.pnt1;
+    var wpoint2 = arg.pnt2;
+    var wpoint3 = arg.pnt3;
+    var wpoint4 = arg.pnt4;
+    var wpoint5 = arg.pnt5;
+    var wopinionon = arg.opnn;
+    var wopinion1 = arg.opn1;
+    var wopinionby = arg.opnb;
+    var wbooktitle = arg.btle;
+    var wauthortitle = arg.btar;
+    var wpublication = arg.bpne;
 
     mainArguments.push(mainArgument);
     supArgument1s.push(supArgument1);
@@ -102,6 +150,18 @@ Arg.find({}, function (err, args) {
     termtitles.push(termtitle);
     termexplanations.push(termexplanation);
     uidas.push(uida);
+    wnewss.push(wnew);
+    wpoint1s.push(wpoint1);
+    wpoint2s.push(wpoint2);
+    wpoint3s.push(wpoint3);
+    wpoint4s.push(wpoint4);
+    wpoint5s.push(wpoint5);
+    wopinionons.push(wopinionon);
+    wopinion1s.push(wopinion1);
+    wopinionbys.push(wopinionby);
+    wbooktitles.push(wbooktitle);
+    wauthortitles.push(wauthortitle);
+    wpublications.push(wpublication);
     //  console.log(mainArguments + supArgument1s + supArgument2s + supArgument3s);
   });
 });
@@ -127,6 +187,18 @@ app.get("/", function (req, res) {
     termtitles: termtitles,
     termexplanations: termexplanations,
     uidas: uidas,
+    wnewss: wnewss,
+    wpoint1s: wpoint1s,
+    wpoint2s: wpoint2s,
+    wpoint3s: wpoint3s,
+    wpoint4s: wpoint4s,
+    wpoint5s: wpoint5s,
+    wopinionons: wopinionons,
+    wopinion1s: wopinion1s,
+    wopinionbys: wopinionbys,
+    wbooktitles: wbooktitles,
+    wauthortitles: wauthortitles,
+    wpublications: wpublications,
   });
   console.log(margNames + sarg1Names + sarg2Names + sarg3Names);
 });
@@ -158,6 +230,18 @@ app.post("/", function (req, res) {
   var termName = req.body.terminology;
   var tExpName = req.body.trmexplanation;
   var uidargName = req.body.uida;
+  var newsName = req.body.news;
+  var point1Name = req.body.point1;
+  var point2Name = req.body.point2;
+  var point3Name = req.body.point3;
+  var point4Name = req.body.point4;
+  var point5Name = req.body.point5;
+  var opiniononName = req.body.opinionon;
+  var opinion1Name = req.body.opinion1;
+  var opinionbyName = req.body.opinionby;
+  var booktitleName = req.body.booktitle;
+  var bookauthorName = req.body.authortitle;
+  var publicationName = req.body.publication;
 
   //  margNames.push(margName);
   //  sarg1Names.push(sarg1Name);
@@ -175,6 +259,18 @@ app.post("/", function (req, res) {
     trm: termName,
     texp: tExpName,
     ida: uidargName,
+    nws: newsName,
+    pnt1: point1Name,
+    pnt2: point2Name,
+    pnt3: point3Name,
+    pnt4: point4Name,
+    pnt5: point5Name,
+    opnn: opiniononName,
+    opn1: opinion1Name,
+    opnb: opinionbyName,
+    btle: booktitleName,
+    btar: bookauthorName,
+    bpne: publicationName,
   });
 
   arg.save();

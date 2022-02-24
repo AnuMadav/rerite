@@ -275,14 +275,14 @@
 
 
   <!--Navigation Bar-->
-    <nav class="nav nav-pills nav-fill justify-content-center">
+   <!-- <nav class="nav nav-pills nav-fill justify-content-center">
     <a class="nav-link active" href="#"></a>
     <a class="nav-link" href="/">HOME</a>
     <a class="nav-link" href="profile.html">MY PROFILE</a>
     <a class="nav-link" href="source.html">SOURCE LIBRARY</a>
     <a class="nav-link" href="weblink.html">WEBLINK LIBRARY</a>
     <a class="nav-link" href="book.html">BOOK LIBRARY</a> 
-  </nav>
+  </nav>-->
 
   <div class="container">
     <div class="row align-items-start">
@@ -309,7 +309,12 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        <h4 style="padding: .25rem;"><%=uidas[i] %></h4> <p style="margin-left:5%;"><%=  mainArguments[i]  %></p><p style="margin-left:5%;"><%= termtitles[i]%></p>
+        <h4 style="padding: .25rem;"><%=uidas[i] %></h4> 
+        <p style="margin-left:5%;"><%=  mainArguments[i]  %></p>
+        <p><%= termtitles[i]%></p>
+        <p><%= wnewss[i]%></p>
+        <p><%= wbooktitles[i]%></p>
+        <p><%= wopinionons[i]%></p>
       </button>
       </h2>
            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -318,6 +323,15 @@
                     <p> <%= supArgument2s[i] %> </p>
                     <p> <%= supArgument3s[i] %> </p>
                     <p> <%=termexplanations[i]%> </p>
+                    <p> <%=  wpoint1s[i] %> </p>
+                    <p> <%=  wpoint2s[i] %> </p>
+                    <p> <%=  wpoint3s[i] %> </p>
+                    <p> <%=  wpoint4s[i] %> </p>
+                    <p> <%=  wpoint5s[i] %> </p>
+                    <p> <%= wopinion1s[i] %> </p>
+                    <p> <%= wopinionbys[i] %> </p>
+                    <p> <%= wauthortitles[i] %> </p>
+                    <p> <%= wpublications[i] %> </p>
                         <b><%=newspaperjournals[i]%></b> <br>
                         <%=opiniondates[i]%>
                         <p style="color:red"><%=chapters[i]%></p>
@@ -552,7 +566,7 @@
                   </div>
                   <!-- Point 5 -->
                   <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "point4" placeholder="Point 5"></textarea>
+                    <textarea class="form-control" id="message-text" name= "point5" placeholder="Point 5"></textarea>
                   </div>
                    <!-- Date -->
                    <div class="form-group">
