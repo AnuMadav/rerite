@@ -113,7 +113,7 @@ Arg.insertMany(defaultArgs, function (err) {
   }
 });
 
-Arg.find({}, function (err, args) {
+Arg.find({}, null, { sort: { _id: -1 } }, function (err, args) {
   console.log(args);
 
   args.forEach(function (arg) {
@@ -164,7 +164,7 @@ Arg.find({}, function (err, args) {
     wpublications.push(wpublication);
     //  console.log(mainArguments + supArgument1s + supArgument2s + supArgument3s);
   });
-});
+}).limit(20);
 
 app.get("/", function (req, res) {
   var today = new Date();
