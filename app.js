@@ -56,7 +56,7 @@ const argsSchema = {
   sarg1: String,
   sarg2: String,
   sarg3: String,
-  opd: String,
+  opd: Date,
   njs: String,
   id3: String,
   trm: String,
