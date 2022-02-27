@@ -284,7 +284,399 @@
     <a class="nav-link" href="book.html">BOOK LIBRARY</a> 
   </nav>-->
 
+  
   <div class="container">
+    <nav class="nav nav-pills nav-fill justify-content-center">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          
+          <br>
+          <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#exampleModalCenter">
+              Add an argument
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Argument</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/" method="post">
+                      <!-- Modal -->
+                      <div class="form-group">
+                        <label for="main-group" class="col-form-label">Main Argument</label>
+                        <input type="text" class="form-control" name= "mainargument" placeholder="Argument in a line">
+                      </div>
+                      <br>
+                      <!-- Supporting argument 1 -->
+                      <div class="form-group">
+                        <h6>Substantiate</h6>
+                        <textarea class="form-control" id="message-text" name= "supportingargument1" placeholder="Supporting argument 1"></textarea>
+                      </div>
+                      <br>
+                      <!-- Supporting argument 2 -->
+                      <div class="form-group">
+                        <textarea class="form-control" id="message-text" name= "supportingargument2" placeholder="Supporting argument 2"></textarea>
+                      </div>
+                      <br>
+                      <!-- Supporting argument 3 -->
+                      <div class="form-group">
+                        <textarea class="form-control" id="message-text" name= "supportingargument3" placeholder="Supporting argument 3"></textarea>
+                      </div>
+                      <br>
+                      <!-- Sourced from -->
+                      <div class="form-group">
+                        Sourced from:
+                        <select class="form-select" aria-label="Default select example" name="newspaperjournal">
+                          <option selected value="The Hindu">The Hindu</option>
+                          <option value="Indian Express">Indian Express</option>
+                          <option value="Business Standard">Business Standard</option>
+                          <option value="Business Line">Business Line</option>
+                          <option value="Financial Express">Financial Express</option>
+                          <option value="Economic Times">Economic Times</option>
+                          <option value="Deccan Chronicle">Deccan Chronicle</option>
+                          <option value="The Statesman">The Statesman</option>
+                          <option value="Mint">Mint</option>
+                          <option value="New Indian Express">New Indian Express</option>
+                          <option value="Economic and Political Weekly">Economic and Political Weekly</option>
+                          <option value="Frontline">Frontline</option>
+                          <option value="Down to Earth">Down to Earth</option>
+                          <option value="The Economist">The Economist</option>
+                          <option value="Yojana">Yojana</option>
+                          <option value="Kurkshetra">Kurkshetra</option>
+                          <option value="Science Reporter">Science Reporter</option>
+                          <option value="Journal of Defence Studies">Journal of Defence Studies</option>
+                          <option value="Indian Journal of Public Administration">Indian Journal of Public Administration</option>
+                        </select>
+                      </div>
+                      <br>
+                       <!-- Date -->
+                       <div class="form-group">
+                        <label for="start">Journal/Newspaper Issue Date</label>
+                        <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
+                      </div>
+                      <!-- id1, id, id3 -->
+                      <br>
+                      <div class="form-group">
+                        <select class="form-select" name="subject" id="subject">
+                          <option value="" selected="selected">Select id1</option>
+                        </select>
+                      <select class="form-select" name="topic" id="topic">
+                          <option value="" selected="selected">Select id2</option>
+                        </select>
+                      <select class="form-select" name="chapter" id="chapter">
+                          <option value="" selected="selected">Select id3</option>
+                        </select>
+                      </div>
+                       <!-- UID Number -->
+                       <div class="form-group">
+                        <label for="main-group" class="col-form-label">Assign UID</label>
+                        <input type="text" class="form-control" name= "uida" placeholder="A0001">
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalTerminology">
+                Add a term
+              </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="modalTerminology" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Terminology</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/" method="post">
+                      <!-- Modal -->
+                      <div class="form-group">
+                        <input type="text" class="form-control" name= "terminology" placeholder="Terminology">
+                      </div>
+                      <br>
+                       <!-- Date -->
+                       <div class="form-group">
+                        <label for="start">Journal/Newspaper Issue Date</label>
+                        <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
+                      </div>
+                      <!-- Explanation -->
+                      <div class="form-group">
+                        <h6>Explanation</h6>
+                        <textarea class="form-control" id="message-text" name= "trmexplanation" placeholder="Explain the term"></textarea>
+                      </div>
+    
+                      <!-- id1, id, id3 -->
+                      <br>
+                      <div class="form-group">
+                        <select class="form-select" name="subject" id="subject2">
+                          <option value="" selected="selected">Select id1</option>
+                        </select>
+                      <select class="form-select" name="topic" id="topic2">
+                          <option value="" selected="selected">Select id2</option>
+                        </select>
+                      <select class="form-select" name="chapter" id="chapter2">
+                          <option value="" selected="selected">Select id3</option>
+                        </select>
+                      </div>
+                       <!-- UID Number -->
+                       <div class="form-group">
+                        <label for="main-group" class="col-form-label">Assign UID</label>
+                        <input type="text" class="form-control" name= "uida" placeholder="T0001">
+                      </div>        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            
+                
+                  <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalSnippet">Add a snippet
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalSnippet" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Snippet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/" method="post">
+                      <!-- Modal -->
+                      <div class="form-group">
+                        <label for="main-group" class="col-form-label">Why in news?</label>
+                        <input type="text" class="form-control" name= "news" placeholder="News in one-liner">
+                      </div>
+                      <br>
+                      <!-- Point 1 -->
+                      <div class="form-group">
+                        <h6>About</h6>
+                        <textarea class="form-control" id="message-text" name= "point1" placeholder="Point 1"></textarea>
+                      </div>
+                      <!-- Point 2 -->
+                      <div class="form-group">
+                        <textarea class="form-control" id="message-text" name= "point2" placeholder="Point 2"></textarea>
+                      </div>
+                      <!-- Point 3 -->
+                      <div class="form-group">
+                        <textarea class="form-control" id="message-text" name= "point3" placeholder="Point 3"></textarea>
+                      </div>
+                      <!-- Point 4 -->
+                      <div class="form-group">
+                        <textarea class="form-control" id="message-text" name= "point4" placeholder="Point 4"></textarea>
+                      </div>
+                      <!-- Point 5 -->
+                      <div class="form-group">
+                        <textarea class="form-control" id="message-text" name= "point5" placeholder="Point 5"></textarea>
+                      </div>
+                       <!-- Date -->
+                       <div class="form-group">
+                        <label for="start">Journal/Newspaper Issue Date</label>
+                        <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
+                      </div>
+                      <!-- id1, id, id3 -->
+                      <br>
+                      <div class="form-group">
+                        <select class="form-select" name="subject" id="subject3">
+                          <option value="" selected="selected">Select id1</option>
+                        </select>
+                      <select class="form-select" name="topic" id="topic3">
+                          <option value="" selected="selected">Select id2</option>
+                        </select>
+                      <select class="form-select" name="chapter" id="chapter3">
+                          <option value="" selected="selected">Select id3</option>
+                        </select>
+                      </div>
+                       <!-- UID Number -->
+                       <div class="form-group">
+                        <label for="main-group" class="col-form-label">Assign UID</label>
+                        <input type="text" class="form-control" name= "uida" placeholder="S0001">
+                      </div>        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            
+            
+                  <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalOpinion">
+                      Add an opinion
+                    </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalOpinion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Opinion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/" method="post">
+                      <!-- Modal -->
+                      <div class="form-group">
+                        <input type="text" class="form-control" name= "opinionon" placeholder="On ...">
+                      </div>
+                      <br>
+                      <!-- Opinion -->
+                      <div class="form-group">
+                        <h6>About</h6>
+                        <textarea class="form-control" id="message-text" name= "opinion1" placeholder="Opinion"></textarea>
+                      </div>
+                      <br>
+                      <!-- By -->
+                      <div class="form-group">
+                        <textarea class="form-control" id="message-text" name= "opinionby" placeholder="######"></textarea>
+                      </div>
+                      <br>
+                      <!-- Sourced from -->
+                      <div class="form-group">
+                        Sourced from:
+                        <select class="form-select" aria-label="Default select example" name="newspaperjournal">
+                          <option selected value="The Hindu">The Hindu</option>
+                          <option value="Indian Express">Indian Express</option>
+                          <option value="Business Standard">Business Standard</option>
+                          <option value="Business Line">Business Line</option>
+                          <option value="Financial Express">Financial Express</option>
+                          <option value="Economic Times">Economic Times</option>
+                          <option value="Deccan Chronicle">Deccan Chronicle</option>
+                          <option value="The Statesman">The Statesman</option>
+                          <option value="Mint">Mint</option>
+                          <option value="New Indian Express">New Indian Express</option>
+                          <option value="Economic and Political Weekly">Economic and Political Weekly</option>
+                          <option value="Frontline">Frontline</option>
+                          <option value="Down to Earth">Down to Earth</option>
+                          <option value="The Economist">The Economist</option>
+                          <option value="Yojana">Yojana</option>
+                          <option value="Kurkshetra">Kurkshetra</option>
+                          <option value="Science Reporter">Science Reporter</option>
+                          <option value="Journal of Defence Studies">Journal of Defence Studies</option>
+                          <option value="Indian Journal of Public Administration">Indian Journal of Public Administration</option>
+                        </select>
+                      </div>
+                      <br>
+                       <!-- Date -->
+                       <div class="form-group">
+                        <label for="start">Journal/Newspaper Issue Date</label>
+                        <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
+                      </div>
+                      <!-- id1, id, id3 -->
+                      <br>
+                      <div class="form-group">
+                        <select class="form-select" name="subject" id="subject4">
+                          <option value="" selected="selected">Select id1</option>
+                        </select>
+                      <select class="form-select" name="topic" id="topic4">
+                          <option value="" selected="selected">Select id2</option>
+                        </select>
+                      <select class="form-select" name="chapter" id="chapter4">
+                          <option value="" selected="selected">Select id3</option>
+                        </select>
+                      </div>
+                       <!-- UID Number -->
+                       <div class="form-group">
+                        <label for="main-group" class="col-form-label">Assign UID</label>
+                        <input type="text" class="form-control" name= "uida" placeholder="O0001">
+                      </div>        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
+            
+            
+            
+                    <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalBook">
+                        Add a book
+                      </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Reference Book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/" method="post">
+                      <!-- Modal -->
+                      <div class="form-group">
+                        <label for="main-group" class="col-form-label">Book Title</label>
+                        <input type="text" class="form-control" name= "booktitle">
+                        <label for="main-group" class="col-form-label">Authors</label>
+                        <input type="text" class="form-control" name= "authortitle">
+                        <label for="main-group" class="col-form-label">Published by & Year of Publication</label>
+                        <input type="text" class="form-control" name= "publication">
+                      </div>
+                      <br>
+                      <!-- id1, id, id3 -->
+                      <br>
+                      <div class="form-group">
+                        <select class="form-select" name="subject" id="subject5">
+                          <option value="" selected="selected">Select id1</option>
+                        </select>
+                      <select class="form-select" name="topic" id="topic5">
+                          <option value="" selected="selected">Select id2</option>
+                        </select>
+                      <select class="form-select" name="chapter" id="chapter5">
+                          <option value="" selected="selected">Select id3</option>
+                        </select>
+                      </div>
+                       <!-- UID Number -->
+                       <div class="form-group">
+                        <label for="main-group" class="col-form-label">Assign UID</label>
+                        <input type="text" class="form-control" name= "uida" placeholder="B0001">
+                      </div>        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>       
+        </a>
+      </div>
+    </nav>
     <div class="row align-items-start">
 
         <!-- Profile Pic -->
@@ -302,11 +694,20 @@
 
 <div class="col-8 pt-3">
   <h2 class="text-center"><%=kindOfDay%></h2>
+  
 <br>
 <ul>
   <% for (var i= 0; i<uidas.length; i++) { %>
     
     <div class="accordion-item">
+
+
+
+
+
+
+
+
       <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
         <h4 style="padding: .25rem;"><%=uidas[i] %></h4> 
@@ -358,397 +759,7 @@
 
 
                               <br><br>
-<nav class="navbar navbar-light bg-dark">
-  <div class="container">
-    <a class="navbar-brand">
-      
-      
-      <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#exampleModalCenter">
-          Add an argument
-        </button>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">New Argument</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="/" method="post">
-                  <!-- Modal -->
-                  <div class="form-group">
-                    <label for="main-group" class="col-form-label">Main Argument</label>
-                    <input type="text" class="form-control" name= "mainargument" placeholder="Argument in a line">
-                  </div>
-                  <br>
-                  <!-- Supporting argument 1 -->
-                  <div class="form-group">
-                    <h6>Substantiate</h6>
-                    <textarea class="form-control" id="message-text" name= "supportingargument1" placeholder="Supporting argument 1"></textarea>
-                  </div>
-                  <br>
-                  <!-- Supporting argument 2 -->
-                  <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "supportingargument2" placeholder="Supporting argument 2"></textarea>
-                  </div>
-                  <br>
-                  <!-- Supporting argument 3 -->
-                  <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "supportingargument3" placeholder="Supporting argument 3"></textarea>
-                  </div>
-                  <br>
-                  <!-- Sourced from -->
-                  <div class="form-group">
-                    Sourced from:
-                    <select class="form-select" aria-label="Default select example" name="newspaperjournal">
-                      <option selected value="The Hindu">The Hindu</option>
-                      <option value="Indian Express">Indian Express</option>
-                      <option value="Business Standard">Business Standard</option>
-                      <option value="Business Line">Business Line</option>
-                      <option value="Financial Express">Financial Express</option>
-                      <option value="Economic Times">Economic Times</option>
-                      <option value="Deccan Chronicle">Deccan Chronicle</option>
-                      <option value="The Statesman">The Statesman</option>
-                      <option value="Mint">Mint</option>
-                      <option value="New Indian Express">New Indian Express</option>
-                      <option value="Economic and Political Weekly">Economic and Political Weekly</option>
-                      <option value="Frontline">Frontline</option>
-                      <option value="Down to Earth">Down to Earth</option>
-                      <option value="The Economist">The Economist</option>
-                      <option value="Yojana">Yojana</option>
-                      <option value="Kurkshetra">Kurkshetra</option>
-                      <option value="Science Reporter">Science Reporter</option>
-                      <option value="Journal of Defence Studies">Journal of Defence Studies</option>
-                      <option value="Indian Journal of Public Administration">Indian Journal of Public Administration</option>
-                    </select>
-                  </div>
-                  <br>
-                   <!-- Date -->
-                   <div class="form-group">
-                    <label for="start">Journal/Newspaper Issue Date</label>
-                    <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
-                  </div>
-                  <!-- id1, id, id3 -->
-                  <br>
-                  <div class="form-group">
-                    <select class="form-select" name="subject" id="subject">
-                      <option value="" selected="selected">Select id1</option>
-                    </select>
-                  <select class="form-select" name="topic" id="topic">
-                      <option value="" selected="selected">Select id2</option>
-                    </select>
-                  <select class="form-select" name="chapter" id="chapter">
-                      <option value="" selected="selected">Select id3</option>
-                    </select>
-                  </div>
-                   <!-- UID Number -->
-                   <div class="form-group">
-                    <label for="main-group" class="col-form-label">Assign UID</label>
-                    <input type="text" class="form-control" name= "uida" placeholder="A0001">
-                  </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalTerminology">
-            Add a term
-          </button>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="modalTerminology" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">New Terminology</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="/" method="post">
-                  <!-- Modal -->
-                  <div class="form-group">
-                    <input type="text" class="form-control" name= "terminology" placeholder="Terminology">
-                  </div>
-                  <br>
-                   <!-- Date -->
-                   <div class="form-group">
-                    <label for="start">Journal/Newspaper Issue Date</label>
-                    <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
-                  </div>
-                  <!-- Explanation -->
-                  <div class="form-group">
-                    <h6>Explanation</h6>
-                    <textarea class="form-control" id="message-text" name= "trmexplanation" placeholder="Explain the term"></textarea>
-                  </div>
 
-                  <!-- id1, id, id3 -->
-                  <br>
-                  <div class="form-group">
-                    <select class="form-select" name="subject" id="subject2">
-                      <option value="" selected="selected">Select id1</option>
-                    </select>
-                  <select class="form-select" name="topic" id="topic2">
-                      <option value="" selected="selected">Select id2</option>
-                    </select>
-                  <select class="form-select" name="chapter" id="chapter2">
-                      <option value="" selected="selected">Select id3</option>
-                    </select>
-                  </div>
-                   <!-- UID Number -->
-                   <div class="form-group">
-                    <label for="main-group" class="col-form-label">Assign UID</label>
-                    <input type="text" class="form-control" name= "uida" placeholder="T0001">
-                  </div>        
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-            </div>
-          </div>
-        </div>  
-        
-            
-              <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalSnippet">Add a snippet
-        </button>
-        <!-- Modal -->
-        <div class="modal fade" id="modalSnippet" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">New Snippet</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="/" method="post">
-                  <!-- Modal -->
-                  <div class="form-group">
-                    <label for="main-group" class="col-form-label">Why in news?</label>
-                    <input type="text" class="form-control" name= "news" placeholder="News in one-liner">
-                  </div>
-                  <br>
-                  <!-- Point 1 -->
-                  <div class="form-group">
-                    <h6>About</h6>
-                    <textarea class="form-control" id="message-text" name= "point1" placeholder="Point 1"></textarea>
-                  </div>
-                  <!-- Point 2 -->
-                  <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "point2" placeholder="Point 2"></textarea>
-                  </div>
-                  <!-- Point 3 -->
-                  <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "point3" placeholder="Point 3"></textarea>
-                  </div>
-                  <!-- Point 4 -->
-                  <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "point4" placeholder="Point 4"></textarea>
-                  </div>
-                  <!-- Point 5 -->
-                  <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "point5" placeholder="Point 5"></textarea>
-                  </div>
-                   <!-- Date -->
-                   <div class="form-group">
-                    <label for="start">Journal/Newspaper Issue Date</label>
-                    <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
-                  </div>
-                  <!-- id1, id, id3 -->
-                  <br>
-                  <div class="form-group">
-                    <select class="form-select" name="subject" id="subject3">
-                      <option value="" selected="selected">Select id1</option>
-                    </select>
-                  <select class="form-select" name="topic" id="topic3">
-                      <option value="" selected="selected">Select id2</option>
-                    </select>
-                  <select class="form-select" name="chapter" id="chapter3">
-                      <option value="" selected="selected">Select id3</option>
-                    </select>
-                  </div>
-                   <!-- UID Number -->
-                   <div class="form-group">
-                    <label for="main-group" class="col-form-label">Assign UID</label>
-                    <input type="text" class="form-control" name= "uida" placeholder="S0001">
-                  </div>        
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-            </div>
-          </div>
-        </div> 
-        
-        
-              <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalOpinion">
-                  Add an opinion
-                </button>
-        <!-- Modal -->
-        <div class="modal fade" id="modalOpinion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">New Opinion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="/" method="post">
-                  <!-- Modal -->
-                  <div class="form-group">
-                    <input type="text" class="form-control" name= "opinionon" placeholder="On ...">
-                  </div>
-                  <br>
-                  <!-- Opinion -->
-                  <div class="form-group">
-                    <h6>About</h6>
-                    <textarea class="form-control" id="message-text" name= "opinion1" placeholder="Opinion"></textarea>
-                  </div>
-                  <br>
-                  <!-- By -->
-                  <div class="form-group">
-                    <textarea class="form-control" id="message-text" name= "opinionby" placeholder="######"></textarea>
-                  </div>
-                  <br>
-                  <!-- Sourced from -->
-                  <div class="form-group">
-                    Sourced from:
-                    <select class="form-select" aria-label="Default select example" name="newspaperjournal">
-                      <option selected value="The Hindu">The Hindu</option>
-                      <option value="Indian Express">Indian Express</option>
-                      <option value="Business Standard">Business Standard</option>
-                      <option value="Business Line">Business Line</option>
-                      <option value="Financial Express">Financial Express</option>
-                      <option value="Economic Times">Economic Times</option>
-                      <option value="Deccan Chronicle">Deccan Chronicle</option>
-                      <option value="The Statesman">The Statesman</option>
-                      <option value="Mint">Mint</option>
-                      <option value="New Indian Express">New Indian Express</option>
-                      <option value="Economic and Political Weekly">Economic and Political Weekly</option>
-                      <option value="Frontline">Frontline</option>
-                      <option value="Down to Earth">Down to Earth</option>
-                      <option value="The Economist">The Economist</option>
-                      <option value="Yojana">Yojana</option>
-                      <option value="Kurkshetra">Kurkshetra</option>
-                      <option value="Science Reporter">Science Reporter</option>
-                      <option value="Journal of Defence Studies">Journal of Defence Studies</option>
-                      <option value="Indian Journal of Public Administration">Indian Journal of Public Administration</option>
-                    </select>
-                  </div>
-                  <br>
-                   <!-- Date -->
-                   <div class="form-group">
-                    <label for="start">Journal/Newspaper Issue Date</label>
-                    <input type="date" class="form-control" name="opiniondate" placeholder="01 January, 2022"> 
-                  </div>
-                  <!-- id1, id, id3 -->
-                  <br>
-                  <div class="form-group">
-                    <select class="form-select" name="subject" id="subject4">
-                      <option value="" selected="selected">Select id1</option>
-                    </select>
-                  <select class="form-select" name="topic" id="topic4">
-                      <option value="" selected="selected">Select id2</option>
-                    </select>
-                  <select class="form-select" name="chapter" id="chapter4">
-                      <option value="" selected="selected">Select id3</option>
-                    </select>
-                  </div>
-                   <!-- UID Number -->
-                   <div class="form-group">
-                    <label for="main-group" class="col-form-label">Assign UID</label>
-                    <input type="text" class="form-control" name= "uida" placeholder="O0001">
-                  </div>        
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-            </div>
-          </div>
-        </div> 
-        
-        
-        
-                <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary justify-content-center" data-toggle="modal" data-target="#modalBook">
-                    Add a book
-                  </button>
-        <!-- Modal -->
-        <div class="modal fade" id="modalBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">New Reference Book</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="/" method="post">
-                  <!-- Modal -->
-                  <div class="form-group">
-                    <label for="main-group" class="col-form-label">Book Title</label>
-                    <input type="text" class="form-control" name= "booktitle">
-                    <label for="main-group" class="col-form-label">Authors</label>
-                    <input type="text" class="form-control" name= "authortitle">
-                    <label for="main-group" class="col-form-label">Published by & Year of Publication</label>
-                    <input type="text" class="form-control" name= "publication">
-                  </div>
-                  <br>
-                  <!-- id1, id, id3 -->
-                  <br>
-                  <div class="form-group">
-                    <select class="form-select" name="subject" id="subject5">
-                      <option value="" selected="selected">Select id1</option>
-                    </select>
-                  <select class="form-select" name="topic" id="topic5">
-                      <option value="" selected="selected">Select id2</option>
-                    </select>
-                  <select class="form-select" name="chapter" id="chapter5">
-                      <option value="" selected="selected">Select id3</option>
-                    </select>
-                  </div>
-                   <!-- UID Number -->
-                   <div class="form-group">
-                    <label for="main-group" class="col-form-label">Assign UID</label>
-                    <input type="text" class="form-control" name= "uida" placeholder="B0001">
-                  </div>        
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-            </div>
-          </div>
-        </div>       
-    </a>
-  </div>
-</nav>
     </ul>
 
 

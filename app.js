@@ -8,11 +8,18 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, "./static")));
 
+var today = new Date();
+var options = {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+};
+var day = today.toLocaleDateString("en-US", options);
+
 var margNames = [];
 var sarg1Names = [];
 var sarg2Names = [];
 var sarg3Names = [];
-
 var mainArguments = [];
 var supArgument1s = [];
 var supArgument2s = [];
@@ -167,14 +174,6 @@ Arg.find({}, null, { sort: { _id: -1 } }, function (err, args) {
 }).limit(20);
 
 app.get("/", function (req, res) {
-  var today = new Date();
-  var options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-  };
-  var day = today.toLocaleDateString("en-US", options);
-
   res.render("index", {
     kindOfDay: day,
     mainArguments: mainArguments,
