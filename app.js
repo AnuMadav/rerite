@@ -119,85 +119,84 @@ Arg.insertMany(defaultArgs, function (err) {
     console.log("Successfully saved items to DB.");
   }
 });
+
+Arg.find({}, null, { sort: { _id: -1 } }, function (err, args) {
+  console.log(args);
+
+  args.forEach(function (arg) {
+    var mainArgument = arg.marg;
+    var supArgument1 = arg.sarg1;
+    var supArgument2 = arg.sarg2;
+    var supArgument3 = arg.sarg3;
+    var opeddate = arg.opd;
+    var newsjournal = arg.njs;
+    var chapter = arg.id3;
+    var termtitle = arg.trm;
+    var termexplanation = arg.texp;
+    var uida = arg.ida;
+    var wnew = arg.nws;
+    var wpoint1 = arg.pnt1;
+    var wpoint2 = arg.pnt2;
+    var wpoint3 = arg.pnt3;
+    var wpoint4 = arg.pnt4;
+    var wpoint5 = arg.pnt5;
+    var wopinionon = arg.opnn;
+    var wopinion1 = arg.opn1;
+    var wopinionby = arg.opnb;
+    var wbooktitle = arg.btle;
+    var wauthortitle = arg.btar;
+    var wpublication = arg.bpne;
+
+    mainArguments.push(mainArgument);
+    supArgument1s.push(supArgument1);
+    supArgument2s.push(supArgument2);
+    supArgument3s.push(supArgument3);
+    opiniondates.push(opeddate);
+    newspaperjournals.push(newsjournal);
+    chapters.push(chapter);
+    termtitles.push(termtitle);
+    termexplanations.push(termexplanation);
+    uidas.push(uida);
+    wnewss.push(wnew);
+    wpoint1s.push(wpoint1);
+    wpoint2s.push(wpoint2);
+    wpoint3s.push(wpoint3);
+    wpoint4s.push(wpoint4);
+    wpoint5s.push(wpoint5);
+    wopinionons.push(wopinionon);
+    wopinion1s.push(wopinion1);
+    wopinionbys.push(wopinionby);
+    wbooktitles.push(wbooktitle);
+    wauthortitles.push(wauthortitle);
+    wpublications.push(wpublication);
+  });
+}).limit(20);
 app.get("/", function (req, res) {
-  Arg.find({}, null, { sort: { _id: -1 } }, function (err, args) {
-    console.log(args);
-
-    args.forEach(function (arg) {
-      var mainArgument = arg.marg;
-      var supArgument1 = arg.sarg1;
-      var supArgument2 = arg.sarg2;
-      var supArgument3 = arg.sarg3;
-      var opeddate = arg.opd;
-      var newsjournal = arg.njs;
-      var chapter = arg.id3;
-      var termtitle = arg.trm;
-      var termexplanation = arg.texp;
-      var uida = arg.ida;
-      var wnew = arg.nws;
-      var wpoint1 = arg.pnt1;
-      var wpoint2 = arg.pnt2;
-      var wpoint3 = arg.pnt3;
-      var wpoint4 = arg.pnt4;
-      var wpoint5 = arg.pnt5;
-      var wopinionon = arg.opnn;
-      var wopinion1 = arg.opn1;
-      var wopinionby = arg.opnb;
-      var wbooktitle = arg.btle;
-      var wauthortitle = arg.btar;
-      var wpublication = arg.bpne;
-
-      mainArguments.push(mainArgument);
-      supArgument1s.push(supArgument1);
-      supArgument2s.push(supArgument2);
-      supArgument3s.push(supArgument3);
-      opiniondates.push(opeddate);
-      newspaperjournals.push(newsjournal);
-      chapters.push(chapter);
-      termtitles.push(termtitle);
-      termexplanations.push(termexplanation);
-      uidas.push(uida);
-      wnewss.push(wnew);
-      wpoint1s.push(wpoint1);
-      wpoint2s.push(wpoint2);
-      wpoint3s.push(wpoint3);
-      wpoint4s.push(wpoint4);
-      wpoint5s.push(wpoint5);
-      wopinionons.push(wopinionon);
-      wopinion1s.push(wopinion1);
-      wopinionbys.push(wopinionby);
-      wbooktitles.push(wbooktitle);
-      wauthortitles.push(wauthortitle);
-      wpublications.push(wpublication);
-      //  console.log(mainArguments + supArgument1s + supArgument2s + supArgument3s);
-    });
-
-    res.render("index", {
-      kindOfDay: day,
-      mainArguments: mainArguments,
-      supArgument1s: supArgument1s,
-      supArgument2s: supArgument2s,
-      supArgument3s: supArgument3s,
-      newspaperjournals: newspaperjournals,
-      opiniondates: opiniondates,
-      chapters: chapters,
-      termtitles: termtitles,
-      termexplanations: termexplanations,
-      uidas: uidas,
-      wnewss: wnewss,
-      wpoint1s: wpoint1s,
-      wpoint2s: wpoint2s,
-      wpoint3s: wpoint3s,
-      wpoint4s: wpoint4s,
-      wpoint5s: wpoint5s,
-      wopinionons: wopinionons,
-      wopinion1s: wopinion1s,
-      wopinionbys: wopinionbys,
-      wbooktitles: wbooktitles,
-      wauthortitles: wauthortitles,
-      wpublications: wpublications,
-    });
-  }).limit(20);
+  res.render("index", {
+    kindOfDay: day,
+    mainArguments: mainArguments,
+    supArgument1s: supArgument1s,
+    supArgument2s: supArgument2s,
+    supArgument3s: supArgument3s,
+    newspaperjournals: newspaperjournals,
+    opiniondates: opiniondates,
+    chapters: chapters,
+    termtitles: termtitles,
+    termexplanations: termexplanations,
+    uidas: uidas,
+    wnewss: wnewss,
+    wpoint1s: wpoint1s,
+    wpoint2s: wpoint2s,
+    wpoint3s: wpoint3s,
+    wpoint4s: wpoint4s,
+    wpoint5s: wpoint5s,
+    wopinionons: wopinionons,
+    wopinion1s: wopinion1s,
+    wopinionbys: wopinionbys,
+    wbooktitles: wbooktitles,
+    wauthortitles: wauthortitles,
+    wpublications: wpublications,
+  });
 });
 
 app.post("/", function (req, res) {
