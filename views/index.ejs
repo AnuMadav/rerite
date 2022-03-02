@@ -334,8 +334,10 @@
                       <div class="form-group">
                         Sourced from:
                         <select class="form-select" aria-label="Default select example" name="newspaperjournal">
-                          <option selected value="The Hindu">The Hindu</option>
+                          <option selected value="">Select</option>
                           <option value="Indian Express">Indian Express</option>
+                          <option value="The Hindu">The Hindu</option>
+                          <option value="Times of India">Times of India</option>
                           <option value="Business Standard">Business Standard</option>
                           <option value="Business Line">Business Line</option>
                           <option value="Financial Express">Financial Express</option>
@@ -564,8 +566,10 @@
                       <div class="form-group">
                         Sourced from:
                         <select class="form-select" aria-label="Default select example" name="newspaperjournal">
-                          <option selected value="The Hindu">The Hindu</option>
+                          <option selected value="">Select</option>
                           <option value="Indian Express">Indian Express</option>
+                          <option value="The Hindu">The Hindu</option>
+                          <option value="Times of India">Times of India</option>
                           <option value="Business Standard">Business Standard</option>
                           <option value="Business Line">Business Line</option>
                           <option value="Financial Express">Financial Express</option>
@@ -699,7 +703,7 @@
 <ul>
   <% for (var i= 0; i<uidas.length; i++) { %>
     
-    <div class="accordion-item">
+    <div class="accordion-item <%=chapters[i]%>">
       <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%=uidas[i] %>" aria-expanded="false" aria-controls="<%=uidas[i] %>">
         <h4 style="padding: .25rem;"><%=uidas[i] %></h4> 
