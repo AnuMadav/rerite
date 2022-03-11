@@ -1,6 +1,4 @@
 #overflow {
-  overflow-y: scroll;
-  height: 499px;
   margin-left: -3%;
   cursor: context-menu;
 }

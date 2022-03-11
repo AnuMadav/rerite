@@ -399,7 +399,7 @@ app.get("/study", function (req, res) {
   });
 });
 
-app.post("/home", function (req, res) {
+app.post("/index", function (req, res) {
   var margName = req.body.mainargument;
   var sarg1Name = req.body.supportingargument1;
   var sarg2Name = req.body.supportingargument2;
@@ -450,7 +450,7 @@ app.post("/home", function (req, res) {
 
   arg.save();
 
-  res.redirect("/home");
+  res.redirect("/index");
 });
 
 app.post("/study", function (req, res) {
