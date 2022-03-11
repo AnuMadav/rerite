@@ -1,0 +1,42 @@
+#overflow {
+  overflow-y: scroll;
+  height: 499px;
+  margin-left: -3%;
+  cursor: context-menu;
+}
+
+.logo {
+  background-color: white;
+  max-width: 75%;
+  margin-left: 12.5%;
+}
+
+.viewpage {
+  max-width: max-content;
+}
+
+.collapsebckgrd {
+  background-color: white;
+}
+
+#profpic {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 5px;
+  width: 150px;
+}
+
+#profpic:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#logoinpage {
+  border: none;
+  border-radius: 0%;
+  padding: 5px;
+  width: 150px;
+}
+
+p {
+  font-size: 12px;
+}

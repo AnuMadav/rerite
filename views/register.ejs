@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Competitive Exams</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/master.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <div class="jumbotron centered">
+      <div class="container">
+        <h1 class="display-3 text-center">Rerite</h1>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container"></div>
+        </div>
+        <div class="container mt-5">
+          <h1>Register</h1>
+
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="card">
+                <div class="card-body">
+                  <!-- Makes POST request to /register route -->
+                  <form action="/study" method="">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="text">Username</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="myusername"
+                        />
+                        <small class="text-muted"
+                          >Choose your username. It should be of 12
+                          characters.</small
+                        >
+                      </div>
+                      <br />
+                      <div class="form-group">
+                        <label for="text">Enrollment Number</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="myenrollmentnumber"
+                        />
+                        <small class="text-muted"
+                          >Choose your enrollment number. It should contain 18
+                          characters which must a combination of capital
+                          letters, symbols, small letters and numerals.</small
+                        >
+                      </div>
+                      <br />
+                      <div class="form-group">
+                        <label for="myemailadress">Email address</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          name="myemailadress"
+                        />
+                        <small class="text-muted"
+                          >It is used to prevent bots from logging in.</small
+                        >
+                      </div>
+                    </div>
+
+                    <br />
+                    <button type="submit" class="btn btn-primary" href="/study">
+                      Register
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="card social-block">
+                <div class="card-body">
+                  <a
+                    class="btn btn-block btn-social btn-google"
+                    href="/auth/google"
+                    role="button"
+                  >
+                    Sign Up with Google
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
