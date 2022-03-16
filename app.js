@@ -44,7 +44,6 @@ var urusernames = [];
 var myagreeNames = [];
 var myqueryNames = [];
 var mylistnames = [];
-var mylistargnames = [];
 
 app.set("view engine", "ejs");
 
@@ -366,6 +365,72 @@ app.get("/login", function (req, res) {
   res.render("login");
 });
 
+app.get("/basicsearch", function (req, res) {
+  var today = new Date();
+  var day = today.toLocaleDateString("en-US", options);
+
+  res.render("basicsearch", {
+    kindOfDay: day,
+    mainArguments: mainArguments,
+    supArgument1s: supArgument1s,
+    supArgument2s: supArgument2s,
+    supArgument3s: supArgument3s,
+    newspaperjournals: newspaperjournals,
+    opiniondates: opiniondates,
+    chapters: chapters,
+    termtitles: termtitles,
+    termexplanations: termexplanations,
+    uidas: uidas,
+    wnewss: wnewss,
+    wpoint1s: wpoint1s,
+    wpoint2s: wpoint2s,
+    wpoint3s: wpoint3s,
+    wpoint4s: wpoint4s,
+    wpoint5s: wpoint5s,
+    wopinionons: wopinionons,
+    wopinion1s: wopinion1s,
+    wopinionbys: wopinionbys,
+    wbooktitles: wbooktitles,
+    wauthortitles: wauthortitles,
+    wpublications: wpublications,
+    urusernames: urusernames,
+    mylistnames: mylistnames,
+  });
+});
+
+app.get("/advancedsearch", function (req, res) {
+  var today = new Date();
+  var day = today.toLocaleDateString("en-US", options);
+
+  res.render("advancedsearch", {
+    kindOfDay: day,
+    mainArguments: mainArguments,
+    supArgument1s: supArgument1s,
+    supArgument2s: supArgument2s,
+    supArgument3s: supArgument3s,
+    newspaperjournals: newspaperjournals,
+    opiniondates: opiniondates,
+    chapters: chapters,
+    termtitles: termtitles,
+    termexplanations: termexplanations,
+    uidas: uidas,
+    wnewss: wnewss,
+    wpoint1s: wpoint1s,
+    wpoint2s: wpoint2s,
+    wpoint3s: wpoint3s,
+    wpoint4s: wpoint4s,
+    wpoint5s: wpoint5s,
+    wopinionons: wopinionons,
+    wopinion1s: wopinion1s,
+    wopinionbys: wopinionbys,
+    wbooktitles: wbooktitles,
+    wauthortitles: wauthortitles,
+    wpublications: wpublications,
+    urusernames: urusernames,
+    mylistnames: mylistnames,
+  });
+});
+
 app.get("/study", function (req, res) {
   var today = new Date();
   var day = today.toLocaleDateString("en-US", options);
@@ -503,6 +568,18 @@ app.post("/study", function (req, res) {
   mysocial.save();
 
   res.redirect("/study");
+});
+
+app.post("/basicsearch", function (req, res) {
+  console.log(req.body.chapter);
+
+  res.redirect("/basicsearch");
+});
+
+app.post("/advancedsearch", function (req, res) {
+  console.log(req.body.string);
+
+  res.redirect("/advancedsearch");
 });
 
 let port = process.env.PORT;

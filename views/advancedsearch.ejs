@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Competitive Exams</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+  var subjectObject = {
+    "Agriculture, Animal Husbandry and Food Processing": {
+      "Farm and Farmer Issues": ["Locust Attacks in the Country and steps taken to deal with this menace", "Functioning of Agricultural Credit System in the Country", "Functioning of Co-operative Marketing in India- An analysis", "Organic Farming - Prospects and Challenges", "Zero-budget Natural Farming - Prospects and Challenges", "Research and Development in Farm Mechanization for Small and Marginal Farmers in the Country", "Research and Development in Post-Harvest Management", "Production and Availability of Certified Seeds in the Country", "Production and Availability of Oil seeds and Pulses in the Country", "Role of Primary Agriculture Cooperative Societies (PACS) in Comprehensive Development of Agriculture in the Country - An Evaluation", "Others"],
+"Food Processing Sector": ["Skill Development and Employment Generation in Food Processing Sector", "Others"],
+"Allied Sector": ["Development of Deep Sea Fishing", "Promotion and Development of Sea Weed Cultivation", "Ensuring Quality of Milk and Consumer Grievance Redressal Mechanism in Dairy Sector", "Gender Perspective in Animal Husbandry and Dairying Sector", "Role of National Dairy Development Board for Protection and Development of Indigenous Cattle Breeds", "Status and Promotion of Poultry Sector in the Country", "Status of Veterinary Services and Availability of Animal Vaccine in the Country", "Infrastructure and Post-Harvest Management in Fisheries Sector - An Overview", "Others"],
+"Evaluation of Schemes": ["Implementation of National Scheme on Welfare of Fishermen - An Evaluation", "Implementation of Pradhan Mantri Krishi Sinchayi Yojana (PMKSY) - A Review",  "Initiatives taken in the Food Processing Sector under 'Make in India' Program", "National Livestock Mission – An Appraisal", "Performance and Evaluation of Livestock Insurance Schemes", "Pradhan Mantri Fasal Bima Yojana - An Evaluation", "National Bamboo Mission - A Review", "Scheme for Creation / Expansion of Food Processing and Preservative Capacities - An Evaluation", "Mission for Integrated Development of Horticulture (MIDH) - An Appraisal", "Role of National Fisheries Development Board (NFDB) in Training and Extension Facilities to Fishermen in view of Pradhan Mantri Matsya Sampada Yojana", "Contribution of ICAR in Agricultural Research for Tribal and Hilly Regions", "Doubling of Farmers Income by 2022", "Others"],
+          },
+    "Chemicals and Fertilisers": {
+      "Fertilizers": ["Administration of Fertilizers (Movement Control) Order, 1973", "Excessive use of fertilizers, its effect on soil/ environment/ health and slow growth of use of organic fertilizers", "Fertilizer prices and availability of DAP", "Import of fertilizers and the issue of self dependence", "Insecticides – promotion and development including safe usage - licensing regime for insecticides", "Nano-fertilizers for sustainable crop production and maintaining soil health", "Prices, Availability and distribution of Fertilizers", "Revival of closed and sick Fertilizers Units", "Study of system of fertilizer subsidy", "Tax structure on fertilizers sector in terms of GST and import duties – analysis of the tax structure of raw material and final products and its impact on self-sufficiency and use of fertilizers", "Others"],
+"Petrochemicals": ["Demand and Availability of Petrochemicals including imports and exports", "Disposal of toxic waste from Bhopal Gas Leak site", "Environmental Impact of Petrochemical products", "Vision 2024 - To establish India as a leading manufacturer of chemicals and petrochemicals", "Others"],
+"Medical Industry and Pharmaceuticals": ["Availability of Medicines and Medical devices for COVID Management", "Promotion of Medical Device Industry", "Review of Pradhan Mantri Bharitya Janaushadhi Pariyojana (PMBJP)", "Self-sufficiency of Key Starting Materials and Intermediates", "Status of COVID-19 vaccine production in India", "Others"]
+    },
+    "Coals, Mines and Steel": {
+      "Coal": ["Coal conservation and development of Infrastructure for Transportation of Coal Across the Country", "Coal Handling Infrastructure at Ports", "Compliance of Environmental Norms by Coal and Lignite Companies", "Future of Coal in India's Energy Mix", "Implementation of Information Technology and vigilance activities to curb illegal Coal Mining and theft of coal in the country", "Import of Coal – Trends and Issue of Self Reliance", "Non-utilization of allocated/leased out coal/lignite blocks by Public/Private Sector Companies", "Land Acquisition and issues of Rehabilitation & Resettlement in Coal and Lignite Mining Areas", "Performance of Coal Controllers Office", "Production of Coal and Lignite - Projection and Planning", "Research and Development in Coal Sector", "Review of Coal Mines Workers Welfare Programme", "Safety in Coal Mines", "Skill development in Coal/Lignite Sector", "Others"],
+"Steel": ["Iron Ore Handling Infrastructure at Ports", "Development of Leased Out Iron Ore Mines and optimum capacity utilization", "Major Policy changes assisting Secondary Steel Sector", "Promotion of Steel Usage", "Review of Steel Policy and its Impact on Development of Steel Sector", "Safety Management & Practices in Steel PSUs", "Skill Development in Steel Sector", "Status of Greenfield and Brownfield Projects of Steel PSUs", "Management of Energy efficiency by Steel Plants and Environmental Issues related to Iron Ore Mining", "Development of Aluminium & Copper Industries in India", "Development of Manganese Ore Industry in India", "Measures to curb Illegal Mining of Iron Ore, Manganese and Bauxite in the Country", "Others"],
+"Mining": ["Expediting and Simplifying the Environment and Forest Clearance Process for Mining Projects", "Measures for Abatement of Pollution due to Mining Activities and Environmental Protection", "New Auction Mechanism and Self Reliance in Minerals and Mineral based products", "Organizational Structure and Performance of Geological Survey of India (GSI) – A Review", "Organizational Structure and Performance of Indian Bureau of Mines (IBM) – A Review", "Self-reliance in Minerals and Metals", "Status of Greenfield and Brownfield projects of NMDC Ltd.", "Mineral Exploration Activities in North Eastern States and its overall impact on development of the region", "Others"]
+    },
+    "Commerce": {
+      "Commerce": ["Implementation of Districts as Export Hubs (DEHs) including One District One Product (ODOP) Initiatives", "Industrialisation of North Eastern Region", "Promotion and Regulation of E-Commerce in India", "Performance of Indian Tea Industry", "Performance of Export Promotion Councils", "Augmenting Infrastructure Facilities to Boost Export", "Review of the Intellectual Property Rights Regime", "Attracting investment in post-Covid Economy: Challenges and Opportunities for India", "Ease of Doing Business", "Activities and Functioning of India Trade Promotion Organisation", "Industrial Policy in the Changing Global Scenario", "Impact of Goods and Services Tax (GST) on exports", "Impact of Chinese Goods on Indian Industry", "Impact of Banking Misappropriation on Trade and Industry", "Export of Agricultural and Marine Products, Plantation Crops, Turmeric, and Coir", "Others"]
+    },
+    "Communications and Information Technology": {
+      "IT Infrastructure": ["Indias preparedness for 5G", "Promotion of Electronics/IT Hardware/telecom equipment manufacturing sector under Make in India and measures for reduction of imports", "Others"],
+"New technologies, their applications and their uses": ["Digital Payment and Online Security measures for data protection", "Citizens data security and privacy", "Inter-sectoral review of challenges of emerging and converging technologies, entities and practices", "Issues confronting Telecom Sector including Telecom Service Providers (TSPs)", "Policy issues in Information Technology including cross border data flows, Artificial Intelligence (AI) and Internet of Things , (IoT), etc.", "Review of cyber security scenario in India", "Safeguarding citizens rights and prevention of misuse of social/online news media platforms including special emphasis on women security in the digital space", "Suspension of Telecom Services/Internet and its impact", "Technology initiatives taken by MeitY in the wake of Covid-19 pandemic", "Others"],
+"Communication Infrastructure": ["Community Radio Stations: Growth, Opportunities and Challenges", "Department of Posts – Initiatives and Challenges", "Real Estate Management in the Department of Posts", "Review of postal services in North Eastern Region", "Review of the performance of schemes under Universal Service Obligation Fund (USOF) with special emphasis on North East and LWE affected areas", "Others"],
+"Information and Broadcasting": ["Ethical standards in media coverage", "Film Industry: Problems and Challenges", "Others"],
+"Acts-Bills-Organisations": ["Review of functioning of CSC-SPV", "Review of functioning and outreach of Doordarshan Channels", "Review of functioning of BSNL and MTNL and plan for enhancing their performance", "Review of functioning of Bureau of Outreach and Communication (BOC)", "Review of functioning of Central Board of Film Certification (CBFC)", "Review of functioning of Centre for Development of Telematics (C-DOT)", "Review of functioning of Indian Telegraph Act, 1885", "Review of functioning of Information Technology Act, 2000", "Review of functioning of Prasar Bharati Organization", "Review of functioning of TRAI", "Review of functioning of Unique Identification Authority of India (UIDAI)", "Others"]
+    },
+    "Defence": {
+      "Armed Forces": ["A Critical Review of functioning of Zila Sainik Boards in the country", "Coastal Security- A Review", "Critical Review of National Cadet Corps", "Eco-Task Force System – Measures to strengthen including raising of additional Territorial Army Battalions", "New Unified Structure pertaining to Cyber Space, Space and Special Operations", "Preparedness of the Armed Forces in terms of Modern Warfare including cyber threat and Anti-Drone capabilities", "Provision and Monitoring of quality of Ration and Livery items to the Defence Forces, especially in Border Areas", "Review of intake of Female Officers in Armed Forces through various platforms", "Review of selection procedure of Officers for induction into Armed Forces", "Review of strategic operational preparedness of Defence Forces in view of current security scenario including Border Security", "Review of the Border Security in the country especially at North Eastern and Western Borders", "Others"],
+"Defence Assets": ["Accidents involving Defence Assets- A Critical Review", "An assessment of Defence Procurement Policy", "Assessment of Indigenous Defence Production both by way of Public and Private Sector including major Research Initiatives", "Challenges in Defence Manufacturing", "Make in India with special reference to Micro, Small and Medium Enterprises (MSMEs)", "Modernisation of Defence Public Sector Undertakings (DPSUs)", "Review of management of Defence Lands", "Review of Working of Ordnance Factories",  "Others"],
+"Welfare Measures": ["Assessment of the Welfare Measures available to War Widows/Families in Armed Forces", "Grievance Redressal Mechanism in Defence Services", "Review of working of Cantonment Boards", "Others"]
+    },
+    "Energy": {
+      "Power Sector": ["Development of Power Sector", "Electrification of Rural India – Role of PFC Limited and REC Limited in Ensuring Sustainability and Reliability", "Carbon footprints of Power Generation in India", "Deen Dayal Upadhyaya Gram Jyoti Yojana (DDUGJY)", "Delay in execution/completion of Power Projects by power sector companies", "Development of Coal Blocks allocated to Power Sector companies", "Evaluation of Power Transmission Sector – Development of Transmission Network and its Management, Performance efficiency in  matching evacuation demands", "Future Prospects of Thermal Power Plants in the light of Renewable Energy Target of 450 GW", "Functioning of Power System Operation Corporation Ltd. (POSOCO) in Grid Management", "Implication of Paris Accord on Power Sector in India", "Integrated Power Development Scheme – An Evaluation", "IT enablement in Power Sector", "Operations of Load Dispatch Centres and Power Exchanges", "Performance of Power Plants of Thermal and Hydro Sectors", "Performance Review of Major Hydro Projects", "Revamped Distribution Sector Scheme including critical appraisal of Discoms", "Review of Power Tariff Policy – Need for uniformity in tariff structure across the Country", "Role and Efficacy of Central Electricity Authority in balanced development of Electricity Sector", "Role and Significance of Ujwal DISCOM Assurance Yojana (UDAY) in financial turnaround of DISCOMs", "Role of Regulators in Electricity sector – An Evaluation", "Saubhagya - Pradhan Mantri Sahaj Bijli Har Ghar Yojana", "Others"],
+"Energy": ["Energy Audit – An Evaluation", "Energy Conservation, Efficiency and Audit", "Energy Security in India – Emerging Scenario", "Others"],
+"Renewables": ["Evaluation of Solar and Wind Energy in India", "Development of Geo-Thermal Energy in India", "National Hydrogen Energy Mission", "National Solar Mission- An Evaluation", "Promotion of Electric Vehicles in India", "Tidal Power Development in India", "Greening of Indian Islands – Carbon Free Lakshadweep and Andaman and Nicobar Islands", "Bio-Energy and Waste to Energy - Recovery of Energy from Urban, Industrial and Agricultural Wastes/Residues", "Enhancing Domestic Manufacturing Capacity in Renewable Energy Sector", "Evaluation of the role of Renewable Energy in Electricity Sector", "Financial constraints in Renewable Energy Sector", "Integration of Renewable Energy into the National Grid", "Measures to make distribution/marketing of Renewable Energy affordable and effective", "Need for long term Renewable Energy Policy and Legal Reforms", "Reasons for lack of manufacturing base for Renewable Components/Equipment", "Research, Design and Development in Renewable Energy Sector", "Roadmap for achievement of 450 W Renewable Energy Target", "Role of PSUs/Institutions under Ministry of New & Renewable Energy in Development of Renewable Energy Schemes", "Others"]
+    },
+    "External Affairs": {
+      "India- Multilateral Bodies": ["India's Role in United Nations: Imperatives and Challenges for India s Permanent Membership in UNSC", "Reforming the United Nation: Imperatives and Challenges", "India's position in the ongoing Climate Change Negotiations", "Others"],
+"India- World": ["India's Extended Neighbourhood: From Look East to Act East", "India's Neighbourhood First Policy", "India's West Asia Policy: an overview/India’s foreign policy in West Asia", "Potential for developing relations with Latin America", "Opportunities in African countries and India's engagement", "QUAD in Indo-Pacific region: India s role and strategies for engagement and cooperation", "The European countries and India – India & EU", "Others"],
+"Developing Inherent Strengths": ["India's Soft Power and Cultural Diplomacy: Prospects & Limitations", "Progress in restructuring and strengthening of IFS Cadre", "Others"],
+"Diaspora": ["Performance of Passport Issuance System including issuance of e-passports", "Welfare of Indian Diaspora: Policies/Schemes", "The Registration of Marriage of Non-Resident Indian Bill, 2019", "Others"]
+    },
+    "Finance": {
+      "Growth and Development": ["State of Indian Economy", "Achieving $ 10 Trillion GDP – Long-term prospects for the Indian Economy", "Review of long-term public finances and debt at Centre and States", "Others"],
+"Rural Economy": ["Increasing the availability of equity and debt capital for the rural economy", "Financing rural development including appraisal of NABARD’s role", "Others"],
+"Industry and Infrastructure": ["Analysis of disinvestment program","Financing infrastructure requirements including long-term corporate debt", "Monetization of public sector assets including disinvestment and asset recycling", "Financing the innovation ecosystem", "Financing the MSME sector; its growth and regulation", "Formal and informal employment trends", "Others"],
+"Taxation": ["Efficacy of overall taxation framework including direct and indirect taxes", "Efficacy of overall taxation framework including long-term corporate debt", "Review of GST regime and compliance issues", "Tax policies and compliance with capital controls", "Others"],
+"Corporate Issues": ["Anti Competitive practices by Big Tech companies", "Evaluating CryptoFinance : Opportunities and Challenges", "Implementation of Corporate Social Responsibility (CSR) mandates", "Role of regulators, auditors, rating agencies and other stakeholders in achieving world-class corporate governance", "Others"],
+"Banking": ["Implementation of Insolvency and Bankruptcy Code- Pitfalls and solutions", "Inflation targeting guidelines and monetary transmission", "Performance and regulation of insurance and pension sectors", "Strengthening credit flows across the economy- performance appraisal of the banking system", "Strengthening the Non-Banking Financial Company (NBFC) sector", "Strengthening RBI and SEBI’s regulatory and operational capabilities", "Others"],
+"Financial Markets and Trade Flows": ["Performance and regulation of capital markets", "Long term impact of the Covid-19 pandemic on the global economy, trade flows, and financial markets", "Quality of supervision and oversight of Financial Institutions", "Others"]
+    },
+    "Food,  Consumer Affairs and Public Distribution": {
+      "Food Crops": ["Development/Promotion of Sugar Industry", "Payment of Sugarcane Arrears to Sugarcane Farmers", "Edible Oils", "Others"],
+"Consumer Protection": ["Programmes for Consumer Protection", "Awareness of Rights and Ensuring Justice to Consumers with particular reference to consumers in rural areas", "Initiatives in the North-East in the field of Consumer Rights Protection", "Others"],
+"Standardisation of products in the country": ["Regulation of Packaged Commodities", "Regulation of Weights and Measures", "Strengthening of Public Distribution System- Augmenting use of technological means and Implementation of 'One Nation, One Ration Card' Scheme", "Quality Control Cells", "BIS – Hallmarking & Jewellery", "Others"],
+"Food Procurement, Storage and Distribution": ["Construction of Godowns by FCI", "Food Subsidy and its Utilization", "Functioning of Warehousing Development and Regulatory Authority (WDRA)", "Mechanism of Price Monitoring System", "Price rise of Essential Commodities - Causes & Effects", "Adoption of latest technology and training the manpower", "Problem of supply and distribution of adulterated milk and measure taken to check it", "Impact of Public Distribution System on quality and diversity of food consumption", "Others"]
+    },
+    "Health and Family Welfare": {
+      "Health and Wellness": ["Outbreak of Pandemic Covid-19 and its Management", "The Assisted Reproductive Technology (Regulation) Act, 2021", "Functioning of Food Safety and Standards Authority of India", "Functioning of New AIIMS (Phase-1) under Pradhan Mantri Swaasthya Suraksha Yojana (PMSSY)", "Functioning of Food Safety and Standards Authority of India", "The National Medical Commission Bill, 2017", "Vaccine Development, Distribution Management and Ministry of Pandemic Covid-19", "Implementation of Ayushman Bharat", "Mental Health in contemporary times", "Medical Devices: Regulation & Control", "Affordability of Cancer treatment", "Ayurveda System of Medicine: Challenges and Prospects", "Review of National AYUSH Mission", "Others"]
+    },
+    "Home Affairs": {
+      "Home Affairs": ["Police - Training, Modernisation and Reforms", "Prison - Condition, Infrastructure and Reforms", "National Security, Intelligence Coordination, Counter-Terrorism and Left Wing Extremism", "Administration, Development and People's Welfare in the Union Territories of: (i) Jammu & Kashmir and Ladakh (ii) Andaman & Nicobar Islands", "Border Management -Coastal Security", "Disaster Management", "Rising Crime in Delhi and NCR", "Atrocities and Crimes against Women and Children", "Management of COVID-19 pandemic and specific issues", "Border Security: Capacity Building and Institutions", "Cyclone Ockhi–Impact on Fishermen and Damage caused", "Security Situation in the North Eastern States of India", "Working Conditions in Border Guarding Forces", "Working Conditions in Non-Border Guarding Central Armed Police Forces", "Others"]
+    },
+    "Housing and Urban Affairs": {
+      "Urban Development": ["Atal Mission for Rejuvenation and Urban Transformation (AMRUT)", "Evaluation of the Policy on Acquisition of Land, Land Pooling and Land Use Change along with Redevelopment Norms in tune with current times", "Fall in Water Table of Cities: The Solutions", "Finding solution to Air Pollution in urban areas including Delhi NCR", "Heritage Cities Development and Augmentation Yojana (HRIDAY)", "Implementation of National Building Code in urban areas", "Implementation of The Real Estate (Regulation & Development) Act, 2016 (RERA) in urban areas-A Review", "Improving the quality of living in urban cities, sewage treatment, proper drainage system", "Improving the standard and quality of living in urban cities- Air Quality, sewage treatment and drainage system, traffic management etc.", "Monitoring of implementation of on-going projects by CPWD and NBCC", "Need for De-containerization of Cities", "Need for formulating Master Plan for every city in the country for holistic development", "People Centric Training and Capacity Building of functionaries of the Urban Local Bodies (ULBs)/Municipal Bodies", "PM SVANidhi", "Reviewing Functioning of CPWD", "Reviewing of functioning of DDA, CPWD NBCC, HUDCO, Hindustan Prefab Limited (HPL), NCRPB and DUAC", "Role of Municipal Corporations of Delhi, DDA, NDMC, CPWD and NBCC in reducing air pollution in Delhi", "Smart Cities Mission – An Evaluation", "Water conservation, restoration and recharge of ground water and re-use of water in urban areas – Evaluation of Jal Shakti Abhiyan in urban areas", "Water Supply, Sewerage, Sanitation, Green Space and other Urban amenities in cities across India", "Others"],
+"Transport Issues": ["Decongestion of cities for Smooth Flow of Traffic especially in metropolitan cities", "Implementation of various Metro Projects and available alternatives", "Management and Planning of Urban Transport Services and Infrastructure", "Others"],
+"Poverty Issues": ["Implementation of Street Vendors Act (Protection of Livelihood and Regulation of Street Vending Act, 2014)", "Poverty Alleviation and creation of employment opportunities in Urban Areas- Deen Dayal Antyodaya Yojana – NULM", "Pradhan Mantri Awas Yojana - Urban (PMAY-U) : Housing for All by 2022 and related issues", "Re-development of Slums in Metropolitan cities and re-settlement of slum dwellers", "Re-evaluation of progress and impact of Swachh Bharat Mission (Urban) in improving the overall sanitation coverage in urban areas including Solid Waste Management", "Redevelopment of General Pool Residential Accommodation (GPRA) colonies and measures for augmentation of Government residential quarters", "Regularization of illegal colonies", "Removal of Encroachments and related issues", "Slums in metropolitan cities: need for improvement and resettlement of slum dwellers", "Solid Waste Management", "Others"]
+    },
+    "Human Resource Development": {
+      "Human Resource Development": ["New Accreditation Standards, Skill Development and Experience based Learning under the National Education Policy 2020", "Reforms Promoting Fine Arts and Performing Arts Education", "Reforms in Social Work Education", "Examination Reforms in Higher Education", "Reforms in Contents and Designs of School Text Books", "Plans for Bridging the Learning Loss Caused due to School Lockdown in view of Covid Pandemic", "Review of Scholarship Schemes, Hostel Facilities and Other Amenities for SC/ST Students", "Review of National Council for Teacher Education in the context of Teachers’ Training/Capacity Building", "Skill Development and Secondary Education in Kasturba Gandhi Balika Vidyalayas", "Problems and Challenges in inter-Country and intra-Country Adoptions", "Performance Evaluation of Anganwadi Services", "Rebooting the Sports Facilities in Post Pandemic Era", "Promotion of Rural and Tribal Sports", "Issues and Challenges before National Service Scheme", "Reforms in Content and Design of School Textbooks", "Plans for Bridging the Learning Gap caused due to School Lockdown as well as Review of online and offline Instructions and  Examinations and Plans for re-opening of Schools", "Preparation for Olympic Games, 2021", "Khelo India Scheme", "Issues related to safety of Women", "The Functioning of Rashtriya Mahila Kosh", "Report on the Right of Children to Free and Compulsory Education (Second Amendment) Bill, 2017", "National Sports University Bill, 2017", "Issues and Challenges before Higher Education Sector in India", "Implementation of Sarva Shiksha Abhiyan and Mid-Day-Meal Scheme", "Performance of National Sports Development Fund and Recruitment and Promotion of Sportspersons", "Issues and Challenges before the Higher Educational Sector in India", "The Juvenile Justice (Care and Protection of Children) Bill, 2014", "Functioning of the Indira Gandhi National Open University", "Functioning of National Sports Federations", "Others"]
+    },
+    "Industry": {
+      "Industry": ["Impact of Covid-19 Pandemic on MSME Sector and Mitigation Strategy Adopted to Counter It pertaining to the Ministry of Micro, Small and Medium Enterprises", "Electric & Hybrid Mobility – Prospects And Challenges in Automobile Industry", "Impact of Covid -19 on PSUs and the initiatives taken by the PSUs under Atmanirbhar Bharat Abhiyaan", "Downturn in Automobile Sector - Its Impact and Measures for Revival", "Professionalisation of Boards of CPSEs pertaining to the Ministry of Heavy Industries and Public Enterprises (Department of Public Enterprises)", "Credit Linked Capital Subsidy Scheme pertaining to the Ministry of Micro, Small and Medium Enterprises", "Micro, Small and Medium Enterprises Development (Amendment) Bill, 2018", "Review of Provisions of Corporate Social Responsibility under the Companies Act, 2013 pertaining to the Ministry of Heavy Industries and Public Enterprises (department of Public Enterprises)", "Downturn in Automobile Sector & the Measures for its Revival", "Impact of FDI in multi-brand retail on MSMEs", "Implementation of the MSME Development Act, 2006", "Others"]
+    },
+    "Labour, Textiles and Skill Development": {
+      "Labour": ["Implementation of Centrally Sponsored Schemes", "Implementation of Welfare measures for Plantation Workers", "Working conditions and welfare of Mine workers, and assessment of working of Directorate General of Mines Safety (DGMS)", "Identification and Rehabilitation of Bonded Labour", "Social Security and Welfare measures for Inter-State Migrant Workers", "Social Security and Welfare Measures for Unorganised/ Informal Sector Workers including Scheme Workers, Street Vendors and Fishermen", "Social Security and Welfare measures for workers in unorganized and informal sectors", "Social security measures for workers in IT and Telecommunication Sectors like BPOs/Call Centres", "Status of and Welfare measures for workers deployed by Outsourced Agencies/Companies", "Contractual Appointments/Deployments and Implementation of Labour Laws concerning the welfare of Contract Workers in Government Organisations/PSU Offices/Establishments", "Effective Implementation of Labour Laws concerning the welfare of contract/casual labour", "Functioning of Central Board for Workers Education", "Implementation of Labour Laws concerning the welfare of contract/casual labour", "Implementation of prescribed minimum Wages in Scheduled Employment Sector", "Implementation of Social Security and Welfare/Protection Schemes for Contract and Casual Workers deployed by CPWD in Various Divisions", "Measures for implementing the ILO Conventions binding on India – An appraisal", "National Policy on Child Labour – An Assessment", "Safeguards and measures for protecting the interest of overseas contract workers and the Returnees, particularly in the Middle East Region", "The Employees State Insurance Corporation - Applicability of ESI Scheme, benefits provided under the Scheme, with special emphasis on their improvement, financing and administrative responsibility, including management of Corpus Fund", "Functioning of the Employees Provident Fund Organisation (EPFO) with special reference to operation of the EPF Pension Scheme", "Others"],
+"Skill Development": ["Functioning of National Skill Development Corporation (NSDC)", "Functioning of Directorate General of Training", "Impact of Covid-19 on Rising Unemployment and Loss of Jobs/ Livelihood in Organised and Unorganised Sector", "National Skills Qualifications Framework – An Assessment", "Others"],
+"Employment": ["Assessment of present categories of Scheduled Employment", "Implementation of National Apprenticeship Promotion Scheme (NAPS)", "Implementation of National Apprenticeship Training Scheme (NATS)", "Implementation of Pradhan Mantri Kaushal Vikas Yojana (PMKVY)", "Implementation of Skill Acquisition and Knowledge Awareness for Livelihood Promotion (SANKALP) Project", "Others"],
+"Textiles": ["Challenges/Opportunities - Indian Textile Industry", "Development and Promotion of Jute Industry", "Development of Cotton Sector", "Development of Manmade fibre", "Functioning of National Institute of Fashion Technology (NIFT)", "Functioning of National Textile Corporation (NTC)", "Performance of Marketing Agencies of Handlooms and Handicrafts", "Schemes/Programmes of Central Silk Board for Development and Promotion of Silk Industry – An appraisal", "Skill Development vis-à-vis Manufacturing and Upgradation in Textiles Sector", "Status and Reforming of Powerloom Sector", "Status/Performance of Handloom Sector", "Welfare Schemes of the Ministry of Textiles – An Appraisal", "Others"]
+    },
+    "Personnel, Public Grievances, Law and Justice": {
+      "Judiciary": ["Review of Judicial Infrastructure", "Strengthening of Grievance Redressal Mechanism of Government of India", "Pensioner’s Grievances-Impact of Pension Adalats and Centralized Pensioners Grievance Redress and Monitoring System (CPENGRAMS)", "Inordinate Delay in Filling up the Vacancies in the Supreme Court and High Courts", "Promotion of Legal Education and Research under the Advocates Act, 1961", "Role of Ministry of Law and Justice in Framing/Approving the Provisions of International Covenants/Multilateral/Bilateral Treaties or Agreements", "Synergy between Tribunal Justice System and Regular Justice System of the Country", "The Commercial Courts Commercial Division and Commercial Appellate Division of High Courts Bill, 2015", "The Lokpal and Lokayuktas and other related law (Amendment) Bill, 2014", "Strengthening the Justice Delivery process", "Functioning of Virtual Courts/Court Proceedings through video conferencing", "Functioning of Alternative Dispute Resolution (ADR) mechanisms", "Review of the working of Legal aid under National Legal services Authority Act,1987", "Strengthening Legal Education in view of Emerging Challenges before the Legal Profession", "Review of functioning of Tribunal System in the Country", "Review of Personal laws", "Others"],
+"Public Personnel": ["Draft Public Servants (Declaration of Assets and Liabilities and Minimum Value of Assets for Condonation or Exemption) Rules, 2017", "Appraisal and empanelment of Civil Servants under the Central Government", "Legislation and Legislative Impact Assessment –Status in India and way forward", "Civil Services Reforms and Capacity building", "Review of the working of Central Information Commission/State Information Commissions", "Review of functioning of Recruitment organizations", "Others"],
+"Vigilance Administration": ["Effectiveness of Vigilance Administration in Revenue and Banking Institutions and selected Central Public Sector Enterprises", "Review of Prevention of Corruption Act and functioning of vigilance administering agencies", "Others"],
+"Elections": ["Feasibility of Holding Simultaneous Elections to the House of People (Lok Sabha) and State Legislative Assemblies", "Feasibility of introducing 'Remote Voting' in India", "Impact of false declarations during filing of nomination for elections", "Status of Common Electoral Roll for conducting elections in the Country", "Feasibility of linking of Aadhaar with Electoral Photo Identity Card", "Others"]
+    },
+    "Petroleum and Natural Gas": {
+      "Petroleum": ["Strategic Petroleum Reserves in India", "Oil Refineries - A Review", "Policy on Import of Crude Oil", "Pricing, Marketing and Supply of Petroleum Products including Natural Gas", "Allotment of Retail Outlets and LPG Distributorships", "Contract Management and Transparency in Procurement Procedures in Oil PSUs", "CSR activities of oil PSUs", "Disinvestment, Mergers and Acquisitions in Petroleum Sector", "Exploration and production activities of Public Sector Oil Companies", "Human Resource Policy of Oil PSUs", "Initiatives undertaken by oil PSUs in Petroleum Sector under ‘Atmanirbhar Bharat’", "International Cooperation in Petroleum Sector", "Litigations involving Oil PSUs", "Review of Performance of Petroleum Sector related Installations and Organisations under the jurisdiction of MoPNG", "Reservation Policy in Allotment, Marketing and Distribution of Petroleum Products", "Review of Human Resource Policy of Oil PSUs", "Review of implementation of CBG (SATAT)", "Review of performance of Oil PSUs with specific reference to financial performance and investments in other sectors", "Safety and Security of Oil Installations of Public Sector Oil Companies", "The Challenges and Opportunities for Public Sector Oil Companies", "Others"],
+"Natural Gas": ["Alternate Sources of Energy", "Energy Security with specific reference to Hydrocarbon Resources and Electric Vehicles", "National Gas Grid including PNG and CNG", "Review of LNG Infrastructure", "Review of Progress in Production of Bio-Fuels", "Review of Progress in Production of Non-Conventional Fuels", "Role of OMCs in setting up of Battery/Charging Infrastructure for Electric Vehicles", "Others"]
+    },
+    "Railways":{
+      "Railways": ["Corporate Social Responsibilities (CSR) related activities of PSUs of Indian Railways", "Dedicated Freight Corridor Projects of Indian Railways", "Digitization in Indian Railways", "Expansion of Rail Network", "Impact of COVID-19 pandemic on Railway Operation", "Introduction of High Speed Trains", "Kisan Rail Services", "Last Mile Port Connectivity with Indian Railways", "Modernization and capacity utilization of workshops in Indian Railways", "National Projects and Strategic Lines of Indian Railways", "National Rail Vikas Yojna – A Review", "New lines/gauge conversion/ doubling/electrification and signaling in Indian Railways", "Passenger Amenities including Modernisation of Railway Stations", "Passenger Reservation System of Indian Railways", "Performance of Production Units and Railway Workshops of Indian Railways", "Performance of Rail Land Development Authority (RLDA)", "Protection and Usage of Surplus Railway Land", "Rashtriya Rail Sanraksha Kosh (RRSK)", "Reconstitution and Restructuring of Railway Zones", "Recruitment in Indian Railways", "Requirement, procurement and utilization of wagons by Indian Railways", "Safety measures in Railway Operations", "Staff Welfare measures in Rail PSU", "Status of critical and super-critical projects of Indian Railways", "Sub-urban Train Services of Indian Railways", "Others"]
+    },
+    "Rural Development and Panchayat Raj": {
+      "Rural Development": ["Creation of Adarsh Grams under Saansad Adarsh Gram Yojana (SAGY)", "Critical evaluation of Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)", "Deendayal Antyodaya Yojana - National Rural Livelihoods Mission (DAY-NRLM)", "Digitization of Gram Panchayats", "Impact of National Social Assistance Programme (NSAP) on the poor and destitute in the villages", "Implementation of Digital India Land Records Modernization Programme (DILRMP)", "Monitoring of various rural development schemes through effective utilization of the provision of audits - a holistic review", "Pradhan Mantri Awaas Yojana (Gramin) - PMAY(G)", "Pradhan Mantri Gram Sadak Yojana (PMGSY)", "Rashtriya Gram Swaraj Abhiyan (RGSA)", "Realization of the vision Make in India under Deen Dayal Upadhyaya Grameen Kaushalya Yojana (DDU GKY)", "Review of the implementation of Pradhan Mantri Awaas Yojana - Gramin (PMAY-G)", "Role of Banks in the financial inclusion of rural populationShyama Prasad Mukherji Rurban Mission (SPMRM)", "Status & utilization of Corporate Social Responsibility (CSR) fund among PSUs in the area of rural development", "SVAMITVA (Survey of Villages Abadi and Mapping with Improvised Technology in Village Areas) Scheme", "Others"]
+    },
+    "Science, Technology, Environment and Forests": {
+      "Science and Environment": ["Environment and Public Health", "Review of functioning of CPCB/ SPCBs", "Conservation and Preservation of Forests and National Parks", "Rejuvenation of forests base", "Preservation and expansion of wildlife corridors", "Status and conservation/rejuvenation of step wells", "Functioning of Nuclear Power Plants", "Setting up of new scientific institutes in different parts of India", "Management of e-Waste/Hazardous waste", "Review of Energy Transition", "Development of Battery Technology", "Others"]
+   },
+    "Social Justice and Empowerment": {
+      "Scheduled Castes/Other Backward Castes": ["Babu Jagjivan Ram Chhatrawas Yojana for SC boys and girls", "Dr. Ambedkar Foundation (DAF)", "Grants-in-aid to voluntary and other organizations working for Scheduled Castes", "Schemes/programmes implemented for the welfare of SCs/OBCs under Corporate social responsibility (CSR)", "Economic Empowerment through Skill Development Schemes for SCs, OBCs, DNTs and EBCs", "Free coaching Scheme for Scheduled Castes and Other Backward Classes", "Pre-Matric Scholarship Scheme for the Children of those engaged in hazardous and unclean occupations", "Scholarship Schemes for SCs, OBCs and Children of persons engaged in hazardous and unclean occupations including Evaluation studies & their implementation", "Others"],
+"Scheduled Tribes": ["Development of Particularly Vulnerable Tribal Groups (PVTGs)", "Hostel facilities for Tribal Students", "Implementation of Scheduled Tribes and other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006 vis-à-vis displacement of tribals", "Review of Skill Development Schemes for Tribals", "Review of the functioning of Eklavya Model Residential Schools (EMRS)", "Review of the functioning of the National Scheduled Tribes Finance and Development Corporation (NSTFDC)", "Review of the functioning of the Tribal Cooperative Marketing Development Federation of India Limited (TRIFED)", "Schemes for Educational and Economic empowerment of Tribals", "Schemes/programmes implemented for the welfare of Tribals under Corporate social responsibility (CSR)", "Others"],
+"Minorities": ["Administration and Management of Waqf properties", "Implementation of Prime Minister New 15-Point Programme for the Welfare of Minorities", "Promotion of Education amongst the Weaker Sections of Minorities by Minority Educational Institutions with particular reference to Maulana Azad Education Foundation (MAEF)", "Review of Scholarship and fellowship Schemes for Minority Students", "Review of Skill Development Programmes for Minorities", "Review of Skill Development/Schemes for minorities including Seekho aur Kamao, USTTAD etc.", "Review of the functioning of the National Minorities Development and Finance Corporation (NMDFC)", "Schemes/programmes implemented for the welfare of Minorities under Corporate social responsibility (CSR)", "Scholarship Schemes for Minority Students", "Others"],
+"Differently-Abled": ["Assessment of Deendayal Disabled Rehabilitation Scheme (DDRS)", "Assessment of Scheme for Implementation of Rights of Persons with Disabilities Act, 2016 (SIPDA)", "Promotion/Research to develop indigenous aids and appliances for Divyangjan", "Review of Functioning of Deendayal Disabled Rehabilitation Scheme (DDRS)", "Review of the functioning of National Handicapped Finance and Development Corporation (NHFDC)", "Review of the functioning of National Institutes established for different types of disabilities", "Review/functioning of Rehabilitation Council of India (RCI)", "Schemes/programmes implemented for the welfare of Divyangjan under Corporate Social Responsibility (CSR)", "Others"],
+"Senior Citizens": ["Central Sector Scheme of Integrated Programme for Senior Citizens (IPSrC)", "Others"],
+"Others": ["Drug abuse among young persons – problems & solutions", "Grants-in-aid to NGOs working for social welfare and evaluation of their functioning and performance", "Priority Sector lending by Banks to SCs, STs, OBCs, differently abled persons and the Minorities", "Others"]
+    },
+    "Transport, Tourism and Culture": {
+      "Civil Aviation": ["Issues related to Safety in Civil Aviation Sector", "Issues related to Security in Civil Aviation Sector", "Functioning of Airports Authority of India", "Status of Aviation Connectivity in the country", "Privatisation of Services at Airport", "Issues Related to Improving Consumers’ Satisfaction of Airlines", "Others"],
+"Road, Transport and Highways": ["Progress made in implementation of Sagarmala Projects", "Review of Central Road and Infrastructure Fund (CRIF) Works", "Role of Highways in Nation Building", "Infrastructure Lending in Road Sector", "Others"],
+"Shipping": ["Promotion of infrastructure in India's Maritime Sector", "Cargo Handling at the Major Ports", "Others"],
+"Culture": ["Functioning of Central Libraries in the country", "Creation of Regulatory Framework for protection of Historical Sites and Monuments", "Development and Conservation of Museums and Archaeological sites – Challenges and Opportunities", "Others"],
+"Tourism": ["Development of Tourism Infrastructure in the country", "Promotion of Indian Tourism in Overseas Markets - Role of Overseas Tourist Offices and Indian Embassies", "Potential of Tourist Spots in the country - Connectivity and Outreach", "Tourism Promotion and Pilgrimage Circuit", "Others"]
+    },
+    "Water Resources": {
+      "Issues with Stored Water": ["Dams and Barrages: their present status, safety and security", "Groundwater: A Valuable but Diminishing Resource", "Maintenance and Creation of Water Bodies - Role of the (i) Government and Local Bodies; and (ii) Industries under Corporate Social Responsibility (CSR)", "Rain Water Harvesting in India", "Review of major and medium Irrigation Projects in India", "Others"],
+"Issues with Running Water": ["Conservation, Development, Management and Abatement of pollution in river Ganga and its Tributaries under Namami Gange programme with particular reference to project deliverables and timelines as well as performance of State Governments", "Encroachment of Water Bodies with special reference to various streams in Himalayan Ecosystem", "Protection of river banks, flood plains and initiatives for control of soil erosion", "Review of Inter-Linking of Rivers", "Review of Upper Yamuna River Cleaning Project up to Delhi and River bed management in Delhi", "Rivers as composite assets of the country – Measures taken/being taken for maintaining their purity and sustainability including the Inter- State Disputes", "Others"],
+"Issues with Water Usage": ["Availability of Safe Drinking Water in Rural India – Issues and Approaches", "Drinking Water Supply in Coastal Areas - Setting up of Desalination Plants", "Micro Irrigation – New approach towards conservation and management of Water with special emphasis on Drip Irrigation/Sprinklers", "Performance of National Rural Drinking Water Programme (NRDWP)", "Quality of Drinking Water in India - Review of measures taken and their achievements", "Quality of Drinking Water in rural areas with special reference to hilly areas", "Others"],
+"Hazards": ["Conservation and Abatement of Pollution in river Cauvery and other major rivers of South India", "Flood Management in the Country and evolving a Decision Support System for release of Water from the Dams", "Flood Management in the Country including international water treaties in the field of water resource management/flood control with particular reference to treaty/agreement entered into with Nepal, China, Pakistan and Bhutan", "Flood Management in the country with special reference to States of Bihar, Uttar Pradesh and West Bengal", "Glacier Management in the country – Monitoring of glaciers/glacial lakes including Glacial Lake outbursts leading to flash floods in the Himalayan region", "Others"],
+"Review of Acts and Bodies": ["Review of functioning of North-East Water Management Authority – review of the mandate, plan of action and project activities under the authority", "Review of performance of Jal Jeevan Mission", "Review of performance of Swachh Bharat Mission - Quality and sustainability of sanitation infrastructure created under Swachh Bharat Mission and Preparedness for ODF 2.0", "Review of the role and working of WAPCOS Limited", "Status and Progress of Participatory Irrigation Management (PIM) and Water Users Associations (WUAs)", "Water Management: Problems and Challenges in India and measures taken with reference to Water Policy in Meghalaya", "Water Use efficiency in India", "Others"]
+    }
+  }
+ 
+  window.onload = function() {
+    var subjectSel = document.getElementById("subject");
+    var topicSel = document.getElementById("topic");
+    var chapterSel = document.getElementById("chapter");
+
+    for (var x in subjectObject) {
+      subjectSel.options[subjectSel.options.length] = new Option(x, x);
+    }
+    subjectSel.onchange = function() {
+      //empty Chapters- and Topics- dropdowns
+      chapterSel.length = 1;
+      topicSel.length = 1;
+      //display correct values
+      for (var y in subjectObject[this.value]) {
+        topicSel.options[topicSel.options.length] = new Option(y, y);
+      }
+    }
+    topicSel.onchange = function() {
+      //empty Chapters dropdown
+      chapterSel.length = 1;
+      //display correct values
+      var z = subjectObject[subjectSel.value][this.value];
+      for (var i = 0; i < z.length; i++) {
+        chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+      }
+    }
+  }
+
+</script> 
+
+</head>
+
+<body>
+  <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  
+  <div class="container-fluid">
+   
+    <div class="row align-items-start">
+
+        <!-- Profile Pic -->
+        <div class="col-2">
+          <img src="./images/rerite.png" id="logoinpage" style="margin: 5%;" alt="">
+        <br><br>
+        <div class="container">
+        <img src="./images/profpic.png" id="profpic" alt=""><br><br>
+        <p class="text-center text-muted">ERN9455uw0ru</p>
+      </div>
+        </nav>
+        <div class="accordion accordion-flush" id="accordionFluhrefshExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Search by topics
+              </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse collapsebckgrd" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              <nav class="navbar navbar-light justify-content-center">
+                <a class="btn btn-white" href="/basicsearch" role="button">Search by topics</a>
+                <a class="btn btn-white" href="/advancedsearch" role="button">Search by text</a>
+              </nav>
+            </div>          
+          </div>
+          <div class="accordion-item" id="savedlistaccordion">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed text-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Saved Lists
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse collapsebckgrd" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+              <nav class="navbar navbar-light">
+                <ul>
+                <% for (var j= 0; j<mylistnames.length; j++) { %>
+                  <button class="btn btn-white justify-content-center" style="margin-left:-20%;"><%=mylistnames[j]%></button><br>
+                  
+                <% } %> 
+              </ul>               
+                <button class="btn btn-primary justify-content-between" style="margin-left:20%;" data-toggle="modal" data-target="#modalList">Add New List</button>
+                
+
+             <!-- Modal -->
+             <div class="modal fade" id="modalList" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New List</h5>
+                    <button type="button" class="close text-center" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/study" method="post">
+                      <!-- Modal -->
+                      <div class="form-group">
+                        <label for="main-group" class="col-form-label">Enrollment Number</label>
+                        <input autocomplete='off' class='form-control' type="text" name="myenrollmentnumber" id="ERN1" value="ERN9455uw0ru">
+                        <label for="main-group" class="col-form-label">List Name</label>
+                        <input type="text" class="form-control" name= "listname">
+                        
+                      </div>     
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
+              </nav>
+            </div>          
+          </div>
+          
+          
+          </div>
+
+        </div>
+
+
+
+<div class="col-8 pt-3" >
+  
+<form action="/advancedsearch" method="post">
+  <div class="form-group form-control-lg">
+    
+
+
+<div class="container form-row align-items-center">
+  <div class="input-group col-auto">
+  <input class="form-control" type="text" name="string" placeholder="Type the search string">
+    <button class="btn btn-primary">Search</button>
+  </div>
+</div>
+<br>
+
+  </form>
+    </div>
+    <div id= "overflow">
+      <ul>
+        <% for (var i= 0; i<uidas.length; i++) { %>
+          <div class="accordion-item <%=chapters[i]%>" id="accordionFlushExample">
+            <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%=uidas[i] %>" aria-expanded="false" aria-controls="<%=uidas[i] %>">
+              <h4 style="padding: .25rem;" name="uidrefnumber"  value="<%=uidas[i] %>" ><%=uidas[i] %></h4> 
+              <h6 style="margin-left:5%;"><%=  mainArguments[i]  %></h6>
+              <h6><%= termtitles[i]%></h6>
+              <h6><%= wnewss[i]%></h6>
+              <h6><%= wbooktitles[i]%></h6>
+              <h6><%= wopinionons[i]%></h6>
+            </button>
+            </h2>
+                 <div id="<%=uidas[i] %>" class="accordion-collapse collapse collapsebckgrd" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                          <p> <%= supArgument1s[i] %> </p>
+                          <p> <%= supArgument2s[i] %> </p>
+                          <p> <%= supArgument3s[i] %> </p>
+                          <p> <%=termexplanations[i]%> </p>
+                          <p> <%=  wpoint1s[i] %> </p>
+                          <p> <%=  wpoint2s[i] %> </p>
+                          <p> <%=  wpoint3s[i] %> </p>
+                          <p> <%=  wpoint4s[i] %> </p>
+                          <p> <%=  wpoint5s[i] %> </p>
+                          <p> <%= wopinion1s[i] %> </p>
+                          <p> <%= wopinionbys[i] %> </p>
+                          <p> <%= wauthortitles[i] %> </p>
+                          <p> <%= wpublications[i] %> </p>  
+                          <p><b> <%= newspaperjournals[i] %> </b></p><p><%= opiniondates[i] %></p>
+                              <p style="color:red"><%=chapters[i]%></p>
+                              <form action="/study" method="post">
+                              <nav class="navbar navbar-dark navbar-expand-lg justify-content-center" style="background-color: #f5b220;">
+                                <ul class="navbar-nav">
+                                  <li class="nav-item">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                      <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalSave">Save to</button>
+                                       <!-- Modal -->
+                                          <div class="modal fade" id="modalSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" >Choose the List</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form action="/study" method="post">
+                                                    <div class="form-group">
+                                                      <input autocomplete='off' class='form-control' type="text" id="ERN2" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                                                      <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
+                                                    </div><br>
+                                                    <div class="form-group">                                               
+                                                      <input autocomplete='off' class='form-control' type="text" name="myuida" placeholder="Enter UIDN" name=uida >
+                                                      <small id="emailHelp" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br><br>
+                                                    </div>
+                                                    <div class="form-check">
+                                                      <% for (var j= 0; j<mylistnames.length; j++) { %>
+                                                        <input type="checkbox" class="text-center form-check-input" name="listargname" id="flexCheckDefault" value="<%=mylistnames[j]%>">
+                                                        <label class="form-check-label" for="flexCheckDefault"><%=mylistnames[j]%></label><br>  
+                                                        <% } %>                       
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                  <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                                                </form>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <!-- Modal ends-->
+      
+                                      <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalAgree">Agree</button>
+                                       <!-- Modal -->
+                                       <div class="modal fade" id="modalAgree" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLongTitle">Your comment</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <form action="/study" method="post">
+                                                <div class="form-group">
+                                                  <input autocomplete='off' class='form-control' type="text" id="ERN3" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                                                  <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
+                                                </div><br>
+                                                <div class="form-group">
+                                                  <input class='form-control' type="text" name="anuida" placeholder="Enter UIDN">
+                                                  <small id="" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="main-group" class="col-form-label"></label>
+                                                  <textarea class="form-control" id="message-text" name= "agreecomment" placeholder="Your comment here"></textarea>           
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                                            </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- Modal ends-->
+      
+      
+                                      <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalQuery">Post a Query</button>
+                                       <!-- Modal -->
+                                       <div class="modal fade" id="modalQuery" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLongTitle">Post your Query</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <form action="/study" method="post">
+                                                <div class="form-group">
+                                                  <input autocomplete='off' class='form-control' type="text" id="ERN4" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                                                  <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
+                                                </div><br>
+                                                <div class="form-group">
+                                                  <input class='form-control' type="text" name="anuida" placeholder="Enter UIDN">
+                                                  <small id="" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="main-group" class="col-form-label"></label>
+                                                  <textarea class="form-control" id="message-text" name= "querycomment" placeholder="Your comment here"></textarea>           
+                                                </div>
+                                                <br>
+                                            </div>
+                                              
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                                            </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- Modal ends-->
+      
+                                      <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalRefer">Refer to</button>
+                                       <!-- Modal -->
+                                       <div class="modal fade" id="modalRefer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLongTitle">Choose the Members</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <form action="/study" method="post">
+                                                <div class="form-group">
+                                                  <div class="form-group">
+                                                    <input autocomplete='off' class='form-control' type="text" id="ERN5" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                                                    <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
+                                                  </div><br>
+                                                  <input autocomplete='off' class='form-control' type="text" name="uruida" placeholder="Enter UIDN" name="uida" >
+                                                  <small id="emailHelp" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br><br>
+                                                </div>
+                                                <div class="form-check">
+                                                  <% for (var k= 0; k<urusernames.length; k++) { %>
+                                                    <input type="checkbox" class="text-center form-check-input" name="urenrollrefname" id="flexCheckDefault" value="<%=urusernames[k]%>">
+                                                    <label class="form-check-label" for="flexCheckDefault"><%=urusernames[k]%> </label><br>  
+                                                    <% } %>                       
+                                                </div>
+         
+                                                <br>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                                            </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- Modal ends-->
+      
+                                    </div>
+                                  </form>
+                                </ul>
+                              </nav>
+                        </div>
+                    </div>
+            </div>
+            <% } %>
+          </div>
+      <br>
+        </ul>      
+    <br>
+
+<br><br><br>
+
+    </ul>
+
+
+  
+
+</div>
+          
+          <div class="col-2">
+              <div class="container text-center">
+                <br>
+                <button class="btn btn-white text-center">Referred to me</button>
+                <hr>
+                <button type="button" class="btn btn-white justify-content-center">
+                  Catch up with my study team!!
+                </button>
+                <br><br>
+              </div>
+            <div class="accordion" id="studyTeam">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="studyTeam-headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#studyTeam-collapseOne" aria-expanded="false" aria-controls="studyTeam-collapseOne">
+                    My Study Team
+                  </button>
+                </h2>
+                <div id="studyTeam-collapseOne" class="accordion-collapse collapse show" aria-labelledby="studyTeam-headingOne" data-bs-parent="#studyTeam">
+                  <div class="accordion-body">
+                    <% for (var k= 0; k<urusernames.length; k++) { %>
+                      <input type="checkbox" class="text-center" >
+                      <label for=""> <%=urusernames[k]%> </label><br>
+                      <% } %>
+                      <br>
+                      <button type="button" style="margin-left:10%;" class="btn btn-primary justify-content-between" data-toggle="modal" data-target="#modalTeam">
+                        Add a member
+                      </button>
+                  </div>
+                  
+
+                </div>
+                
+              </div>
+              <br>
+              <form action="/">
+              <button  style="margin-left:50%;" class="btn btn-warning justify-content-center" href="/home">Logout</button>
+              </form>
+             <!-- Modal -->
+             <div class="modal fade" id="modalTeam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Team Member</h5>
+                    <button type="button" class="close text-center" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/study" method="post">
+                      <!-- Modal -->
+                      <div class="form-group">
+                        <input autocomplete='off' class='form-control' type="text" id="ERN6" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                        <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
+                      
+                        <label for="main-group" class="col-form-label">New User Name</label>
+                        <input type="text" class="form-control" name= "yourusername">
+                        <label for="main-group" class="col-form-label">New Enrollment ID</label>
+                        <input type="text" class="form-control" name= "yourenrollid">
+                      </div>     
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+
+
+  </div>
+<script>
+ // console.log( $("h4[name~='uidrefnumber']").attr("value"));
+</script>
+
+
+
+
+
+
+</body>
+
+</html>
+

@@ -1,6 +1,13 @@
 #overflow {
+  overflow-y: scroll;
+  height: 445px;
   margin-left: -3%;
   cursor: context-menu;
+}
+
+.modalcss {
+  overflow-y: scroll;
+  height: 499px;
 }
 
 .logo {
