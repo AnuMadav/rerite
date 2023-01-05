@@ -60,6 +60,39 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
+app.get("/test", function (req, res) {
+  async function main() {
+    try {
+      await client.connect();
+      await bsearch(client, "Mental Health in contemporary times", 20);
+    } finally {
+      await client.close();
+    }
+    main().catch(console.error);
+    async function bsearch(client, id3, maxNumberToPrint) {
+      const pipeline = [
+        {
+          $match: {
+            id3: "Mental Health in contemporary times",
+          },
+        },
+        {
+          $limit: 20,
+        },
+      ];
+      const aggCursor = client
+        .db("myFirstDatabase")
+        .collection("args")
+        .aggregate(pipeline);
+
+      await aggCursor.forEach((search) => {
+        console.log(`${search.id3}: ${search.bsearch}`);
+      });
+    }
+  }
+  res.send("HI");
+});
+
 const argsSchema = {
   marg: String,
   sarg1: String,
@@ -159,12 +192,20 @@ const mysocialSchema = {
   },
 };
 
+//basic search
+const mybasicsearchSchema = {
+  basicsearch: {
+    type: String,
+  },
+};
+
 const Arg = mongoose.model("Arg", argsSchema);
 const Myessential = mongoose.model("Myessential", myessentialsSchema);
 const Mystudyteam = mongoose.model("Mystudyteam", mystudyteamsSchema);
 const Mysavedarg = mongoose.model("Mysavedarg", mysavedargsSchema);
 const Myreferred = mongoose.model("Myreferred", myreferredSchema);
 const Mysocial = mongoose.model("Mysocial", mysocialSchema);
+const Basicsearch = mongoose.model("Basicsearch", mybasicsearchSchema);
 
 const myessential1 = new Myessential({
   myusername: "",
@@ -199,6 +240,10 @@ const mysocial1 = new Mysocial({
   myenrollmentnumber: "",
 });
 
+const mybasicsearch1 = new Basicsearch({
+  basicsearch: "",
+});
+
 const arg1 = new Arg({
   marg: "",
   sarg1: "",
@@ -224,7 +269,7 @@ const arg1 = new Arg({
   bpne: "",
 });
 
-Arg.find(
+const find = Arg.find(
   { ida: { $exists: true } },
   null,
   { sort: { _id: -1 } },
@@ -281,6 +326,7 @@ Arg.find(
 
 Mystudyteam.find(
   { urenrollmentnumber: { $exists: true, $ne: null } },
+
   null,
   { sort: { _id: -1 } },
   function (err, mystudyteams) {
@@ -571,7 +617,12 @@ app.post("/study", function (req, res) {
 });
 
 app.post("/basicsearch", function (req, res) {
-  console.log(req.body.chapter);
+  var bsearchtopic = req.body.chapter;
+
+  const mybasicsearch = new Basicsearch({
+    basicsearch: bsearchtopic,
+  });
+  mybasicsearch.save();
 
   res.redirect("/basicsearch");
 });
