@@ -411,6 +411,10 @@ app.get("/catchup", function (req, res) {
   res.render("catchup");
 });
 
+app.get("/policy", function (req, res) {
+  res.render("policy");
+});
+
 app.get("/login", function (req, res) {
   res.render("login");
 });
