@@ -40,12 +40,11 @@
       crossorigin="anonymous"
     ></script>
     
-        <p></p>      
         <p></p>
-        <div class="row position-relative overflow-auto justify w-100">
-            <div class="container" id="myList" role="tablist">
-              <div class="list-group list-group-horizontal" id="list-tab" role="tablist">
-                <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center active" id="0001" data-toggle="list" href="#rural" role="tab">Rural Policy</a>
+        <div class="row position-relative overflow-auto justify ex">
+          <div class="container" id="myList" role="tablist">
+          <div class="list-group list-group-horizontal" id="list-tab" role="tablist">
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center active" id="0001" data-toggle="list" href="#rural" role="tab">Rural Policy</a>
           <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0002" data-toggle="list" href="#urban" role="tab">Urban Policy</a>
           <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0003" data-toggle="list" href="#geriatric" role="tab">Geriatric Policy</a>
           <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0004" data-toggle="list" href="#reservation" role="tab">Reservation Policy</a>
@@ -80,12 +79,18 @@
           <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0033" data-toggle="list" href="#scitech" role="tab">Science & Technology Policy</a>
           <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0034" data-toggle="list" href="#electoral" role="tab">Electoral Policy</a>
           <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0035" data-toggle="list" href="#nutrition" role="tab">Nutrition Policy</a>
-          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0036" data-toggle="list" href="#poverty" role="tab">Poverty-related Policy</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0036" data-toggle="list" href="#poverty" role="tab">Pro-poor Policy</a>
           <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0037" data-toggle="list" href="#labour" role="tab">Labour Policy</a>
-          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0038" data-toggle="list" href="#nuclear" role="tab">Nuclear Policy</a>
-          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0039" data-toggle="list" href="#space" role="tab">Space Policy</a>
-          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0040" data-toggle="list" href="#misc" role="tab">Other Policies</a>
-              </div>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0038" data-toggle="list" href="#peace" role="tab">Humanitarian Policy</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0039" data-toggle="list" href="#space" role="tab">Extra-terrestrial Policy</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0040" data-toggle="list" href="#justice" role="tab">Policies assuring Justice</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0041" data-toggle="list" href="#personnel" role="tab">Personnel Policies</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0042" data-toggle="list" href="#accountability" role="tab">Policies ensuring Accountability</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0043" data-toggle="list" href="#cultural" role="tab">Cultural Policies</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0044" data-toggle="list" href="#freedom" role="tab">Policies related to Freedom</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0045" data-toggle="list" href="#citizenship" role="tab">Policies related to Citizenship</a>
+          <a class="list-group-item  list-group-item-action d-flex justify-content-between align-items-center" id="0046" data-toggle="list" href="#misc" role="tab">Other Policies</a>
+          </div>
             </div>
             
           </div>
@@ -96,470 +101,651 @@
               <div class="card social-block">
                 <div class="card-body">
                   <!-- Tab panes -->
-                  <div class="tab-content" id="navcontent">
+                  <div class="tab-content modalcss" id="navcontent">
                     <div class="tab-pane fade show active" id="rural" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < ruralserialnos.length; i++) { %>
+                      <table style="width:100%">
+                        <tr> 
+                          <td style="width:10%"><%= ruralserialnos[i] %> </td>
+                          <td><a href="<%= rurallinks[i] %> ">
+                            <h5><%= ruraltitles[i] %></h5>
+                          </a></h5><p><%= ruralbriefs[i] %> </p><p><i><%= ruralauthors[i] %> </i></p></td>
+                        </tr>
+                      </table>
+                      <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="urban" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < urbanserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= urbanserialnos[i] %> </td>
+                            <td><a href="<%= urbanlinks[i] %> ">
+                              <h5><%= urbantitles[i] %></h5>
+                            </a></h5><p><%= urbanbriefs[i] %> </p><p><i><%= urbanauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="geriatric" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    <div class="tab-pane fade" id="settings" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < geriatricserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= geriatricserialnos[i] %> </td>
+                            <td><a href="<%= geriatriclinks[i] %> ">
+                              <h5><%= geriatrictitles[i] %></h5>
+                            </a></h5><p><%= geriatricbriefs[i] %> </p><p><i><%= geriatricauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="reservation" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < reservationserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= reservationserialnos[i] %> </td>
+                            <td><a href="<%= reservationlinks[i] %> ">
+                              <h5><%= reservationtitles[i] %></h5>
+                            </a></h5><p><%= reservationbriefs[i] %> </p><p><i><%= reservationauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="monetary" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < monetaryserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= monetaryserialnos[i] %> </td>
+                            <td><a href="<%= monetarylinks[i] %> ">
+                              <h5><%= monetarytitles[i] %></h5>
+                            </a></h5><p><%= monetarybriefs[i] %> </p><p><i><%= monetaryauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="fiscal" role="tabpanel">
-                      <p>Policies of government to regulate economy</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1DihmFTNLRArQYkyv6bo6ZnVDQFYhRwwK/view?usp=share_link">Level-headed Taxation</a>
-                          <p>In a market economy, the principle of equity in taxation (or redistributive policies) is realised by the rationale of providing 'level-playing field' amongst all players. But where constraint of resources is a reality that one needs to cope with, such an argument will not hold good.</p>
-                        </li>
-                      </ul>                      
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < fiscalserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= fiscalserialnos[i] %> </td>
+                            <td><a href="<%= fiscallinks[i] %> ">
+                              <h5><%= fiscaltitles[i] %></h5>
+                            </a></h5><p><%= fiscalbriefs[i] %> </p><p><i><%= fiscalauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="environment" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < environmentserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= environmentserialnos[i] %> </td>
+                            <td><a href="<%= environmentlinks[i] %> ">
+                              <h5><%= environmenttitles[i] %></h5>
+                            </a></h5><p><%= environmentbriefs[i] %> </p><p><i><%= environmentauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="health" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < healthserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= healthserialnos[i] %> </td>
+                            <td><a href="<%= healthlinks[i] %> ">
+                              <h5><%= healthtitles[i] %></h5>
+                            </a></h5><p><%= healthbriefs[i] %> </p><p><i><%= healthauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="water" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < waterserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= waterserialnos[i] %> </td>
+                            <td><a href="<%= waterlinks[i] %> ">
+                              <h5><%= watertitles[i] %></h5>
+                            </a></h5><p><%= waterbriefs[i] %> </p><p><i><%= waterauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="foreign" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < foreignserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= foreignserialnos[i] %> </td>
+                            <td><a href="<%= foreignlinks[i] %> ">
+                              <h5><%= foreigntitles[i] %></h5>
+                            </a></h5><p><%= foreignbriefs[i] %> </p><p><i><%= foreignauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="infrastructure" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < infrastructureserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= infrastructureserialnos[i] %> </td>
+                            <td><a href="<%= infrastructurelinks[i] %> ">
+                              <h5><%= infrastructuretitles[i] %></h5>
+                            </a></h5><p><%= infrastructurebriefs[i] %> </p><p><i><%= infrastructureauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="trade" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < tradeserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= tradeserialnos[i] %> </td>
+                            <td><a href="<%= tradelinks[i] %> ">
+                              <h5><%= tradetitles[i] %></h5>
+                            </a></h5><p><%= tradebriefs[i] %> </p><p><i><%= tradeauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="youth" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < youthserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= youthserialnos[i] %> </td>
+                            <td><a href="<%= youthlinks[i] %> ">
+                              <h5><%= youthtitles[i] %></h5>
+                            </a></h5><p><%= youthbriefs[i] %> </p><p><i><%= youthauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="disability" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < disabilityserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= disabilityserialnos[i] %> </td>
+                            <td><a href="<%= disabilitylinks[i] %> ">
+                              <h5><%= disabilitytitles[i] %></h5>
+                            </a></h5><p><%= disabilitybriefs[i] %> </p><p><i><%= disabilityauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane top" id="education" role="tabpanel">
-                      <p>Education as an western import into India began with Macaulay's Minutes on Education (1835) followed by Charles Wood's Despatch (1854).</p>
-                      <h4>Links</h4>
-                      <h5>Back to the roots?</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1rEYe-tRHnpgZkWGr-QhGFW9qNodJJwdt/view?usp=share_link">Getting to the core of Vedic Mathematics</a>
-                          <p>It questions the relevance of making school students (as opposed to faculty) study Vedic Mathematics as an additional course.</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < educationserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= educationserialnos[i] %> </td>
+                            <td><a href="<%= educationlinks[i] %> ">
+                              <h5><%= educationtitles[i] %></h5>
+                            </a></h5><p><%= educationbriefs[i] %> </p><p><i><%= educationauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="industrial" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < industrialserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= industrialserialnos[i] %> </td>
+                            <td><a href="<%= industriallinks[i] %> ">
+                              <h5><%= industrialtitles[i] %></h5>
+                            </a></h5><p><%= industrialbriefs[i] %> </p><p><i><%= industrialauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="manufacturing" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < manufacturingserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= manufacturingserialnos[i] %> </td>
+                            <td><a href="<%= manufacturinglinks[i] %> ">
+                              <h5><%= manufacturingtitles[i] %></h5>
+                            </a></h5><p><%= manufacturingbriefs[i] %> </p><p><i><%= manufacturingauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="agricultural" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < agriculturalserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= agriculturalserialnos[i] %> </td>
+                            <td><a href="<%= agriculturallinks[i] %> ">
+                              <h5><%= agriculturaltitles[i] %></h5>
+                            </a></h5><p><%= agriculturalbriefs[i] %> </p><p><i><%= agriculturalauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="tribal" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < tribalserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= tribalserialnos[i] %> </td>
+                            <td><a href="<%= triballinks[i] %> ">
+                              <h5><%= tribaltitles[i] %></h5>
+                            </a></h5><p><%= tribalbriefs[i] %> </p><p><i><%= tribalauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="welfare" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < welfareserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= welfareserialnos[i] %> </td>
+                            <td><a href="<%= welfarelinks[i] %> ">
+                              <h5><%= welfaretitles[i] %></h5>
+                            </a></h5><p><%= welfarebriefs[i] %> </p><p><i><%= welfareauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="cyber" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < cyberserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= cyberserialnos[i] %> </td>
+                            <td><a href="<%= cyberlinks[i] %> ">
+                              <h5><%= cybertitles[i] %></h5>
+                            </a></h5><p><%= cyberbriefs[i] %> </p><p><i><%= cyberauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="housing" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < housingserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= housingserialnos[i] %> </td>
+                            <td><a href="<%= housinglinks[i] %> ">
+                              <h5><%= housingtitles[i] %></h5>
+                            </a></h5><p><%= housingbriefs[i] %> </p><p><i><%= housingauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="gender" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < genderserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= genderserialnos[i] %> </td>
+                            <td><a href="<%= genderlinks[i] %> ">
+                              <h5><%= gendertitles[i] %></h5>
+                            </a></h5><p><%= genderbriefs[i] %> </p><p><i><%= genderauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="tourism" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < tourismserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= tourismserialnos[i] %> </td>
+                            <td><a href="<%= tourismlinks[i] %> ">
+                              <h5><%= tourismtitles[i] %></h5>
+                            </a></h5><p><%= tourismbriefs[i] %> </p><p><i><%= tourismauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="energy" role="tabpanel">
-                      <p>Climate change has been a pressing problem of the world today.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1VZ52JB-kukIr1fhalSgZLTbCiANoIe97/view?usp=share_link">Getting out of fossil fuels</a>
-                          <p>As developed countries are transitioning from coal to natural gas, there is pressure on developing countries to do the same. But, adequate incentives to enable such a transition is absent.</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < energyserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= energyserialnos[i] %> </td>
+                            <td><a href="<%= energylinks[i] %> ">
+                              <h5><%= energytitles[i] %></h5>
+                            </a></h5><p><%= energybriefs[i] %> </p><p><i><%= energyauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="economic" role="tabpanel">
-                      <p>Economic policy</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < economicserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= economicserialnos[i] %> </td>
+                            <td><a href="<%= economiclinks[i] %> ">
+                              <h5><%= economictitles[i] %></h5>
+                            </a></h5><p><%= economicbriefs[i] %> </p><p><i><%= economicauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="judicial" role="tabpanel">
-                      <p>Justice delivery system has been overburdened with litigations. In the recent years, the increasing pendency of cases in judiciary is viewed more as a demand-supply problem.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1FraWpMMT2pSo8R8YQ74-bGjkRPC7OQMe/view?usp=sharing">Institutional arbitration remains a non-starter</a>
-                          <p>It moots the solution of arbitration for reducing delay in justice delivery. The article opines that absence of politcal-will at the state level and lack of awareness have contributed to unpopularity of institutional arbitration despite the presence of adequate legal frameworks.</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < judicialserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= judicialserialnos[i] %> </td>
+                            <td><a href="<%= judiciallinks[i] %> ">
+                              <h5><%= judicialtitles[i] %></h5>
+                            </a></h5><p><%= judicialbriefs[i] %> </p><p><i><%= judicialauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="security" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < securityserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= securityserialnos[i] %> </td>
+                            <td><a href="<%= securitylinks[i] %> ">
+                              <h5><%= securitytitles[i] %></h5>
+                            </a></h5><p><%= securitybriefs[i] %> </p><p><i><%= securityauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
                     
                     <div class="tab-pane fade" id="inclusive" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < inclusiveserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= inclusiveserialnos[i] %> </td>
+                            <td><a href="<%= inclusivelinks[i] %> ">
+                              <h5><%= inclusivetitles[i] %></h5>
+                            </a></h5><p><%= inclusivebriefs[i] %> </p><p><i><%= inclusiveauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="telecom" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < telecomserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= telecomserialnos[i] %> </td>
+                            <td><a href="<%= telecomlinks[i] %> ">
+                              <h5><%= telecomtitles[i] %></h5>
+                            </a></h5><p><%= telecombriefs[i] %> </p><p><i><%= telecomauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="competition" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < competitionserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= competitionserialnos[i] %> </td>
+                            <td><a href="<%= competitionlinks[i] %> ">
+                              <h5><%= competitiontitles[i] %></h5>
+                            </a></h5><p><%= competitionbriefs[i] %> </p><p><i><%= competitionauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="fintech" role="tabpanel">
-                      <p>FinTech has been revolutionising payments interface, changing banking equations and disrupting the existing silos in which businesses have been operating.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1zzyWZsZONlortVWG5U2nvhJALZGDbwmu/view?usp=sharing">Develop a 'blockchain for DPI' playbook</a>
-                          <p>Blockchain technology could be harnessed for building the Digital Public Infrastructure. Two issues that are to be taken note of include- 1. decentralised nature of blockchain that is not compatible with central points of accountability and responsibility and 2. legitimacy of blockchain based records.</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < fintechserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= fintechserialnos[i] %> </td>
+                            <td><a href="<%= fintechlinks[i] %> ">
+                              <h5><%= fintechtitles[i] %></h5>
+                            </a></h5><p><%= fintechbriefs[i] %> </p><p><i><%= fintechauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="scitech" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < scitechserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= scitechserialnos[i] %> </td>
+                            <td><a href="<%= scitechlinks[i] %> ">
+                              <h5><%= scitechtitles[i] %></h5>
+                            </a></h5><p><%= scitechbriefs[i] %> </p><p><i><%= scitechauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="electoral" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < electoralserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= electoralserialnos[i] %> </td>
+                            <td><a href="<%= electorallinks[i] %> ">
+                              <h5><%= electoraltitles[i] %></h5>
+                            </a></h5><p><%= electoralbriefs[i] %> </p><p><i><%= electoralauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="nutrition" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < nutritionserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= nutritionserialnos[i] %> </td>
+                            <td><a href="<%= nutritionlinks[i] %> ">
+                              <h5><%= nutritiontitles[i] %></h5>
+                            </a></h5><p><%= nutritionbriefs[i] %> </p><p><i><%= nutritionauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="poverty" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < povertyserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= povertyserialnos[i] %> </td>
+                            <td><a href="<%= povertylinks[i] %> ">
+                              <h5><%= povertytitles[i] %></h5>
+                            </a></h5><p><%= povertybriefs[i] %> </p><p><i><%= povertyauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="labour" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < labourserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= labourserialnos[i] %> </td>
+                            <td><a href="<%= labourlinks[i] %> ">
+                              <h5><%= labourtitles[i] %></h5>
+                            </a></h5><p><%= labourbriefs[i] %> </p><p><i><%= labourauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
-                    <div class="tab-pane fade" id="inclusive" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div class="tab-pane fade" id="nuclear" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                    <div class="tab-pane fade" id="peace" role="tabpanel">
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < peaceserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= peaceserialnos[i] %> </td>
+                            <td><a href="<%= peacelinks[i] %> ">
+                              <h5><%= peacetitles[i] %></h5>
+                            </a></h5><p><%= peacebriefs[i] %> </p><p><i><%= peaceauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
 
                     <div class="tab-pane fade" id="space" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < spaceserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= spaceserialnos[i] %> </td>
+                            <td><a href="<%= spacelinks[i] %> ">
+                              <h5><%= spacetitles[i] %></h5>
+                            </a></h5><p><%= spacebriefs[i] %> </p><p><i><%= spaceauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
                     </div>
+
+                    <div class="tab-pane fade" id="justice" role="tabpanel">
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < justiceserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= justiceserialnos[i] %> </td>
+                            <td><a href="<%= justicelinks[i] %> ">
+                              <h5><%= justicetitles[i] %></h5>
+                            </a></h5><p><%= justicebriefs[i] %> </p><p><i><%= justiceauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
+                    </div>
+
+                    <div class="tab-pane fade" id="personnel" role="tabpanel">
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < personnelserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= personnelserialnos[i] %> </td>
+                            <td><a href="<%= personnellinks[i] %> ">
+                              <h5><%= personneltitles[i] %></h5>
+                            </a></h5><p><%= personnelbriefs[i] %> </p><p><i><%= personnelauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
+                    </div>
+
+                    <div class="tab-pane fade" id="accountability" role="tabpanel">
+                      <!--<p>xxx</p>-->
+                      <% for (let i = 0; i < accountabilityserialnos.length; i++) { %>
+                        <table style="width:100%">
+                          <tr> 
+                            <td style="width:10%"><%= accountabilityserialnos[i] %> </td>
+                            <td><a href="<%= accountabilitylinks[i] %> ">
+                              <h5><%= accountabilitytitles[i] %></h5>
+                            </a></h5><p><%= accountabilitybriefs[i] %> </p><p><i><%= accountabilityauthors[i] %> </i></p></td>
+                          </tr>
+                        </table>
+                        <% } %>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="cultural" role="tabpanel">
+                     <!--<p>xxx</p>-->
+                     <% for (let i = 0; i < culturalserialnos.length; i++) { %>
+                      <table style="width:100%">
+                        <tr> 
+                          <td style="width:10%"><%= culturalserialnos[i] %> </td>
+                          <td><a href="<%= culturallinks[i] %> ">
+                            <h5><%= culturaltitles[i] %></h5>
+                          </a></h5><p><%= culturalbriefs[i] %> </p><p><i><%= culturalauthors[i] %> </i></p></td>
+                        </tr>
+                      </table>
+                      <% } %>
+                  </div>
+                    
+                    <div class="tab-pane fade" id="freedom" role="tabpanel">
+                    <!--<p>xxx</p>-->
+                    <% for (let i = 0; i < freedomserialnos.length; i++) { %>
+                      <table style="width:100%">
+                        <tr> 
+                          <td style="width:10%"><%= freedomserialnos[i] %> </td>
+                          <td><a href="<%= freedomlinks[i] %> ">
+                            <h5><%= freedomtitles[i] %></h5>
+                          </a></h5><p><%= freedombriefs[i] %> </p><p><i><%= freedomauthors[i] %> </i></p></td>
+                        </tr>
+                      </table>
+                      <% } %>
+                  </div>
+                    
+                    <div class="tab-pane fade" id="citizenship" role="tabpanel">
+                     <!--<p>xxx</p>-->
+                     <% for (let i = 0; i < citizenshipserialnos.length; i++) { %>
+                      <table style="width:100%">
+                        <tr> 
+                          <td style="width:10%"><%= citizenshipserialnos[i] %> </td>
+                          <td><a href="<%= citizenshiplinks[i] %> ">
+                            <h5><%= citizenshiptitles[i] %></h5>
+                          </a></h5><p><%= citizenshipbriefs[i] %> </p><p><i><%= citizenshipauthors[i] %> </i></p></td>
+                        </tr>
+                      </table>
+                      <% } %>
+                  </div>
                     
                     <div class="tab-pane fade" id="misc" role="tabpanel">
-                      <p>Rural policy had it origin in the Gandhian idea of local governance.</p>
-                      <h4>Links</h4>
-                      <h5>April 2023</h5>
-                      <ul>
-                        <li><a href="https://drive.google.com/file/d/1vuB1BWDvqjy4doR0cDEzdhpo_v2PHA2V/view?usp=sharing">Moral Progress</a>
-                          <p>It speaks about the link between morality and progress that was emphasised by Mahatma Gandhi and Pandit Madan Mohan Malaviya. (Linked to the idea of pragmatism)</p>
-                        </li>
-                      </ul>
-                    </div>
+                     <!--<p>xxx</p>-->
+                     <% for (let i = 0; i < miscserialnos.length; i++) { %>
+                      <table style="width:100%">
+                        <tr> 
+                          <td style="width:10%"><%= miscserialnos[i] %> </td>
+                          <td><a href="<%= misclinks[i] %> ">
+                            <h5><%= misctitles[i] %></h5>
+                          </a></h5><p><%= miscbriefs[i] %> </p><p><i><%= miscauthors[i] %> </i></p></td>
+                        </tr>
+                      </table>
+                      <% } %>
+                  </div>
                     
-
                   </div>
               
     

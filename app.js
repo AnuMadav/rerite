@@ -14,10 +14,6 @@ var options = {
 
 app.use(express.static("static"));
 
-var margNames = [];
-var sarg1Names = [];
-var sarg2Names = [];
-var sarg3Names = [];
 var mainArguments = [];
 var supArgument1s = [];
 var supArgument2s = [];
@@ -44,12 +40,289 @@ var urusernames = [];
 var myagreeNames = [];
 var myqueryNames = [];
 var mylistnames = [];
+var ruralserialnos = [];
+var ruraltitles = [];
+var rurallinks = [];
+var ruralauthors = [];
+var ruralbriefs = [];
+var ruralpolicys = [];
+var urbanserialnos = [];
+var urbantitles = [];
+var urbanlinks = [];
+var urbanauthors = [];
+var urbanbriefs = [];
+var urbanpolicys = [];
+var geriatricserialnos = [];
+var geriatrictitles = [];
+var geriatriclinks = [];
+var geriatricauthors = [];
+var geriatricbriefs = [];
+var geriatricpolicys = [];
+var reservationserialnos = [];
+var reservationtitles = [];
+var reservationlinks = [];
+var reservationauthors = [];
+var reservationbriefs = [];
+var reservationpolicys = [];
+var monetaryserialnos = [];
+var monetarytitles = [];
+var monetarylinks = [];
+var monetaryauthors = [];
+var monetarybriefs = [];
+var monetarypolicys = [];
+var fiscalserialnos = [];
+var fiscaltitles = [];
+var fiscallinks = [];
+var fiscalauthors = [];
+var fiscalbriefs = [];
+var fiscalpolicys = [];
+var environmentserialnos = [];
+var environmenttitles = [];
+var environmentlinks = [];
+var environmentauthors = [];
+var environmentbriefs = [];
+var environmentpolicys = [];
+var healthserialnos = [];
+var healthtitles = [];
+var healthlinks = [];
+var healthauthors = [];
+var healthbriefs = [];
+var healthpolicys = [];
+var waterserialnos = [];
+var watertitles = [];
+var waterlinks = [];
+var waterauthors = [];
+var waterbriefs = [];
+var waterpolicys = [];
+var foreignserialnos = [];
+var foreigntitles = [];
+var foreignlinks = [];
+var foreignauthors = [];
+var foreignbriefs = [];
+var foreignpolicys = [];
+var infrastructureserialnos = [];
+var infrastructuretitles = [];
+var infrastructurelinks = [];
+var infrastructureauthors = [];
+var infrastructurebriefs = [];
+var infrastructurepolicys = [];
+var tradeserialnos = [];
+var tradetitles = [];
+var tradelinks = [];
+var tradeauthors = [];
+var tradebriefs = [];
+var tradepolicys = [];
+var youthserialnos = [];
+var youthtitles = [];
+var youthlinks = [];
+var youthauthors = [];
+var youthbriefs = [];
+var youthpolicys = [];
+var disabilityserialnos = [];
+var disabilitytitles = [];
+var disabilitylinks = [];
+var disabilityauthors = [];
+var disabilitybriefs = [];
+var disabilitypolicys = [];
+var educationserialnos = [];
+var educationtitles = [];
+var educationlinks = [];
+var educationauthors = [];
+var educationbriefs = [];
+var educationpolicys = [];
+var industrialserialnos = [];
+var industrialtitles = [];
+var industriallinks = [];
+var industrialauthors = [];
+var industrialbriefs = [];
+var industrialpolicys = [];
+var manufacturingserialnos = [];
+var manufacturingtitles = [];
+var manufacturinglinks = [];
+var manufacturingauthors = [];
+var manufacturingbriefs = [];
+var manufacturingpolicys = [];
+var agriculturalserialnos = [];
+var agriculturaltitles = [];
+var agriculturallinks = [];
+var agriculturalauthors = [];
+var agriculturalbriefs = [];
+var agriculturalpolicys = [];
+var tribalserialnos = [];
+var tribaltitles = [];
+var triballinks = [];
+var tribalauthors = [];
+var tribalbriefs = [];
+var tribalpolicys = [];
+var welfareserialnos = [];
+var welfaretitles = [];
+var welfarelinks = [];
+var welfareauthors = [];
+var welfarebriefs = [];
+var welfarepolicys = [];
+var cyberserialnos = [];
+var cybertitles = [];
+var cyberlinks = [];
+var cyberauthors = [];
+var cyberbriefs = [];
+var cyberpolicys = [];
+var housingserialnos = [];
+var housingtitles = [];
+var housinglinks = [];
+var housingauthors = [];
+var housingbriefs = [];
+var housingpolicys = [];
+var genderserialnos = [];
+var gendertitles = [];
+var genderlinks = [];
+var genderauthors = [];
+var genderbriefs = [];
+var genderpolicys = [];
+var tourismserialnos = [];
+var tourismtitles = [];
+var tourismlinks = [];
+var tourismauthors = [];
+var tourismbriefs = [];
+var tourismpolicys = [];
+var energyserialnos = [];
+var energytitles = [];
+var energylinks = [];
+var energyauthors = [];
+var energybriefs = [];
+var energypolicys = [];
+var economicserialnos = [];
+var economictitles = [];
+var economiclinks = [];
+var economicauthors = [];
+var economicbriefs = [];
+var economicpolicys = [];
+var judicialserialnos = [];
+var judicialtitles = [];
+var judiciallinks = [];
+var judicialauthors = [];
+var judicialbriefs = [];
+var judicialpolicys = [];
+var securityserialnos = [];
+var securitytitles = [];
+var securitylinks = [];
+var securityauthors = [];
+var securitybriefs = [];
+var securitypolicys = [];
+var inclusiveserialnos = [];
+var inclusivetitles = [];
+var inclusivelinks = [];
+var inclusiveauthors = [];
+var inclusivebriefs = [];
+var inclusivepolicys = [];
+var telecomserialnos = [];
+var telecomtitles = [];
+var telecomlinks = [];
+var telecomauthors = [];
+var telecombriefs = [];
+var telecompolicys = [];
+var competitionserialnos = [];
+var competitiontitles = [];
+var competitionlinks = [];
+var competitionauthors = [];
+var competitionbriefs = [];
+var competitionpolicys = [];
+var fintechserialnos = [];
+var fintechtitles = [];
+var fintechlinks = [];
+var fintechauthors = [];
+var fintechbriefs = [];
+var fintechpolicys = [];
+var scitechserialnos = [];
+var scitechtitles = [];
+var scitechlinks = [];
+var scitechauthors = [];
+var scitechbriefs = [];
+var scitechpolicys = [];
+var electoralserialnos = [];
+var electoraltitles = [];
+var electorallinks = [];
+var electoralauthors = [];
+var electoralbriefs = [];
+var electoralpolicys = [];
+var nutritionserialnos = [];
+var nutritiontitles = [];
+var nutritionlinks = [];
+var nutritionauthors = [];
+var nutritionbriefs = [];
+var nutritionpolicys = [];
+var povertyserialnos = [];
+var povertytitles = [];
+var povertylinks = [];
+var povertyauthors = [];
+var povertybriefs = [];
+var povertypolicys = [];
+var labourserialnos = [];
+var labourtitles = [];
+var labourlinks = [];
+var labourauthors = [];
+var labourbriefs = [];
+var labourpolicys = [];
+var peaceserialnos = [];
+var peacetitles = [];
+var peacelinks = [];
+var peaceauthors = [];
+var peacebriefs = [];
+var peacepolicys = [];
+var spaceserialnos = [];
+var spacetitles = [];
+var spacelinks = [];
+var spaceauthors = [];
+var spacebriefs = [];
+var spacepolicys = [];
+var justiceserialnos = [];
+var justicetitles = [];
+var justicelinks = [];
+var justiceauthors = [];
+var justicebriefs = [];
+var justicepolicys = [];
+var personnelserialnos = [];
+var personneltitles = [];
+var personnellinks = [];
+var personnelauthors = [];
+var personnelbriefs = [];
+var personnelpolicys = [];
+var accountabilityserialnos = [];
+var accountabilitytitles = [];
+var accountabilitylinks = [];
+var accountabilityauthors = [];
+var accountabilitybriefs = [];
+var accountabilitypolicys = [];
+var culturalserialnos = [];
+var culturaltitles = [];
+var culturallinks = [];
+var culturalauthors = [];
+var culturalbriefs = [];
+var culturalpolicys = [];
+var freedomserialnos = [];
+var freedomtitles = [];
+var freedomlinks = [];
+var freedomauthors = [];
+var freedombriefs = [];
+var freedompolicys = [];
+var citizenshipserialnos = [];
+var citizenshiptitles = [];
+var citizenshiplinks = [];
+var citizenshipauthors = [];
+var citizenshipbriefs = [];
+var citizenshippolicys = [];
+var miscserialnos = [];
+var misctitles = [];
+var misclinks = [];
+var miscauthors = [];
+var miscbriefs = [];
+var miscpolicys = [];
 
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const mongoose = require("mongoose");
+const { Int32 } = require("mongodb");
 mongoose.connect(
   "mongodb+srv://rerite:vf69tgNdntAsh76@cluster0.zt8sx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 );
@@ -199,6 +472,28 @@ const mybasicsearchSchema = {
   },
 };
 
+//MY POLICY
+const mypoliciesSchema = {
+  serialno: {
+    type: String,
+  },
+  title: {
+    type: String,
+  },
+  link: {
+    type: String,
+  },
+  author: {
+    type: Array,
+  },
+  brief: {
+    type: String,
+  },
+  policy: {
+    type: Array,
+  },
+};
+
 const Arg = mongoose.model("Arg", argsSchema);
 const Myessential = mongoose.model("Myessential", myessentialsSchema);
 const Mystudyteam = mongoose.model("Mystudyteam", mystudyteamsSchema);
@@ -206,6 +501,7 @@ const Mysavedarg = mongoose.model("Mysavedarg", mysavedargsSchema);
 const Myreferred = mongoose.model("Myreferred", myreferredSchema);
 const Mysocial = mongoose.model("Mysocial", mysocialSchema);
 const Basicsearch = mongoose.model("Basicsearch", mybasicsearchSchema);
+const Mypolicy = mongoose.model("Mypolicy", mypoliciesSchema);
 
 const myessential1 = new Myessential({
   myusername: "",
@@ -269,6 +565,15 @@ const arg1 = new Arg({
   bpne: "",
 });
 
+const mypolicy1 = new Mypolicy({
+  serialno: "",
+  title: "",
+  link: "",
+  author: "", 
+  brief: "",
+  policy: "",
+});
+
 const find = Arg.find(
   { ida: { $exists: true } },
   null,
@@ -326,7 +631,6 @@ const find = Arg.find(
 
 Mystudyteam.find(
   { urenrollmentnumber: { $exists: true, $ne: null } },
-
   null,
   { sort: { _id: -1 } },
   function (err, mystudyteams) {
@@ -367,6 +671,1156 @@ Mysocial.find({}, function (err, social) {
   });
 });
 
+Mypolicy.find(
+  {
+    policy: "rural"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var ruraltitle = mypolicy.title;
+      var ruralserialno = mypolicy.serialno;
+      var rurallink = mypolicy.link;
+      var ruralauthor = mypolicy.author;
+      var ruralbrief = mypolicy.brief;
+      var ruralpolicy = mypolicy.policy;
+
+      ruraltitles.push(ruraltitle);
+      ruralserialnos.push(ruralserialno);
+      rurallinks.push(rurallink);
+      ruralauthors.push(ruralauthor);
+      ruralbriefs.push(ruralbrief);
+      ruralpolicys.push(ruralpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "urban"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var urbantitle = mypolicy.title;
+      var urbanserialno = mypolicy.serialno;
+      var urbanlink = mypolicy.link;
+      var urbanauthor = mypolicy.author;
+      var urbanbrief = mypolicy.brief;
+      var urbanpolicy = mypolicy.policy;
+  
+      urbantitles.push(urbantitle);
+      urbanserialnos.push(urbanserialno);
+      urbanlinks.push(urbanlink);
+      urbanauthors.push(urbanauthor);
+      urbanbriefs.push(urbanbrief);
+      urbanpolicys.push(urbanpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "geriatric"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var geriatrictitle = mypolicy.title;
+      var geriatricserialno = mypolicy.serialno;
+      var geriatriclink = mypolicy.link;
+      var geriatricauthor = mypolicy.author;
+      var geriatricbrief = mypolicy.brief;
+      var geriatricpolicy = mypolicy.policy;
+  
+      geriatrictitles.push(geriatrictitle);
+      geriatricserialnos.push(geriatricserialno);
+      geriatriclinks.push(geriatriclink);
+      geriatricauthors.push(geriatricauthor);
+      geriatricbriefs.push(geriatricbrief);
+      geriatricpolicys.push(geriatricpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "reservation"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var reservationtitle = mypolicy.title;
+      var reservationserialno = mypolicy.serialno;
+      var reservationlink = mypolicy.link;
+      var reservationauthor = mypolicy.author;
+      var reservationbrief = mypolicy.brief;
+      var reservationpolicy = mypolicy.policy;
+  
+      reservationtitles.push(reservationtitle);
+      reservationserialnos.push(reservationserialno);
+      reservationlinks.push(reservationlink);
+      reservationauthors.push(reservationauthor);
+      reservationbriefs.push(reservationbrief);
+      reservationpolicys.push(reservationpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "monetary"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var monetarytitle = mypolicy.title;
+      var monetaryserialno = mypolicy.serialno;
+      var monetarylink = mypolicy.link;
+      var monetaryauthor = mypolicy.author;
+      var monetarybrief = mypolicy.brief;
+      var monetarypolicy = mypolicy.policy;
+  
+      monetarytitles.push(monetarytitle);
+      monetaryserialnos.push(monetaryserialno);
+      monetarylinks.push(monetarylink);
+      monetaryauthors.push(monetaryauthor);
+      monetarybriefs.push(monetarybrief);
+      monetarypolicys.push(monetarypolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "fiscal"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var fiscaltitle = mypolicy.title;
+      var fiscalserialno = mypolicy.serialno;
+      var fiscallink = mypolicy.link;
+      var fiscalauthor = mypolicy.author;
+      var fiscalbrief = mypolicy.brief;
+      var fiscalpolicy = mypolicy.policy;
+  
+      fiscaltitles.push(fiscaltitle);
+      fiscalserialnos.push(fiscalserialno);
+      fiscallinks.push(fiscallink);
+      fiscalauthors.push(fiscalauthor);
+      fiscalbriefs.push(fiscalbrief);
+      fiscalpolicys.push(fiscalpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "environment"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var environmenttitle = mypolicy.title;
+      var environmentserialno = mypolicy.serialno;
+      var environmentlink = mypolicy.link;
+      var environmentauthor = mypolicy.author;
+      var environmentbrief = mypolicy.brief;
+      var environmentpolicy = mypolicy.policy;
+  
+      environmenttitles.push(environmenttitle);
+      environmentserialnos.push(environmentserialno);
+      environmentlinks.push(environmentlink);
+      environmentauthors.push(environmentauthor);
+      environmentbriefs.push(environmentbrief);
+      environmentpolicys.push(environmentpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "health"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var healthtitle = mypolicy.title;
+      var healthserialno = mypolicy.serialno;
+      var healthlink = mypolicy.link;
+      var healthauthor = mypolicy.author;
+      var healthbrief = mypolicy.brief;
+      var healthpolicy = mypolicy.policy;
+  
+      healthtitles.push(healthtitle);
+      healthserialnos.push(healthserialno);
+      healthlinks.push(healthlink);
+      healthauthors.push(healthauthor);
+      healthbriefs.push(healthbrief);
+      healthpolicys.push(healthpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "water"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var watertitle = mypolicy.title;
+      var waterserialno = mypolicy.serialno;
+      var waterlink = mypolicy.link;
+      var waterauthor = mypolicy.author;
+      var waterbrief = mypolicy.brief;
+      var waterpolicy = mypolicy.policy;
+  
+      watertitles.push(watertitle);
+      waterserialnos.push(waterserialno);
+      waterlinks.push(waterlink);
+      waterauthors.push(waterauthor);
+      waterbriefs.push(waterbrief);
+      waterpolicys.push(waterpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "foreign"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var foreigntitle = mypolicy.title;
+      var foreignserialno = mypolicy.serialno;
+      var foreignlink = mypolicy.link;
+      var foreignauthor = mypolicy.author;
+      var foreignbrief = mypolicy.brief;
+      var foreignpolicy = mypolicy.policy;
+  
+      foreigntitles.push(foreigntitle);
+      foreignserialnos.push(foreignserialno);
+      foreignlinks.push(foreignlink);
+      foreignauthors.push(foreignauthor);
+      foreignbriefs.push(foreignbrief);
+      foreignpolicys.push(foreignpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "infrastructure"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var infrastructuretitle = mypolicy.title;
+      var infrastructureserialno = mypolicy.serialno;
+      var infrastructurelink = mypolicy.link;
+      var infrastructureauthor = mypolicy.author;
+      var infrastructurebrief = mypolicy.brief;
+      var infrastructurepolicy = mypolicy.policy;
+  
+      infrastructuretitles.push(infrastructuretitle);
+      infrastructureserialnos.push(infrastructureserialno);
+      infrastructurelinks.push(infrastructurelink);
+      infrastructureauthors.push(infrastructureauthor);
+      infrastructurebriefs.push(infrastructurebrief);
+      infrastructurepolicys.push(infrastructurepolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "trade"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var tradetitle = mypolicy.title;
+      var tradeserialno = mypolicy.serialno;
+      var tradelink = mypolicy.link;
+      var tradeauthor = mypolicy.author;
+      var tradebrief = mypolicy.brief;
+      var tradepolicy = mypolicy.policy;
+  
+      tradetitles.push(tradetitle);
+      tradeserialnos.push(tradeserialno);
+      tradelinks.push(tradelink);
+      tradeauthors.push(tradeauthor);
+      tradebriefs.push(tradebrief);
+      tradepolicys.push(tradepolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "youth"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var youthtitle = mypolicy.title;
+      var youthserialno = mypolicy.serialno;
+      var youthlink = mypolicy.link;
+      var youthauthor = mypolicy.author;
+      var youthbrief = mypolicy.brief;
+      var youthpolicy = mypolicy.policy;
+  
+      youthtitles.push(youthtitle);
+      youthserialnos.push(youthserialno);
+      youthlinks.push(youthlink);
+      youthauthors.push(youthauthor);
+      youthbriefs.push(youthbrief);
+      youthpolicys.push(youthpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "disability"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var disabilitytitle = mypolicy.title;
+      var disabilityserialno = mypolicy.serialno;
+      var disabilitylink = mypolicy.link;
+      var disabilityauthor = mypolicy.author;
+      var disabilitybrief = mypolicy.brief;
+      var disabilitypolicy = mypolicy.policy;
+  
+      disabilitytitles.push(disabilitytitle);
+      disabilityserialnos.push(disabilityserialno);
+      disabilitylinks.push(disabilitylink);
+      disabilityauthors.push(disabilityauthor);
+      disabilitybriefs.push(disabilitybrief);
+      disabilitypolicys.push(disabilitypolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "education"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var educationtitle = mypolicy.title;
+      var educationserialno = mypolicy.serialno;
+      var educationlink = mypolicy.link;
+      var educationauthor = mypolicy.author;
+      var educationbrief = mypolicy.brief;
+      var educationpolicy = mypolicy.policy;
+  
+      educationtitles.push(educationtitle);
+      educationserialnos.push(educationserialno);
+      educationlinks.push(educationlink);
+      educationauthors.push(educationauthor);
+      educationbriefs.push(educationbrief);
+      educationpolicys.push(educationpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "industrial"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var industrialtitle = mypolicy.title;
+      var industrialserialno = mypolicy.serialno;
+      var industriallink = mypolicy.link;
+      var industrialauthor = mypolicy.author;
+      var industrialbrief = mypolicy.brief;
+      var industrialpolicy = mypolicy.policy;
+  
+      industrialtitles.push(industrialtitle);
+      industrialserialnos.push(industrialserialno);
+      industriallinks.push(industriallink);
+      industrialauthors.push(industrialauthor);
+      industrialbriefs.push(industrialbrief);
+      industrialpolicys.push(industrialpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "manufacturing"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var manufacturingtitle = mypolicy.title;
+      var manufacturingserialno = mypolicy.serialno;
+      var manufacturinglink = mypolicy.link;
+      var manufacturingauthor = mypolicy.author;
+      var manufacturingbrief = mypolicy.brief;
+      var manufacturingpolicy = mypolicy.policy;
+  
+      manufacturingtitles.push(manufacturingtitle);
+      manufacturingserialnos.push(manufacturingserialno);
+      manufacturinglinks.push(manufacturinglink);
+      manufacturingauthors.push(manufacturingauthor);
+      manufacturingbriefs.push(manufacturingbrief);
+      manufacturingpolicys.push(manufacturingpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "agricultural"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var agriculturaltitle = mypolicy.title;
+      var agriculturalserialno = mypolicy.serialno;
+      var agriculturallink = mypolicy.link;
+      var agriculturalauthor = mypolicy.author;
+      var agriculturalbrief = mypolicy.brief;
+      var agriculturalpolicy = mypolicy.policy;
+  
+      agriculturaltitles.push(agriculturaltitle);
+      agriculturalserialnos.push(agriculturalserialno);
+      agriculturallinks.push(agriculturallink);
+      agriculturalauthors.push(agriculturalauthor);
+      agriculturalbriefs.push(agriculturalbrief);
+      agriculturalpolicys.push(agriculturalpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "tribal"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var tribaltitle = mypolicy.title;
+      var tribalserialno = mypolicy.serialno;
+      var triballink = mypolicy.link;
+      var tribalauthor = mypolicy.author;
+      var tribalbrief = mypolicy.brief;
+      var tribalpolicy = mypolicy.policy;
+  
+      tribaltitles.push(tribaltitle);
+      tribalserialnos.push(tribalserialno);
+      triballinks.push(triballink);
+      tribalauthors.push(tribalauthor);
+      tribalbriefs.push(tribalbrief);
+      tribalpolicys.push(tribalpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "welfare"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var welfaretitle = mypolicy.title;
+      var welfareserialno = mypolicy.serialno;
+      var welfarelink = mypolicy.link;
+      var welfareauthor = mypolicy.author;
+      var welfarebrief = mypolicy.brief;
+      var welfarepolicy = mypolicy.policy;
+  
+      welfaretitles.push(welfaretitle);
+      welfareserialnos.push(welfareserialno);
+      welfarelinks.push(welfarelink);
+      welfareauthors.push(welfareauthor);
+      welfarebriefs.push(welfarebrief);
+      welfarepolicys.push(welfarepolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "cyber"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var cybertitle = mypolicy.title;
+      var cyberserialno = mypolicy.serialno;
+      var cyberlink = mypolicy.link;
+      var cyberauthor = mypolicy.author;
+      var cyberbrief = mypolicy.brief;
+      var cyberpolicy = mypolicy.policy;
+  
+      cybertitles.push(cybertitle);
+      cyberserialnos.push(cyberserialno);
+      cyberlinks.push(cyberlink);
+      cyberauthors.push(cyberauthor);
+      cyberbriefs.push(cyberbrief);
+      cyberpolicys.push(cyberpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "housing"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var housingtitle = mypolicy.title;
+      var housingserialno = mypolicy.serialno;
+      var housinglink = mypolicy.link;
+      var housingauthor = mypolicy.author;
+      var housingbrief = mypolicy.brief;
+      var housingpolicy = mypolicy.policy;
+  
+      housingtitles.push(housingtitle);
+      housingserialnos.push(housingserialno);
+      housinglinks.push(housinglink);
+      housingauthors.push(housingauthor);
+      housingbriefs.push(housingbrief);
+      housingpolicys.push(housingpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "gender"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var gendertitle = mypolicy.title;
+      var genderserialno = mypolicy.serialno;
+      var genderlink = mypolicy.link;
+      var genderauthor = mypolicy.author;
+      var genderbrief = mypolicy.brief;
+      var genderpolicy = mypolicy.policy;
+  
+      gendertitles.push(gendertitle);
+      genderserialnos.push(genderserialno);
+      genderlinks.push(genderlink);
+      genderauthors.push(genderauthor);
+      genderbriefs.push(genderbrief);
+      genderpolicys.push(genderpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "tourism"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var tourismtitle = mypolicy.title;
+      var tourismserialno = mypolicy.serialno;
+      var tourismlink = mypolicy.link;
+      var tourismauthor = mypolicy.author;
+      var tourismbrief = mypolicy.brief;
+      var tourismpolicy = mypolicy.policy;
+  
+      tourismtitles.push(tourismtitle);
+      tourismserialnos.push(tourismserialno);
+      tourismlinks.push(tourismlink);
+      tourismauthors.push(tourismauthor);
+      tourismbriefs.push(tourismbrief);
+      tourismpolicys.push(tourismpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "energy"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var energytitle = mypolicy.title;
+      var energyserialno = mypolicy.serialno;
+      var energylink = mypolicy.link;
+      var energyauthor = mypolicy.author;
+      var energybrief = mypolicy.brief;
+      var energypolicy = mypolicy.policy;
+  
+      energytitles.push(energytitle);
+      energyserialnos.push(energyserialno);
+      energylinks.push(energylink);
+      energyauthors.push(energyauthor);
+      energybriefs.push(energybrief);
+      energypolicys.push(energypolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "economic"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var economictitle = mypolicy.title;
+      var economicserialno = mypolicy.serialno;
+      var economiclink = mypolicy.link;
+      var economicauthor = mypolicy.author;
+      var economicbrief = mypolicy.brief;
+      var economicpolicy = mypolicy.policy;
+  
+      economictitles.push(economictitle);
+      economicserialnos.push(economicserialno);
+      economiclinks.push(economiclink);
+      economicauthors.push(economicauthor);
+      economicbriefs.push(economicbrief);
+      economicpolicys.push(economicpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "judicial"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var judicialtitle = mypolicy.title;
+      var judicialserialno = mypolicy.serialno;
+      var judiciallink = mypolicy.link;
+      var judicialauthor = mypolicy.author;
+      var judicialbrief = mypolicy.brief;
+      var judicialpolicy = mypolicy.policy;
+  
+      judicialtitles.push(judicialtitle);
+      judicialserialnos.push(judicialserialno);
+      judiciallinks.push(judiciallink);
+      judicialauthors.push(judicialauthor);
+      judicialbriefs.push(judicialbrief);
+      judicialpolicys.push(judicialpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "security"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var securitytitle = mypolicy.title;
+      var securityserialno = mypolicy.serialno;
+      var securitylink = mypolicy.link;
+      var securityauthor = mypolicy.author;
+      var securitybrief = mypolicy.brief;
+      var securitypolicy = mypolicy.policy;
+  
+      securitytitles.push(securitytitle);
+      securityserialnos.push(securityserialno);
+      securitylinks.push(securitylink);
+      securityauthors.push(securityauthor);
+      securitybriefs.push(securitybrief);
+      securitypolicys.push(securitypolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "inclusive"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var inclusivetitle = mypolicy.title;
+      var inclusiveserialno = mypolicy.serialno;
+      var inclusivelink = mypolicy.link;
+      var inclusiveauthor = mypolicy.author;
+      var inclusivebrief = mypolicy.brief;
+      var inclusivepolicy = mypolicy.policy;
+  
+      inclusivetitles.push(inclusivetitle);
+      inclusiveserialnos.push(inclusiveserialno);
+      inclusivelinks.push(inclusivelink);
+      inclusiveauthors.push(inclusiveauthor);
+      inclusivebriefs.push(inclusivebrief);
+      inclusivepolicys.push(inclusivepolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "telecom"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var telecomtitle = mypolicy.title;
+      var telecomserialno = mypolicy.serialno;
+      var telecomlink = mypolicy.link;
+      var telecomauthor = mypolicy.author;
+      var telecombrief = mypolicy.brief;
+      var telecompolicy = mypolicy.policy;
+  
+      telecomtitles.push(telecomtitle);
+      telecomserialnos.push(telecomserialno);
+      telecomlinks.push(telecomlink);
+      telecomauthors.push(telecomauthor);
+      telecombriefs.push(telecombrief);
+      telecompolicys.push(telecompolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "competition"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var competitiontitle = mypolicy.title;
+      var competitionserialno = mypolicy.serialno;
+      var competitionlink = mypolicy.link;
+      var competitionauthor = mypolicy.author;
+      var competitionbrief = mypolicy.brief;
+      var competitionpolicy = mypolicy.policy;
+  
+      competitiontitles.push(competitiontitle);
+      competitionserialnos.push(competitionserialno);
+      competitionlinks.push(competitionlink);
+      competitionauthors.push(competitionauthor);
+      competitionbriefs.push(competitionbrief);
+      competitionpolicys.push(competitionpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "fintech"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var fintechtitle = mypolicy.title;
+      var fintechserialno = mypolicy.serialno;
+      var fintechlink = mypolicy.link;
+      var fintechauthor = mypolicy.author;
+      var fintechbrief = mypolicy.brief;
+      var fintechpolicy = mypolicy.policy;
+  
+      fintechtitles.push(fintechtitle);
+      fintechserialnos.push(fintechserialno);
+      fintechlinks.push(fintechlink);
+      fintechauthors.push(fintechauthor);
+      fintechbriefs.push(fintechbrief);
+      fintechpolicys.push(fintechpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "scitech"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var scitechtitle = mypolicy.title;
+      var scitechserialno = mypolicy.serialno;
+      var scitechlink = mypolicy.link;
+      var scitechauthor = mypolicy.author;
+      var scitechbrief = mypolicy.brief;
+      var scitechpolicy = mypolicy.policy;
+  
+      scitechtitles.push(scitechtitle);
+      scitechserialnos.push(scitechserialno);
+      scitechlinks.push(scitechlink);
+      scitechauthors.push(scitechauthor);
+      scitechbriefs.push(scitechbrief);
+      scitechpolicys.push(scitechpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "electoral"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var electoraltitle = mypolicy.title;
+      var electoralserialno = mypolicy.serialno;
+      var electorallink = mypolicy.link;
+      var electoralauthor = mypolicy.author;
+      var electoralbrief = mypolicy.brief;
+      var electoralpolicy = mypolicy.policy;
+  
+      electoraltitles.push(electoraltitle);
+      electoralserialnos.push(electoralserialno);
+      electorallinks.push(electorallink);
+      electoralauthors.push(electoralauthor);
+      electoralbriefs.push(electoralbrief);
+      electoralpolicys.push(electoralpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "nutrition"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var nutritiontitle = mypolicy.title;
+      var nutritionserialno = mypolicy.serialno;
+      var nutritionlink = mypolicy.link;
+      var nutritionauthor = mypolicy.author;
+      var nutritionbrief = mypolicy.brief;
+      var nutritionpolicy = mypolicy.policy;
+  
+      nutritiontitles.push(nutritiontitle);
+      nutritionserialnos.push(nutritionserialno);
+      nutritionlinks.push(nutritionlink);
+      nutritionauthors.push(nutritionauthor);
+      nutritionbriefs.push(nutritionbrief);
+      nutritionpolicys.push(nutritionpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "poverty"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var povertytitle = mypolicy.title;
+      var povertyserialno = mypolicy.serialno;
+      var povertylink = mypolicy.link;
+      var povertyauthor = mypolicy.author;
+      var povertybrief = mypolicy.brief;
+      var povertypolicy = mypolicy.policy;
+  
+      povertytitles.push(povertytitle);
+      povertyserialnos.push(povertyserialno);
+      povertylinks.push(povertylink);
+      povertyauthors.push(povertyauthor);
+      povertybriefs.push(povertybrief);
+      povertypolicys.push(povertypolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "labour"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var labourtitle = mypolicy.title;
+      var labourserialno = mypolicy.serialno;
+      var labourlink = mypolicy.link;
+      var labourauthor = mypolicy.author;
+      var labourbrief = mypolicy.brief;
+      var labourpolicy = mypolicy.policy;
+  
+      labourtitles.push(labourtitle);
+      labourserialnos.push(labourserialno);
+      labourlinks.push(labourlink);
+      labourauthors.push(labourauthor);
+      labourbriefs.push(labourbrief);
+      labourpolicys.push(labourpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "peace"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var peacetitle = mypolicy.title;
+      var peaceserialno = mypolicy.serialno;
+      var peacelink = mypolicy.link;
+      var peaceauthor = mypolicy.author;
+      var peacebrief = mypolicy.brief;
+      var peacepolicy = mypolicy.policy;
+  
+      peacetitles.push(peacetitle);
+      peaceserialnos.push(peaceserialno);
+      peacelinks.push(peacelink);
+      peaceauthors.push(peaceauthor);
+      peacebriefs.push(peacebrief);
+      peacepolicys.push(peacepolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "space"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var spacetitle = mypolicy.title;
+      var spaceserialno = mypolicy.serialno;
+      var spacelink = mypolicy.link;
+      var spaceauthor = mypolicy.author;
+      var spacebrief = mypolicy.brief;
+      var spacepolicy = mypolicy.policy;
+  
+      spacetitles.push(spacetitle);
+      spaceserialnos.push(spaceserialno);
+      spacelinks.push(spacelink);
+      spaceauthors.push(spaceauthor);
+      spacebriefs.push(spacebrief);
+      spacepolicys.push(spacepolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "justice"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var justicetitle = mypolicy.title;
+      var justiceserialno = mypolicy.serialno;
+      var justicelink = mypolicy.link;
+      var justiceauthor = mypolicy.author;
+      var justicebrief = mypolicy.brief;
+      var justicepolicy = mypolicy.policy;
+  
+      justicetitles.push(justicetitle);
+      justiceserialnos.push(justiceserialno);
+      justicelinks.push(justicelink);
+      justiceauthors.push(justiceauthor);
+      justicebriefs.push(justicebrief);
+      justicepolicys.push(justicepolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "personnel"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var personneltitle = mypolicy.title;
+      var personnelserialno = mypolicy.serialno;
+      var personnellink = mypolicy.link;
+      var personnelauthor = mypolicy.author;
+      var personnelbrief = mypolicy.brief;
+      var personnelpolicy = mypolicy.policy;
+  
+      personneltitles.push(personneltitle);
+      personnelserialnos.push(personnelserialno);
+      personnellinks.push(personnellink);
+      personnelauthors.push(personnelauthor);
+      personnelbriefs.push(personnelbrief);
+      personnelpolicys.push(personnelpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "accountability"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var accountabilitytitle = mypolicy.title;
+      var accountabilityserialno = mypolicy.serialno;
+      var accountabilitylink = mypolicy.link;
+      var accountabilityauthor = mypolicy.author;
+      var accountabilitybrief = mypolicy.brief;
+      var accountabilitypolicy = mypolicy.policy;
+  
+      accountabilitytitles.push(accountabilitytitle);
+      accountabilityserialnos.push(accountabilityserialno);
+      accountabilitylinks.push(accountabilitylink);
+      accountabilityauthors.push(accountabilityauthor);
+      accountabilitybriefs.push(accountabilitybrief);
+      accountabilitypolicys.push(accountabilitypolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "cultural"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var culturaltitle = mypolicy.title;
+      var culturalserialno = mypolicy.serialno;
+      var culturallink = mypolicy.link;
+      var culturalauthor = mypolicy.author;
+      var culturalbrief = mypolicy.brief;
+      var culturalpolicy = mypolicy.policy;
+  
+      culturaltitles.push(culturaltitle);
+      culturalserialnos.push(culturalserialno);
+      culturallinks.push(culturallink);
+      culturalauthors.push(culturalauthor);
+      culturalbriefs.push(culturalbrief);
+      culturalpolicys.push(culturalpolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "freedom"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var freedomtitle = mypolicy.title;
+      var freedomserialno = mypolicy.serialno;
+      var freedomlink = mypolicy.link;
+      var freedomauthor = mypolicy.author;
+      var freedombrief = mypolicy.brief;
+      var freedompolicy = mypolicy.policy;
+  
+      freedomtitles.push(freedomtitle);
+      freedomserialnos.push(freedomserialno);
+      freedomlinks.push(freedomlink);
+      freedomauthors.push(freedomauthor);
+      freedombriefs.push(freedombrief);
+      freedompolicys.push(freedompolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "citizenship"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var citizenshiptitle = mypolicy.title;
+      var citizenshipserialno = mypolicy.serialno;
+      var citizenshiplink = mypolicy.link;
+      var citizenshipauthor = mypolicy.author;
+      var citizenshipbrief = mypolicy.brief;
+      var citizenshippolicy = mypolicy.policy;
+  
+      citizenshiptitles.push(citizenshiptitle);
+      citizenshipserialnos.push(citizenshipserialno);
+      citizenshiplinks.push(citizenshiplink);
+      citizenshipauthors.push(citizenshipauthor);
+      citizenshipbriefs.push(citizenshipbrief);
+      citizenshippolicys.push(citizenshippolicy);
+    });
+  });
+
+Mypolicy.find(
+  {
+    policy: "misc"
+  },
+  
+  null,
+  { sort: { _id: -1 } },
+  function (err, mypolicies) {
+    mypolicies.forEach(function (mypolicy) {
+      var misctitle = mypolicy.title;
+      var miscserialno = mypolicy.serialno;
+      var misclink = mypolicy.link;
+      var miscauthor = mypolicy.author;
+      var miscbrief = mypolicy.brief;
+      var miscpolicy = mypolicy.policy;
+  
+      misctitles.push(misctitle);
+      miscserialnos.push(miscserialno);
+      misclinks.push(misclink);
+      miscauthors.push(miscauthor);
+      miscbriefs.push(miscbrief);
+      miscpolicys.push(miscpolicy);
+    });
+  });
+    
 app.get("/index", function (req, res) {
   var today = new Date();
   var day = today.toLocaleDateString("en-US", options);
@@ -412,7 +1866,284 @@ app.get("/catchup", function (req, res) {
 });
 
 app.get("/policy", function (req, res) {
-  res.render("policy");
+  res.render("policy", {
+    ruraltitles: ruraltitles,
+    ruralserialnos: ruralserialnos,
+    rurallinks:  rurallinks,
+    ruralauthors: ruralauthors,
+    ruralbriefs:  ruralbriefs,
+    ruralpolicys: ruralpolicys,
+    urbantitles: urbantitles,
+    urbanserialnos: urbanserialnos,
+    urbanlinks:  urbanlinks,
+    urbanauthors: urbanauthors,
+    urbanbriefs:  urbanbriefs,
+    urbanpolicys: urbanpolicys,
+    geriatrictitles: geriatrictitles,
+    geriatricserialnos: geriatricserialnos,
+    geriatriclinks:  geriatriclinks,
+    geriatricauthors: geriatricauthors,
+    geriatricbriefs:  geriatricbriefs,
+    geriatricpolicys: geriatricpolicys,
+    reservationtitles: reservationtitles,
+    reservationserialnos: reservationserialnos,
+    reservationlinks:  reservationlinks,
+    reservationauthors: reservationauthors,
+    reservationbriefs:  reservationbriefs,
+    reservationpolicys: reservationpolicys,
+    monetarytitles: monetarytitles,
+    monetaryserialnos: monetaryserialnos,
+    monetarylinks:  monetarylinks,
+    monetaryauthors: monetaryauthors,
+    monetarybriefs:  monetarybriefs,
+    monetarypolicys: monetarypolicys,
+    fiscaltitles: fiscaltitles,
+    fiscalserialnos: fiscalserialnos,
+    fiscallinks:  fiscallinks,
+    fiscalauthors: fiscalauthors,
+    fiscalbriefs:  fiscalbriefs,
+    fiscalpolicys: fiscalpolicys,
+    environmenttitles: environmenttitles,
+    environmentserialnos: environmentserialnos,
+    environmentlinks:  environmentlinks,
+    environmentauthors: environmentauthors,
+    environmentbriefs:  environmentbriefs,
+    environmentpolicys: environmentpolicys,
+    healthtitles: healthtitles,
+    healthserialnos: healthserialnos,
+    healthlinks:  healthlinks,
+    healthauthors: healthauthors,
+    healthbriefs:  healthbriefs,
+    healthpolicys: healthpolicys,
+    watertitles: watertitles,
+    waterserialnos: waterserialnos,
+    waterlinks:  waterlinks,
+    waterauthors: waterauthors,
+    waterbriefs:  waterbriefs,
+    waterpolicys: waterpolicys,
+    foreigntitles: foreigntitles,
+    foreignserialnos: foreignserialnos,
+    foreignlinks:  foreignlinks,
+    foreignauthors: foreignauthors,
+    foreignbriefs:  foreignbriefs,
+    foreignpolicys: foreignpolicys,
+    infrastructuretitles: infrastructuretitles,
+    infrastructureserialnos: infrastructureserialnos,
+    infrastructurelinks:  infrastructurelinks,
+    infrastructureauthors: infrastructureauthors,
+    infrastructurebriefs:  infrastructurebriefs,
+    infrastructurepolicys: infrastructurepolicys,
+    tradetitles: tradetitles,
+    tradeserialnos: tradeserialnos,
+    tradelinks:  tradelinks,
+    tradeauthors: tradeauthors,
+    tradebriefs:  tradebriefs,
+    tradepolicys: tradepolicys,
+    youthtitles: youthtitles,
+    youthserialnos: youthserialnos,
+    youthlinks:  youthlinks,
+    youthauthors: youthauthors,
+    youthbriefs:  youthbriefs,
+    youthpolicys: youthpolicys,
+    disabilitytitles: disabilitytitles,
+    disabilityserialnos: disabilityserialnos,
+    disabilitylinks:  disabilitylinks,
+    disabilityauthors: disabilityauthors,
+    disabilitybriefs:  disabilitybriefs,
+    disabilitypolicys: disabilitypolicys,
+    educationtitles: educationtitles,
+    educationserialnos: educationserialnos,
+    educationlinks:  educationlinks,
+    educationauthors: educationauthors,
+    educationbriefs:  educationbriefs,
+    educationpolicys: educationpolicys,
+    industrialtitles: industrialtitles,
+    industrialserialnos: industrialserialnos,
+    industriallinks:  industriallinks,
+    industrialauthors: industrialauthors,
+    industrialbriefs:  industrialbriefs,
+    industrialpolicys: industrialpolicys,
+    manufacturingtitles: manufacturingtitles,
+    manufacturingserialnos: manufacturingserialnos,
+    manufacturinglinks:  manufacturinglinks,
+    manufacturingauthors: manufacturingauthors,
+    manufacturingbriefs:  manufacturingbriefs,
+    manufacturingpolicys: manufacturingpolicys,
+    agriculturaltitles: agriculturaltitles,
+    agriculturalserialnos: agriculturalserialnos,
+    agriculturallinks:  agriculturallinks,
+    agriculturalauthors: agriculturalauthors,
+    agriculturalbriefs:  agriculturalbriefs,
+    agriculturalpolicys: agriculturalpolicys,
+    tribaltitles: tribaltitles,
+    tribalserialnos: tribalserialnos,
+    triballinks:  triballinks,
+    tribalauthors: tribalauthors,
+    tribalbriefs:  tribalbriefs,
+    tribalpolicys: tribalpolicys,
+    welfaretitles: welfaretitles,
+    welfareserialnos: welfareserialnos,
+    welfarelinks:  welfarelinks,
+    welfareauthors: welfareauthors,
+    welfarebriefs:  welfarebriefs,
+    welfarepolicys: welfarepolicys,
+    cybertitles: cybertitles,
+    cyberserialnos: cyberserialnos,
+    cyberlinks:  cyberlinks,
+    cyberauthors: cyberauthors,
+    cyberbriefs:  cyberbriefs,
+    cyberpolicys: cyberpolicys,
+    housingtitles: housingtitles,
+    housingserialnos: housingserialnos,
+    housinglinks:  housinglinks,
+    housingauthors: housingauthors,
+    housingbriefs:  housingbriefs,
+    housingpolicys: housingpolicys,
+    gendertitles: gendertitles,
+    genderserialnos: genderserialnos,
+    genderlinks:  genderlinks,
+    genderauthors: genderauthors,
+    genderbriefs:  genderbriefs,
+    genderpolicys: genderpolicys,
+    tourismtitles: tourismtitles,
+    tourismserialnos: tourismserialnos,
+    tourismlinks:  tourismlinks,
+    tourismauthors: tourismauthors,
+    tourismbriefs:  tourismbriefs,
+    tourismpolicys: tourismpolicys,
+    energytitles: energytitles,
+    energyserialnos: energyserialnos,
+    energylinks:  energylinks,
+    energyauthors: energyauthors,
+    energybriefs:  energybriefs,
+    energypolicys: energypolicys,
+    economictitles: economictitles,
+    economicserialnos: economicserialnos,
+    economiclinks:  economiclinks,
+    economicauthors: economicauthors,
+    economicbriefs:  economicbriefs,
+    economicpolicys: economicpolicys,
+    judicialtitles: judicialtitles,
+    judicialserialnos: judicialserialnos,
+    judiciallinks:  judiciallinks,
+    judicialauthors: judicialauthors,
+    judicialbriefs:  judicialbriefs,
+    judicialpolicys: judicialpolicys,
+    securitytitles: securitytitles,
+    securityserialnos: securityserialnos,
+    securitylinks:  securitylinks,
+    securityauthors: securityauthors,
+    securitybriefs:  securitybriefs,
+    securitypolicys: securitypolicys,
+    inclusivetitles: inclusivetitles,
+    inclusiveserialnos: inclusiveserialnos,
+    inclusivelinks:  inclusivelinks,
+    inclusiveauthors: inclusiveauthors,
+    inclusivebriefs:  inclusivebriefs,
+    inclusivepolicys: inclusivepolicys,
+    telecomtitles: telecomtitles,
+    telecomserialnos: telecomserialnos,
+    telecomlinks:  telecomlinks,
+    telecomauthors: telecomauthors,
+    telecombriefs:  telecombriefs,
+    telecompolicys: telecompolicys,
+    competitiontitles: competitiontitles,
+    competitionserialnos: competitionserialnos,
+    competitionlinks:  competitionlinks,
+    competitionauthors: competitionauthors,
+    competitionbriefs:  competitionbriefs,
+    competitionpolicys: competitionpolicys,
+    fintechtitles: fintechtitles,
+    fintechserialnos: fintechserialnos,
+    fintechlinks:  fintechlinks,
+    fintechauthors: fintechauthors,
+    fintechbriefs:  fintechbriefs,
+    fintechpolicys: fintechpolicys,
+    scitechtitles: scitechtitles,
+    scitechserialnos: scitechserialnos,
+    scitechlinks:  scitechlinks,
+    scitechauthors: scitechauthors,
+    scitechbriefs:  scitechbriefs,
+    scitechpolicys: scitechpolicys,
+    electoraltitles: electoraltitles,
+    electoralserialnos: electoralserialnos,
+    electorallinks:  electorallinks,
+    electoralauthors: electoralauthors,
+    electoralbriefs:  electoralbriefs,
+    electoralpolicys: electoralpolicys,
+    nutritiontitles: nutritiontitles,
+    nutritionserialnos: nutritionserialnos,
+    nutritionlinks:  nutritionlinks,
+    nutritionauthors: nutritionauthors,
+    nutritionbriefs:  nutritionbriefs,
+    nutritionpolicys: nutritionpolicys,
+    povertytitles: povertytitles,
+    povertyserialnos: povertyserialnos,
+    povertylinks:  povertylinks,
+    povertyauthors: povertyauthors,
+    povertybriefs:  povertybriefs,
+    povertypolicys: povertypolicys,
+    labourtitles: labourtitles,
+    labourserialnos: labourserialnos,
+    labourlinks:  labourlinks,
+    labourauthors: labourauthors,
+    labourbriefs:  labourbriefs,
+    labourpolicys: labourpolicys,
+    peacetitles: peacetitles,
+    peaceserialnos: peaceserialnos,
+    peacelinks:  peacelinks,
+    peaceauthors: peaceauthors,
+    peacebriefs:  peacebriefs,
+    peacepolicys: peacepolicys,
+    spacetitles: spacetitles,
+    spaceserialnos: spaceserialnos,
+    spacelinks:  spacelinks,
+    spaceauthors: spaceauthors,
+    spacebriefs:  spacebriefs,
+    spacepolicys: spacepolicys,
+    justicetitles: justicetitles,
+    justiceserialnos: justiceserialnos,
+    justicelinks:  justicelinks,
+    justiceauthors: justiceauthors,
+    justicebriefs:  justicebriefs,
+    justicepolicys: justicepolicys,
+    personneltitles: personneltitles,
+    personnelserialnos: personnelserialnos,
+    personnellinks:  personnellinks,
+    personnelauthors: personnelauthors,
+    personnelbriefs:  personnelbriefs,
+    personnelpolicys: personnelpolicys,
+    accountabilitytitles: accountabilitytitles,
+    accountabilityserialnos: accountabilityserialnos,
+    accountabilitylinks:  accountabilitylinks,
+    accountabilityauthors: accountabilityauthors,
+    accountabilitybriefs:  accountabilitybriefs,
+    accountabilitypolicys: accountabilitypolicys,
+    culturaltitles: culturaltitles,
+    culturalserialnos: culturalserialnos,
+    culturallinks:  culturallinks,
+    culturalauthors: culturalauthors,
+    culturalbriefs:  culturalbriefs,
+    culturalpolicys: culturalpolicys,
+    freedomtitles: freedomtitles,
+    freedomserialnos: freedomserialnos,
+    freedomlinks:  freedomlinks,
+    freedomauthors: freedomauthors,
+    freedombriefs:  freedombriefs,
+    freedompolicys: freedompolicys,
+    citizenshiptitles: citizenshiptitles,
+    citizenshipserialnos: citizenshipserialnos,
+    citizenshiplinks:  citizenshiplinks,
+    citizenshipauthors: citizenshipauthors,
+    citizenshipbriefs:  citizenshipbriefs,
+    citizenshippolicys: citizenshippolicys,
+    misctitles: misctitles,
+    miscserialnos: miscserialnos,
+    misclinks:  misclinks,
+    miscauthors: miscauthors,
+    miscbriefs:  miscbriefs,
+    miscpolicys: miscpolicys,
+  });
 });
 
 app.get("/login", function (req, res) {

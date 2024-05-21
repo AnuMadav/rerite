@@ -45,3 +45,10 @@
 p {
   font-size: 12px;
 }
+
+.ex {
+  max-width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+}
