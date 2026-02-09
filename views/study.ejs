@@ -6,7 +6,7 @@
   <title>Competitive Exams</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="/css/master.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
  
@@ -14,11 +14,7 @@
 </head>
 
 <body>
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
   
   <div class="container viewpage">
@@ -27,11 +23,10 @@
 
         <!-- Profile Pic -->
         <div class="col-2">
-          <img src="./images/rerite.png" id="logoinpage" style="margin: 5%;" alt="">
+          <a class="btn btn-white" href="/study" role="button"><img src="/images/rerite.png" id="logoinpage" style="margin: 5%;" alt=""></a>
         <br><br>
         <div class="container">
-        <img src="./images/profpic.png" id="profpic" alt=""><br><br>
-        <p class="text-center text-muted">ERN9455uw0ru</p>
+        <p class="text-center text-muted profile-enrollment"><%= userEnrollment %></p>
       </div>
         </nav>
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -57,12 +52,16 @@
             <div id="flush-collapseTwo" class="accordion-collapse collapse collapsebckgrd" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
               <nav class="navbar navbar-light">
                 <ul>
-                <% for (var j= 0; j<mylistnames.length; j++) { %>
-                  <button class="btn btn-white justify-content-center" style="margin-left:-20%;"><%=mylistnames[j]%></button><br>
-                  
-                <% } %> 
-              </ul>               
-                <button class="btn btn-primary justify-content-between" style="margin-left:20%;" data-toggle="modal" data-target="#modalList">Add New List</button>
+                  <% for (var j = 0; j < mylistnames.length; j++) { %>
+                    <a href="/list/<%= mylistnames[j] %>/<%= uidas[i] %>" 
+                      class="btn btn-white justify-content-center" 
+                      style="margin-left:-20%;">
+                      <%= mylistnames[j] %>
+                    </a>
+                    <br>
+                  <% } %>
+                </ul>               
+                <button class="btn btn-primary justify-content-between" style="margin-left:20%;" data-bs-toggle="modal" data-bs-target="#modalList">Add New List</button>
                 
 
              <!-- Modal -->
@@ -71,23 +70,21 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">New List</h5>
-                    <button type="button" class="close text-center" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <form action="/study" method="post">
                       <!-- Modal -->
                       <div class="form-group">
                         <label for="main-group" class="col-form-label">Enrollment Number</label>
-                        <input autocomplete='off' class='form-control' type="text" name="myenrollmentnumber" id="ERN1" value="ERN9455uw0ru">
+                        <input autocomplete='off' class='form-control' type="text" name="myenrollmentnumber" id="ERN1" value="<%= userEnrollment %>">
                         <label for="main-group" class="col-form-label">List Name</label>
                         <input type="text" class="form-control" name= "listname">
                         
                       </div>     
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
                   </form>
                   </div>
@@ -102,11 +99,7 @@
           <p></p>
           <p></p>
           <p></p>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <a class="btn btn-warning" align="center" href="/policy" role="button">Browse Editorials</a> 
-            </h2>          
-          </div>
+          
           
           </div>
 
@@ -114,7 +107,7 @@
 
 
 
-<div class="col-8 pt-3" >
+<div class="col-8 pt-3 main-content">
   <h2 class="text-center"> <%=kindOfDay%></h2>
 <br>
 <div id= "overflow">
@@ -146,120 +139,144 @@
                     <p> <%= wopinionbys[i] %> </p>
                     <p> <%= wauthortitles[i] %> </p>
                     <p> <%= wpublications[i] %> </p>  
-                    <p><b> <%= newspaperjournals[i] %> </b></p><p><%= opiniondates[i] %></p>
+                    <p><b> <%= newspaperjournals[i] %> </b></p><p><%= new Date(opiniondates[i]).toLocaleDateString("en-IN") %></p>
                         <p style="color:red"><%=chapters[i]%></p>
                         <form action="/study" method="post">
                         <nav class="navbar navbar-dark navbar-expand-lg justify-content-center" style="background-color: #f5b220;">
                           <ul class="navbar-nav">
                             <li class="nav-item">
                               <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalSave">Save to</button>
+                                <button type="button" class="btn btn-secondary btn-dark" data-bs-toggle="modal" data-bs-target="#modalSave-<%= i %>">Save to</button>
                                  <!-- Modal -->
-                                    <div class="modal fade" id="modalSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                      <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h5 class="modal-title" >Choose the List</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                            <form action="/study" method="post">
-                                              <div class="form-group">
-                                                <input autocomplete='off' class='form-control' type="text" id="ERN2" name="myenrollmentnumber" value="ERN9455uw0ru" >
-                                                <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
-                                              </div><br>
-                                              <div class="form-group">                                               
-                                                <input autocomplete='off' class='form-control' type="text" name="myuida" placeholder="Enter UIDN" name=uida >
-                                                <small id="emailHelp" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br><br>
-                                              </div>
-                                              <div class="form-check">
-                                                <% for (var j= 0; j<mylistnames.length; j++) { %>
-                                                  <input type="checkbox" class="text-center form-check-input" name="listargname" id="flexCheckDefault" value="<%=mylistnames[j]%>">
-                                                  <label class="form-check-label" for="flexCheckDefault"><%=mylistnames[j]%></label><br>  
-                                                  <% } %>                       
-                                              </div>
-                                              <br>
-                                          </div>
-                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-                                          </form>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <!-- Modal ends-->
+                                    <!-- SAVE Modal -->
+                                  <div class="modal fade" id="modalSave-<%= i %>" tabindex="-1" role="dialog" aria-labelledby="modalSaveTitle-<%= i %>" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
 
-                                <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalAgree">Agree</button>
-                                 <!-- Modal -->
-                                 <div class="modal fade" id="modalAgree" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                  <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Your comment</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="modalSaveTitle-<%= i %>">Choose the List</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+
                                         <form action="/study" method="post">
-                                          <div class="form-group">
-                                            <input autocomplete='off' class='form-control' type="text" id="ERN3" name="myenrollmentnumber" value="ERN9455uw0ru" >
-                                            <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
-                                          </div><br>
-                                          <div class="form-group">
-                                            <input class='form-control' type="text" name="anuida" placeholder="Enter UIDN">
-                                            <small id="" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br>
+                                          <div class="modal-body">
+
+                                            <!-- Enrollment Number -->
+                                            <div class="form-group">
+                                              <input autocomplete="off" 
+                                                    class="form-control" 
+                                                    type="text" 
+                                                    id="ERN2-<%= i %>" 
+                                                    name="myenrollmentnumber" 
+                                                    value="ERN000012025">
+                                              <small class="form-text text-muted">Verify if your enrollment number is correctly matched.</small>
+                                            </div>
+
+                                            <br>
+
+                                            <!-- UIDN -->
+                                            <div class="form-group">
+                                              <input type="hidden" name="myuida" value="<%= uidas[i] %>">
+                                              <small class="form-text text-muted">UIDN attached automatically.</small>
+                                            </div>
+
+                                            <br>
+
+                                            <!-- Checkbox list -->
+                                            <div class="form-check">
+                                              <% for (var j = 0; j < mylistnames.length; j++) { %>
+                                                <input type="checkbox" 
+                                                      class="form-check-input" 
+                                                      name="listargname[]" 
+                                                      id="list_<%= j %>_<%= i %>" 
+                                                      value="<%= mylistnames[j] %>">
+                                                <label class="form-check-label" for="list_<%= j %>_<%= i %>">
+                                                  <%= mylistnames[j] %>
+                                                </label>
+                                                <br>
+                                              <% } %>
+                                            </div>
+
                                           </div>
-                                          <div class="form-group">
-                                            <label for="main-group" class="col-form-label"></label>
-                                            <textarea class="form-control" id="message-text" name= "agreecomment" placeholder="Your comment here"></textarea>           
+
+                                          <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
                                           </div>
-                                          <br>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-                                      </form>
+
+                                        </form>
+
                                       </div>
                                     </div>
                                   </div>
-                                </div>
+                                  <!-- SAVE Modal Ends -->
+
                                 <!-- Modal ends-->
-
-
-                                <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalQuery">Post a Query</button>
+                                 <button type="button" class="btn btn-secondary btn-dark" data-bs-toggle="modal" data-bs-target="#modalAgree-<%= i %>">Agree</button>
+                                       <!-- Modal -->
+                                       <div class="modal fade" id="modalAgree-<%= i %>" tabindex="-1" role="dialog" aria-labelledby="modalAgreeTitle-<%= i %>" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="modalAgreeTitle-<%= i %>">Your comment</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <form action="/study" method="post">
+                                                <div class="form-group">
+                                                  <input autocomplete='off' class='form-control' type="text" id="ERN3-<%= i %>" name="myenrollmentnumber" value="ERN000012025" >
+                                                  <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
+                                                </div><br>
+                                                <div class="form-group">
+                                                  <input type="hidden" name="anuida" value="<%= uidas[i] %>">
+                                                  <input type="hidden" name="myuida" value="<%= uidas[i] %>">
+                                                  <small class="form-text text-muted">UIDN attached automatically.</small>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="main-group" class="col-form-label"></label>
+                                                  <textarea class="form-control" id="message-text-<%= i %>" name= "agreecomment" placeholder="Your comment here"></textarea>           
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                                            </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- Modal ends-->
+      
+                                <button type="button" class="btn btn-secondary btn-dark" data-bs-toggle="modal" data-bs-target="#modalQuery-<%= i %>">Post a Query</button>
                                  <!-- Modal -->
-                                 <div class="modal fade" id="modalQuery" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                 <div class="modal fade" id="modalQuery-<%= i %>" tabindex="-1" role="dialog" aria-labelledby="modalQueryTitle-<%= i %>" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Post your Query</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <h5 class="modal-title" id="modalQueryTitle-<%= i %>">Post your Query</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">
                                         <form action="/study" method="post">
                                           <div class="form-group">
-                                            <input autocomplete='off' class='form-control' type="text" id="ERN4" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                                            <input autocomplete='off' class='form-control' type="text" id="ERN4-<%= i %>" name="myenrollmentnumber" value="ERN000012025" >
                                             <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
                                           </div><br>
                                           <div class="form-group">
-                                            <input class='form-control' type="text" name="anuida" placeholder="Enter UIDN">
-                                            <small id="" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br>
+                                            <input type="hidden" name="anuida" value="<%= uidas[i] %>">
+                                            <input type="hidden" name="myuida" value="<%= uidas[i] %>">
+                                            <small class="form-text text-muted">UIDN attached automatically.</small>
                                           </div>
                                           <div class="form-group">
                                             <label for="main-group" class="col-form-label"></label>
-                                            <textarea class="form-control" id="message-text" name= "querycomment" placeholder="Your comment here"></textarea>           
+                                            <textarea class="form-control" id="message-text-query-<%= i %>" name= "querycomment" placeholder="Your comment here"></textarea>           
                                           </div>
                                           <br>
                                       </div>
                                         
                                       <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
                                       </form>
                                       </div>
@@ -268,38 +285,37 @@
                                 </div>
                                 <!-- Modal ends-->
 
-                                <button type="button" class="btn btn-secondary btn-dark" data-toggle="modal" data-target="#modalRefer">Refer to</button>
+                                <button type="button" class="btn btn-secondary btn-dark" data-bs-toggle="modal" data-bs-target="#modalRefer-<%= i %>">Refer to</button>
                                  <!-- Modal -->
-                                 <div class="modal fade" id="modalRefer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                 <div class="modal fade" id="modalRefer-<%= i %>" tabindex="-1" role="dialog" aria-labelledby="modalReferTitle-<%= i %>" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Choose the Members</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <h5 class="modal-title" id="modalReferTitle-<%= i %>">Choose the Members</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">
                                         <form action="/study" method="post">
                                           <div class="form-group">
                                             <div class="form-group">
-                                              <input autocomplete='off' class='form-control' type="text" id="ERN5" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                                              <input autocomplete='off' class='form-control' type="text" id="ERN5-<%= i %>" name="myenrollmentnumber" value="ERN000012025" >
                                               <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
                                             </div><br>
-                                            <input autocomplete='off' class='form-control' type="text" name="uruida" placeholder="Enter UIDN" name="uida" >
-                                            <small id="emailHelp" class="form-text text-muted">Verify if the UIDN is correctly matched.</small><br><br>
+                                            <input type="hidden" name="uruida" value="<%= uidas[i] %>">
+                                            <input type="hidden" name="myuida" value="<%= uidas[i] %>">
+                                            <small class="form-text text-muted">UIDN attached automatically.</small><br><br>
                                           </div>
                                           <div class="form-check">
                                             <% for (var k= 0; k<urusernames.length; k++) { %>
-                                              <input type="checkbox" class="text-center form-check-input" name="urenrollrefname" id="flexCheckDefault" value="<%=urusernames[k]%>">
-                                              <label class="form-check-label" for="flexCheckDefault"><%=urusernames[k]%> </label><br>  
+                                              <input type="checkbox" class="text-center form-check-input" name="urenrollrefname" id="flexCheckDefault-<%= i %>-<%= k %>" value="<%=urusernames[k]%>">
+                                              <label class="form-check-label" for="flexCheckDefault-<%= i %>-<%= k %>"><%=urusernames[k]%> </label><br>  
                                               <% } %>                       
                                           </div>
    
                                           <br>
                                       </div>
                                       <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
                                       </form>
                                       </div>
@@ -330,13 +346,22 @@
 </div>
           
           <div class="col-2">
+            <br><br>
+              <form action="/">
+              <button  style="margin-left:50%;" class="btn btn-warning justify-content-between text-center" href="/home">Logout</button><br><br><br>
+              </form>
+            <div class="btn btn-white justify-content-between text-center container">
+            <h2 class="accordion-header" id="flush-headingOne">
+              <a class="btn" align="center" href="/policy" role="button">Browse Editorials</a> 
+            </h2>          
+          </div>
+          <hr>
               <div class="container text-center">
-                <br>
-                <button class="btn btn-white text-center">Referred to me</button>
+                <button id="btnReferred" class="btn btn-white text-center">Referred to me</button>
                 <hr>
-                <button type="button" class="btn btn-white justify-content-center">
+                <a href="/catchup" class="btn btn-white justify-content-center" role="button">
                   Catch up with my study team!!
-                </button>
+                </a>
                 <br><br>
               </div>
             <div class="accordion" id="studyTeam">
@@ -346,14 +371,13 @@
                     My Study Team
                   </button>
                 </h2>
-                <div id="studyTeam-collapseOne" class="accordion-collapse collapse show" aria-labelledby="studyTeam-headingOne" data-bs-parent="#studyTeam">
+                <div id="studyTeam-collapseOne" class="accordion-collapse collapse text-center" aria-labelledby="studyTeam-headingOne" data-bs-parent="#studyTeam">
                   <div class="accordion-body">
                     <% for (var k= 0; k<urusernames.length; k++) { %>
-                      <input type="checkbox" class="text-center" >
                       <label for=""> <%=urusernames[k]%> </label><br>
                       <% } %>
                       <br>
-                      <button type="button" style="margin-left:10%;" class="btn btn-primary justify-content-between" data-toggle="modal" data-target="#modalTeam">
+                      <button type="button" style="margin-left:10%;" class="btn btn-primary justify-content-between" data-bs-toggle="modal" data-bs-target="#modalTeam">
                         Add a member
                       </button>
                   </div>
@@ -362,10 +386,7 @@
                 </div>
                 
               </div>
-              <br>
-              <form action="/">
-              <button  style="margin-left:50%;" class="btn btn-warning justify-content-center" href="/home">Logout</button>
-              </form>
+              
              <!-- Modal -->
              <div class="modal fade" id="modalTeam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
@@ -380,7 +401,7 @@
                     <form action="/study" method="post">
                       <!-- Modal -->
                       <div class="form-group">
-                        <input autocomplete='off' class='form-control' type="text" id="ERN6" name="myenrollmentnumber" value="ERN9455uw0ru" >
+                        <input autocomplete='off' class='form-control' type="text" id="ERN6" name="myenrollmentnumber" value="ERN000012025" >
                         <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
                       
                         <label for="main-group" class="col-form-label">New User Name</label>
@@ -402,6 +423,16 @@
 
         </div>
       </div>
+<footer class="page-footer" role="contentinfo">
+<div class="content text-center">
+<div class="copyright">© 2025.<span id="yr"></span> Maadhava Anusuyaa C. All rights reserved.</div>
+<div class="links">
+<a href="#">Privacy Statement</a>
+<div class="toc"><a href="#">Terms of Conditions</a>
+</div>
+</div>
+</div>
+</footer>
     </div>
   </div>
 
@@ -410,13 +441,41 @@
 
   </div>
 <script>
- // console.log( $("h4[name~='uidrefnumber']").attr("value"));
+document.addEventListener('DOMContentLoaded', function () {
+  // Close other accordions when one opens
+  document.addEventListener('show.bs.collapse', function (e) {
+    const accordion = document.getElementById('accordionFlushExample');
+    if (!accordion) return;
+
+    const collapses = accordion.querySelectorAll('.accordion-collapse');
+    collapses.forEach(collapse => {
+      if (collapse !== e.target) {
+        const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+        if (bsCollapse) {
+          bsCollapse.hide();
+        } else {
+          new bootstrap.Collapse(collapse, { toggle: false }).hide();
+        }
+      }
+    });
+  });
+  // Referred button redirect
+  const btnRef = document.getElementById('btnReferred');
+  if (btnRef) {
+    btnRef.addEventListener('click', function () {
+      let ern = '';
+      const ernInput = document.getElementById('ERN1');
+      if (ernInput && ernInput.value) ern = ernInput.value.trim();
+      if (!ern) {
+        const prof = document.querySelector('.profile-enrollment');
+        if (prof) ern = prof.textContent.trim();
+      }
+      if (!ern) ern = 'ERN000012025';
+      window.location.href = '/referred/' + encodeURIComponent(ern);
+    });
+  }
+});
 </script>
-
-
-
-
-
 
 </body>
 

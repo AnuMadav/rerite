@@ -42,7 +42,7 @@
 
     <div class="jumbotron centered">
       <div class="container">
-        <h1 class="display-3 text-center">Rerite</h1>
+        <h1 class="display-3 text-center">Already registered. Welcome back!</h1>
         <div class="jumbotron jumbotron-fluid">
           <div class="container"></div>
         </div>
@@ -54,13 +54,13 @@
               <div class="card">
                 <div class="card-body">
                   <!-- Makes POST request to /login route -->
-                  <form action="/study" method="">
+                  <form action="/login" method="post">
                     <div class="form-group">
                       <label for="text">Username</label>
                       <input
                         type="text"
                         class="form-control"
-                        name="myusername"
+                        name="myusername" required
                       />
                       <small class="text-muted"
                         >Your username. It is of 12 characters.</small
@@ -72,7 +72,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        name="myenrollmentnumber"
+                        name="myenrollmentnumber" required
                       />
                       <small class="text-muted"
                         >Your enrollment number. It contains 18 characters which
@@ -86,7 +86,7 @@
                       <input
                         type="email"
                         class="form-control"
-                        name="myemailadress"
+                        name="myemailadress" required
                       />
                       <small class="text-muted"
                         >It is used to prevent bots from logging in.</small

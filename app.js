@@ -3,14 +3,28 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const session = require("express-session");
 
 const app = express();
+
+// Setup sessions
+app.use(session({
+  secret: 'serveup-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
+}));
 
 var options = {
   weekday: "long",
   day: "numeric",
   month: "long",
 };
+
+function escapeRegex(text) {
+  if (!text) return "";
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 app.use(express.static("static"));
 
@@ -322,48 +336,148 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const mongoose = require("mongoose");
-const { Int32 } = require("mongodb");
 mongoose.connect(
   "mongodb+srv://rerite:vf69tgNdntAsh76@cluster0.zt8sx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 );
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
+db.once("open", async function () {
   console.log("Connected successfully");
 });
 
-app.get("/test", function (req, res) {
-  async function main() {
-    try {
-      await client.connect();
-      await bsearch(client, "Mental Health in contemporary times", 20);
-    } finally {
-      await client.close();
-    }
-    main().catch(console.error);
-    async function bsearch(client, id3, maxNumberToPrint) {
-      const pipeline = [
-        {
-          $match: {
-            id3: "Mental Health in contemporary times",
-          },
-        },
-        {
-          $limit: 20,
-        },
-      ];
-      const aggCursor = client
-        .db("myFirstDatabase")
-        .collection("args")
-        .aggregate(pipeline);
+app.get("/test", async function (req, res) {
+  try {
+    const results = Arg.find({ id3: "Mental Health in contemporary times" })
+      .limit(20)
+      .exec();
+    results.forEach((r) => {
+      console.log(`${r.id3}: ${r.marg}`);
+    });
+    res.send("HI");
+  } catch (err) {
+    console.error("Test route error:", err);
+    res.status(500).send("Error");
+  }
+});
 
-      await aggCursor.forEach((search) => {
-        console.log(`${search.id3}: ${search.bsearch}`);
+// add at appropriate place in app.js (replace your existing /list/:listname handler)
+app.get("/list/:listname", async (req, res) => {
+  try {
+    const listname = req.params.listname;
+    const userEnrollment = req.session.enrollment || "ERN000012025";
+
+    // Find saved items for this list and user's enrollment
+    const saved = await Mysavedarg.find({ 
+      mylistargname: listname,
+      myenrollmentnumber: userEnrollment
+    }).lean();
+
+    // If nothing saved for this list, render empty page (no args)
+    if (!saved || saved.length === 0) {
+      // Fetch UI helpers filtered by enrollment
+      const mylistnames = await Mysavedarg.find({
+        myenrollmentnumber: userEnrollment
+      }).distinct("mylistargname");
+      const urusernames = await Mystudyteam.find({
+        myenrollmentnumber: userEnrollment
+      }).distinct("urusername");
+      const kindOfDay = new Date().toLocaleDateString("en-US", options);
+
+      return res.render("list", {
+        listname,
+        args: [],
+        mylistnames: mylistnames || [],
+        urusernames: urusernames || [],
+        kindOfDay,
       });
     }
+
+    // Extract all UIDAs (unique)
+    const uidas = [...new Set(saved.map((s) => s.myuida).filter(Boolean))];
+
+    // Fetch matching arguments (use .lean() so it's a plain object for EJS)
+    const args = await Arg.find({ ida: { $in: uidas } })
+      .sort({ _id: -1 })
+      .lean();
+
+    // UI helper lists filtered by enrollment
+    const mylistnames = await Mysavedarg.find({
+      myenrollmentnumber: userEnrollment
+    }).distinct("mylistargname");
+    const urusernames = await Mystudyteam.find({
+      myenrollmentnumber: userEnrollment
+    }).distinct("urusername");
+
+    const kindOfDay = new Date().toLocaleDateString("en-US", options);
+
+    return res.render("list", {
+      listname,
+      args,
+      mylistnames: mylistnames || [],
+      urusernames: urusernames || [],
+      kindOfDay,
+    });
+  } catch (err) {
+    console.error("Error rendering list page:", err);
+    return res.status(500).send("Server error");
   }
-  res.send("HI");
+});
+
+// Referred items for a given enrollment number
+app.get("/referred/:enrollment", async (req, res) => {
+  try {
+    // Use session enrollment, not URL parameter
+    const userEnrollment = req.session.enrollment || "ERN000012025";
+
+    // Query myreferreds collection where myenrollmentnumber matches
+    const referred = await Myreferred.find({
+      myenrollmentnumber: userEnrollment
+    }).lean();
+
+    if (!referred || referred.length === 0) {
+      const mylistnames = await Mysavedarg.find({
+        myenrollmentnumber: userEnrollment
+      }).distinct("mylistargname");
+      const urusernames = await Mystudyteam.find({
+        myenrollmentnumber: userEnrollment
+      }).distinct("urusername");
+      const kindOfDay = new Date().toLocaleDateString("en-US", options);
+
+      return res.render("referred", {
+        enrollment: userEnrollment,
+        args: [],
+        mylistnames: mylistnames || [],
+        urusernames: urusernames || [],
+        kindOfDay,
+      });
+    }
+
+    // Collect unique UIDs referred to this user
+    const uidas = [...new Set(referred.map((r) => r.uruida).filter(Boolean))];
+
+    // Fetch matching arguments from Arg collection
+    const args = await Arg.find({ ida: { $in: uidas } }).sort({ _id: -1 }).lean();
+
+    const mylistnames = await Mysavedarg.find({
+      myenrollmentnumber: userEnrollment
+    }).distinct("mylistargname");
+    const urusernames = await Mystudyteam.find({
+      myenrollmentnumber: userEnrollment
+    }).distinct("urusername");
+    const kindOfDay = new Date().toLocaleDateString("en-US", options);
+
+    return res.render("referred", {
+      enrollment: userEnrollment,
+      args,
+      mylistnames: mylistnames || [],
+      urusernames: urusernames || [],
+      kindOfDay,
+    });
+  } catch (err) {
+    console.error("Error rendering referred page:", err);
+    return res.status(500).send("Server error");
+  }
 });
 
 const argsSchema = {
@@ -393,19 +507,13 @@ const argsSchema = {
 
 //MY ESSENTIALS
 const myessentialsSchema = {
-  myusername: {
+  myusername: { 
     type: String,
   },
-  myenrollmentnumber: {
+  myenrollmentnumber: { 
     type: String,
   },
-  myemailadress: {
-    type: String,
-  },
-  mylistname: {
-    type: String,
-  },
-  urenrollmentnumber: {
+  myemailadress: { 
     type: String,
   },
 };
@@ -433,6 +541,9 @@ const mysavedargsSchema = {
   },
   myuida: {
     type: String,
+  },
+  mylistname: { 
+    type: String 
   },
 };
 
@@ -507,8 +618,6 @@ const myessential1 = new Myessential({
   myusername: "",
   myenrollmentnumber: "",
   myemailadress: "",
-  mylistname: "",
-  urenrollmentnumber: "",
 });
 
 const mystudyteam1 = new Mystudyteam({
@@ -521,6 +630,7 @@ const mysavedarg1 = new Mysavedarg({
   myenrollmentnumber: "",
   mylistargname: "",
   myuida: "",
+  mylistname: "",
 });
 
 const myreferred1 = new Myreferred({
@@ -642,29 +752,25 @@ Mystudyteam.find(
   }
 ).limit(10);
 
-Myessential.find(
-  {
-    $and: [
-      { mylistname: { $exists: true, $ne: null } },
-      { uida: { $exists: false } },
-    ],
-  },
-
+Mysavedarg.find(
+  { mylistname: { $exists: true, $ne: null } },
   null,
   { sort: { _id: -1 } },
-  function (err, studyteams) {
-    studyteams.forEach(function (studyteam) {
-      var mylistname = studyteam.mylistname;
-
-      mylistnames.push(mylistname);
+  function (err, savedargs) {
+    savedargs.forEach(function (s) {
+      mylistnames.push(s.mylistname);
     });
   }
 ).limit(4);
 
-Mysocial.find({}, function (err, social) {
-  social.forEach(function (social) {
-    var myagreecomment = social.agreeName;
-    var myquerycomment = social.queryName;
+Mysocial.find({}, async function (err, socials) {
+  if (err) {
+    console.error("Mysocial.find error:", err);
+    return;
+  }
+  socials.forEach(function (s) {
+    var myagreecomment = s.myagreecomment || s.agreeName || "";
+    var myquerycomment = s.myquerycomment || s.queryName || "";
 
     myagreeNames.push(myagreecomment);
     myqueryNames.push(myquerycomment);
@@ -1821,7 +1927,7 @@ Mypolicy.find(
     });
   });
     
-app.get("/index", function (req, res) {
+app.get("/index", async function (req, res) {
   var today = new Date();
   var day = today.toLocaleDateString("en-US", options);
 
@@ -1853,20 +1959,19 @@ app.get("/index", function (req, res) {
   });
 });
 
-app.get("/", function (req, res) {
+app.get("/", async function (req, res) {
   res.render("home");
 });
 
-app.get("/register", function (req, res) {
+app.get("/register", async function (req, res) {
   res.render("register");
 });
 
-app.get("/catchup", function (req, res) {
-  res.render("catchup");
-});
-
-app.get("/policy", function (req, res) {
+app.get("/policy", async function (req, res) {
+  const userEnrollment = req.session.enrollment || "ERN000012025";
+  
   res.render("policy", {
+    userEnrollment: userEnrollment,
     ruraltitles: ruraltitles,
     ruralserialnos: ruralserialnos,
     rurallinks:  rurallinks,
@@ -2146,16 +2251,18 @@ app.get("/policy", function (req, res) {
   });
 });
 
-app.get("/login", function (req, res) {
+app.get("/login", async function (req, res) {
   res.render("login");
 });
 
-app.get("/basicsearch", function (req, res) {
+app.get("/basicsearch", async function (req, res) {
   var today = new Date();
   var day = today.toLocaleDateString("en-US", options);
+  const userEnrollment = req.session.enrollment || "ERN000012025";
 
   res.render("basicsearch", {
     kindOfDay: day,
+    userEnrollment: userEnrollment,
     mainArguments: mainArguments,
     supArgument1s: supArgument1s,
     supArgument2s: supArgument2s,
@@ -2183,45 +2290,62 @@ app.get("/basicsearch", function (req, res) {
   });
 });
 
-app.get("/advancedsearch", function (req, res) {
+app.get("/advancedsearch", async function (req, res) {
   var today = new Date();
   var day = today.toLocaleDateString("en-US", options);
+  const userEnrollment = req.session.enrollment || "ERN000012025";
 
   res.render("advancedsearch", {
     kindOfDay: day,
-    mainArguments: mainArguments,
-    supArgument1s: supArgument1s,
-    supArgument2s: supArgument2s,
-    supArgument3s: supArgument3s,
-    newspaperjournals: newspaperjournals,
-    opiniondates: opiniondates,
-    chapters: chapters,
-    termtitles: termtitles,
-    termexplanations: termexplanations,
-    uidas: uidas,
-    wnewss: wnewss,
-    wpoint1s: wpoint1s,
-    wpoint2s: wpoint2s,
-    wpoint3s: wpoint3s,
-    wpoint4s: wpoint4s,
-    wpoint5s: wpoint5s,
-    wopinionons: wopinionons,
-    wopinion1s: wopinion1s,
-    wopinionbys: wopinionbys,
-    wbooktitles: wbooktitles,
-    wauthortitles: wauthortitles,
-    wpublications: wpublications,
+    userEnrollment: userEnrollment,
+    mainArguments: [],
+    supArgument1s: [],
+    supArgument2s: [],
+    supArgument3s: [],
+    newspaperjournals: [],
+    opiniondates: [],
+    chapters: [],
+    termtitles: [],
+    termexplanations: [],
+    uidas: [],
+    wnewss: [],
+    wpoint1s: [],
+    wpoint2s: [],
+    wpoint3s: [],
+    wpoint4s: [],
+    wpoint5s: [],
+    wopinionons: [],
+    wopinion1s: [],
+    wopinionbys: [],
+    wbooktitles: [],
+    wauthortitles: [],
+    wpublications: [],
     urusernames: urusernames,
     mylistnames: mylistnames,
   });
 });
 
-app.get("/study", function (req, res) {
+app.get("/study", async function (req, res) {
   var today = new Date();
   var day = today.toLocaleDateString("en-US", options);
+  const userEnrollment = req.session.enrollment || "ERN000012025";
+
+  // Fetch study team members for this user only
+  const userStudyTeam = await Mystudyteam.find({ 
+    myenrollmentnumber: userEnrollment 
+  }).lean();
+  
+  // Extract usernames of study team members
+  const userRusernames = userStudyTeam.map(st => st.urusername).filter(Boolean);
+
+  // Fetch saved lists for this user's enrollment only
+  const userSavedLists = await Mysavedarg.find({ 
+    myenrollmentnumber: userEnrollment 
+  }).distinct("mylistname");
 
   res.render("study", {
     kindOfDay: day,
+    userEnrollment: userEnrollment,
     mainArguments: mainArguments,
     supArgument1s: supArgument1s,
     supArgument2s: supArgument2s,
@@ -2244,12 +2368,66 @@ app.get("/study", function (req, res) {
     wbooktitles: wbooktitles,
     wauthortitles: wauthortitles,
     wpublications: wpublications,
-    urusernames: urusernames,
-    mylistnames: mylistnames,
+    urusernames: userRusernames,
+    mylistnames: userSavedLists || [],
   });
 });
 
-app.post("/index", function (req, res) {
+// Catch up with study team - show agrees and queries from team members
+app.get("/catchup", async function (req, res) {
+  try {
+    var today = new Date();
+    var day = today.toLocaleDateString("en-US", options);
+    const userEnrollment = req.session.enrollment || "ERN000012025";
+
+    // Fetch study team members for this user
+    const userStudyTeam = await Mystudyteam.find({ 
+      myenrollmentnumber: userEnrollment 
+    }).lean();
+    
+    // Extract enrollment numbers of study team members
+    const teamEnrollments = userStudyTeam.map(st => st.urenrollmentnumber).filter(Boolean);
+
+    // Fetch social comments (agrees and queries) from team members
+    const socialComments = await Mysocial.find({
+      myenrollmentnumber: { $in: teamEnrollments },
+      $or: [
+        { myagreecomment: { $exists: true, $ne: "" } },
+        { myquerycomment: { $exists: true, $ne: "" } }
+      ]
+    }).sort({ _id: -1 }).lean();
+
+    // Fetch corresponding arguments
+    const anuidas = [...new Set(socialComments.map(s => s.anuida).filter(Boolean))];
+    const args = await Arg.find({ ida: { $in: anuidas } }).lean();
+
+    // Create a map of ida -> arg for easy lookup
+    const argMap = {};
+    args.forEach(arg => {
+      argMap[arg.ida] = arg;
+    });
+
+    // Attach argument details to each comment
+    const commentsWithArgs = socialComments.map(comment => ({
+      ...comment,
+      arg: argMap[comment.anuida] || {}
+    }));
+
+    const mylistnames = await Mysavedarg.distinct("mylistargname");
+    
+    res.render("catchup", {
+      kindOfDay: day,
+      userEnrollment: userEnrollment,
+      comments: commentsWithArgs,
+      mylistnames: mylistnames || []
+    });
+  } catch (err) {
+    console.error("Catchup error:", err);
+    return res.status(500).send("Server error");
+  }
+});
+
+app.post("/index", async function (req, res) {
   var margName = req.body.mainargument;
   var sarg1Name = req.body.supportingargument1;
   var sarg2Name = req.body.supportingargument2;
@@ -2303,79 +2481,359 @@ app.post("/index", function (req, res) {
   res.redirect("/index");
 });
 
-app.post("/study", function (req, res) {
+app.post("/register", async function(req, res) {
+  try {
+    const { myusername, myenrollmentnumber, myemailadress } = req.body;
+
+    const existingUser = await Myessential.findOne({
+      myusername: myusername,
+      myenrollmentnumber: myenrollmentnumber,
+      myemailadress: myemailadress,
+    });
+
+    if (existingUser) {
+      return res.redirect("/login");
+    }
+
+    const newUser = new Myessential({
+      myusername,
+      myenrollmentnumber,
+      myemailadress
+    });
+
+    await newUser.save();
+    console.log("New user registered");
+
+    return res.redirect("/login");
+
+  } catch (err) {
+    console.error("Registration error:", err);
+    return res.status(500).send("Registration error");
+  }
+});
+
+app.post("/login", async function(req, res) {
+  try {
+    const myenrollmentnumberName = req.body.myenrollmentnumber;
+    const myusernameName = req.body.myusername;
+    const myemailadressName = req.body.myemailadress;
+
+    const myessential = await Myessential.findOne({
+      myusername: myusernameName,
+      myenrollmentnumber: myenrollmentnumberName,
+      myemailadress: myemailadressName,
+    });
+
+    if (myessential) {
+      // Store user info in session
+      req.session.enrollment = myenrollmentnumberName;
+      req.session.username = myusernameName;
+      req.session.email = myemailadressName;
+      return res.redirect("/study");
+    } else {
+      console.log("User not found");
+      return res.redirect("/register");
+    }
+
+  } catch (err) {
+    console.error("Login error:", err);
+    return res.status(500).send("Login error");
+  }
+});
+
+app.post("/study", async function (req, res) {
   var myagreeName = req.body.agreecomment;
   var myqueryName = req.body.querycomment;
   var urusernameName = req.body.yourusername;
   var urenrollidName = req.body.yourenrollid;
   var mylistnameName = req.body.listname;
+  // If the user submitted a new list name (from the "Add New List" modal),
+  // create a Mysavedarg entry so the list shows up in UI helper lists.
+  // Avoid creating duplicates.
+  if (mylistnameName && mylistnameName.trim()) {
+    const listnameClean = mylistnameName.trim();
+    try {
+      const exists = await Mysavedarg.findOne({ mylistargname: listnameClean });
+      if (!exists) {
+        const newList = new Mysavedarg({
+          myenrollmentnumber: myenrollmentnumberName || "",
+          mylistargname: listnameClean,
+          myuida: "",
+          mylistname: listnameClean,
+        });
+        await newList.save();
+      }
+    } catch (err) {
+      console.error("Error creating new list:", err);
+    }
+  }
   var myuidargName = req.body.myuida;
   var anuidargName = req.body.anuida;
   var uruidargName = req.body.uruida;
   var myenrollmentnumberName = req.body.myenrollmentnumber;
+  var myusernameName = req.body.myusername
+  var myemailadressName = req.body.myemailadress;
   var mylistargnameName = req.body.listargname;
   var urenrollrefnameName = req.body.urenrollrefname;
 
-  const myessential = new Myessential({
-    myenrollmentnumber: myenrollmentnumberName,
-    mylistname: mylistnameName,
-  });
 
-  const mystudyteam = new Mystudyteam({
-    myenrollmentnumber: myenrollmentnumberName,
-    urusername: urusernameName,
-    urenrollmentnumber: urenrollidName,
-  });
+    const mystudyteam = new Mystudyteam({
+      myenrollmentnumber: myenrollmentnumberName,
+      urusername: urusernameName,
+      urenrollmentnumber: urenrollidName,
+    });
 
-  const mysavedarg = new Mysavedarg({
-    myenrollmentnumber: myenrollmentnumberName,
-    mylistargname: mylistargnameName,
-    myuida: myuidargName,
-  });
+    // Save one Mysavedarg document per selected list. Handle single selection (string) or multiple (array).
+    const mysavedargPromises = [];
+    if (mylistargnameName) {
+      const selections = Array.isArray(mylistargnameName) ? mylistargnameName : [mylistargnameName];
+      for (const ln of selections) {
+        const s = new Mysavedarg({
+          myenrollmentnumber: myenrollmentnumberName,
+          mylistargname: ln,
+          myuida: myuidargName,
+          mylistname: mylistnameName,
+        });
+        mysavedargPromises.push(s.save());
+      }
+    }
 
-  const myreferred = new Myreferred({
-    myenrollmentnumber: myenrollmentnumberName,
-    uruida: uruidargName,
-    urenrollrefname: urenrollrefnameName,
-  });
+    const myreferred = new Myreferred({
+      myenrollmentnumber: myenrollmentnumberName,
+      uruida: uruidargName,
+      urenrollrefname: urenrollrefnameName,
+    });
 
-  const mysocial = new Mysocial({
-    myagreecomment: myagreeName,
-    myquerycomment: myqueryName,
-    anuida: anuidargName,
-    myenrollmentnumber: myenrollmentnumberName,
-  });
+    const mysocial = new Mysocial({
+      myagreecomment: myagreeName,
+      myquerycomment: myqueryName,
+      anuida: anuidargName,
+      myenrollmentnumber: myenrollmentnumberName,
+    });
 
-  myessential.save();
-  mysavedarg.save();
-  myreferred.save();
-  mystudyteam.save();
-  mysocial.save();
+    // Await all saves so errors are caught and we don't pass arrays into String fields.
+    await mystudyteam.save();
+    await Promise.all(mysavedargPromises);
+    await myreferred.save();
+    await mysocial.save();
 
-  res.redirect("/study");
+    res.redirect("/study");
+
 });
 
-app.post("/basicsearch", function (req, res) {
-  var bsearchtopic = req.body.chapter;
+app.post("/basicsearch", async function (req, res) {
+  try {
+    var bsearchtopic = req.body.chapter || req.body.topic || req.body.subject;
 
-  const mybasicsearch = new Basicsearch({
-    basicsearch: bsearchtopic,
-  });
-  mybasicsearch.save();
+    const mybasicsearch = new Basicsearch({ basicsearch: bsearchtopic });
+    mybasicsearch.save().catch((e) => console.error("Basicsearch save error:", e));
 
-  res.redirect("/basicsearch");
+    const docs = await Arg.find({ id3: bsearchtopic })
+      .sort({ _id: -1 })
+      .limit(200)
+      .exec();
+
+    const res_uida = [];
+    const res_mainArguments = [];
+    const res_supArgument1s = [];
+    const res_supArgument2s = [];
+    const res_supArgument3s = [];
+    const res_opiniondates = [];
+    const res_newspaperjournals = [];
+    const res_chapters = [];
+    const res_termtitles = [];
+    const res_termexplanations = [];
+    const res_wnewss = [];
+    const res_wpoint1s = [];
+    const res_wpoint2s = [];
+    const res_wpoint3s = [];
+    const res_wpoint4s = [];
+    const res_wpoint5s = [];
+    const res_wopinionons = [];
+    const res_wopinion1s = [];
+    const res_wopinionbys = [];
+    const res_wbooktitles = [];
+    const res_wauthortitles = [];
+    const res_wpublications = [];
+
+    docs.forEach((doc) => {
+      res_uida.push(doc.ida || "");
+      res_mainArguments.push(doc.marg || "");
+      res_supArgument1s.push(doc.sarg1 || "");
+      res_supArgument2s.push(doc.sarg2 || "");
+      res_supArgument3s.push(doc.sarg3 || "");
+      res_opiniondates.push(doc.opd || "");
+      res_newspaperjournals.push(doc.njs || "");
+      res_chapters.push(doc.id3 || "");
+      res_termtitles.push(doc.trm || "");
+      res_termexplanations.push(doc.texp || "");
+      res_wnewss.push(doc.nws || "");
+      res_wpoint1s.push(doc.pnt1 || "");
+      res_wpoint2s.push(doc.pnt2 || "");
+      res_wpoint3s.push(doc.pnt3 || "");
+      res_wpoint4s.push(doc.pnt4 || "");
+      res_wpoint5s.push(doc.pnt5 || "");
+      res_wopinionons.push(doc.opnn || "");
+      res_wopinion1s.push(doc.opn1 || "");
+      res_wopinionbys.push(doc.opnb || "");
+      res_wbooktitles.push(doc.btle || "");
+      res_wauthortitles.push(doc.btar || "");
+      res_wpublications.push(doc.bpne || "");
+    });
+
+    var today = new Date();
+    var day = today.toLocaleDateString("en-US", options);
+
+    res.render("basicsearch", {
+      kindOfDay: day,
+      mainArguments: res_mainArguments,
+      supArgument1s: res_supArgument1s,
+      supArgument2s: res_supArgument2s,
+      supArgument3s: res_supArgument3s,
+      newspaperjournals: res_newspaperjournals,
+      opiniondates: res_opiniondates,
+      chapters: res_chapters,
+      termtitles: res_termtitles,
+      termexplanations: res_termexplanations,
+      uidas: res_uida,
+      wnewss: res_wnewss,
+      wpoint1s: res_wpoint1s,
+      wpoint2s: res_wpoint2s,
+      wpoint3s: res_wpoint3s,
+      wpoint4s: res_wpoint4s,
+      wpoint5s: res_wpoint5s,
+      wopinionons: res_wopinionons,
+      wopinion1s: res_wopinion1s,
+      wopinionbys: res_wopinionbys,
+      wbooktitles: res_wbooktitles,
+      wauthortitles: res_wauthortitles,
+      wpublications: res_wpublications,
+      urusernames: urusernames || [],
+      mylistnames: mylistnames || [],
+    });
+  } catch (err) {
+    console.error("Basicsearch query error:", err);
+    res.status(500).send("Search error");
+  }
 });
 
-app.post("/advancedsearch", function (req, res) {
-  console.log(req.body.string);
+app.post("/advancedsearch", async function (req, res) {
+  try {
+    const q = (req.body.string || "").trim();
+    if (!q) return res.redirect("/advancedsearch");
 
-  res.redirect("/advancedsearch");
+    const regex = new RegExp(escapeRegex(q), "i");
+
+    // FIXED: await the query
+    const docs = await Arg.find({
+      $or: [
+        { marg: regex },
+        { sarg1: regex },
+        { sarg2: regex },
+        { sarg3: regex },
+        { texp: regex },
+        { nws: regex },
+        { pnt1: regex },
+        { pnt2: regex },
+        { pnt3: regex },
+        { pnt4: regex },
+        { pnt5: regex },
+        { opn1: regex },
+        { opnb: regex },
+      ],
+    })
+      .sort({ _id: -1 })
+      .limit(1000)
+      .exec();
+
+    const res_uida = [];
+    const res_mainArguments = [];
+    const res_supArgument1s = [];
+    const res_supArgument2s = [];
+    const res_supArgument3s = [];
+    const res_opiniondates = [];
+    const res_newspaperjournals = [];
+    const res_chapters = [];
+    const res_termtitles = [];
+    const res_termexplanations = [];
+    const res_wnewss = [];
+    const res_wpoint1s = [];
+    const res_wpoint2s = [];
+    const res_wpoint3s = [];
+    const res_wpoint4s = [];
+    const res_wpoint5s = [];
+    const res_wopinionons = [];
+    const res_wopinion1s = [];
+    const res_wopinionbys = [];
+    const res_wbooktitles = [];
+    const res_wauthortitles = [];
+    const res_wpublications = [];
+
+    docs.forEach((doc) => {
+      res_uida.push(doc.ida || "");
+      res_mainArguments.push(doc.marg || "");
+      res_supArgument1s.push(doc.sarg1 || "");
+      res_supArgument2s.push(doc.sarg2 || "");
+      res_supArgument3s.push(doc.sarg3 || "");
+      res_opiniondates.push(doc.opd || "");
+      res_newspaperjournals.push(doc.njs || "");
+      res_chapters.push(doc.id3 || "");
+      res_termtitles.push(doc.trm || "");
+      res_termexplanations.push(doc.texp || "");
+      res_wnewss.push(doc.nws || "");
+      res_wpoint1s.push(doc.pnt1 || "");
+      res_wpoint2s.push(doc.pnt2 || "");
+      res_wpoint3s.push(doc.pnt3 || "");
+      res_wpoint4s.push(doc.pnt4 || "");
+      res_wpoint5s.push(doc.pnt5 || "");
+      res_wopinionons.push(doc.opnn || "");
+      res_wopinion1s.push(doc.opn1 || "");
+      res_wopinionbys.push(doc.opnb || "");
+      res_wbooktitles.push(doc.btle || "");
+      res_wauthortitles.push(doc.btar || "");
+      res_wpublications.push(doc.bpne || "");
+    });
+
+    var today = new Date();
+    var day = today.toLocaleDateString("en-US", options);
+
+    res.render("advancedsearch", {
+      kindOfDay: day,
+      mainArguments: res_mainArguments,
+      supArgument1s: res_supArgument1s,
+      supArgument2s: res_supArgument2s,
+      supArgument3s: res_supArgument3s,
+      newspaperjournals: res_newspaperjournals,
+      opiniondates: res_opiniondates,
+      chapters: res_chapters,
+      termtitles: res_termtitles,
+      termexplanations: res_termexplanations,
+      uidas: res_uida,
+      wnewss: res_wnewss,
+      wpoint1s: res_wpoint1s,
+      wpoint2s: res_wpoint2s,
+      wpoint3s: res_wpoint3s,
+      wpoint4s: res_wpoint4s,
+      wpoint5s: res_wpoint5s,
+      wopinionons: res_wopinionons,
+      wopinion1s: res_wopinion1s,
+      wopinionbys: res_wopinionbys,
+      wbooktitles: res_wbooktitles,
+      wauthortitles: res_wauthortitles,
+      wpublications: res_wpublications,
+      urusernames: urusernames || [],
+      mylistnames: mylistnames || [],
+    });
+  } catch (err) {
+    console.error("Advanced search error:", err);
+    res.status(500).send("Search error");
+  }
 });
 
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 }
-app.listen(port, function () {
-  console.log("Server running on port.");
+app.listen(port, async function () {
+  console.log(`Server running on port ${port}`);
 });
