@@ -52,7 +52,7 @@
             <div id="flush-collapseTwo" class="accordion-collapse collapse collapsebckgrd" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
               <nav class="navbar navbar-light">
                 <ul>
-                  <% for (var j = 0; j < mylistnames.length; j++) { %>
+                  <% for (var j = Math.max(0, mylistnames.length - 3); j < mylistnames.length; j++) { %>
                     <a href="/list/<%= mylistnames[j] %>/<%= uidas[i] %>" 
                       class="btn btn-white justify-content-center" 
                       style="margin-left:-20%;">
@@ -168,7 +168,7 @@
                                                     type="text" 
                                                     id="ERN2-<%= i %>" 
                                                     name="myenrollmentnumber" 
-                                                    value="ERN000012025">
+                                                    value="<%= userEnrollment %>">
                                               <small class="form-text text-muted">Verify if your enrollment number is correctly matched.</small>
                                             </div>
 
@@ -184,7 +184,7 @@
 
                                             <!-- Checkbox list -->
                                             <div class="form-check">
-                                              <% for (var j = 0; j < mylistnames.length; j++) { %>
+                                              <% for (var j = Math.max(0, mylistnames.length - 3); j < mylistnames.length; j++) { %>
                                                 <input type="checkbox" 
                                                       class="form-check-input" 
                                                       name="listargname[]" 
@@ -224,7 +224,7 @@
                                             <div class="modal-body">
                                               <form action="/study" method="post">
                                                 <div class="form-group">
-                                                  <input autocomplete='off' class='form-control' type="text" id="ERN3-<%= i %>" name="myenrollmentnumber" value="ERN000012025" >
+                                                  <input autocomplete='off' class='form-control' type="text" id="ERN3-<%= i %>" name="myenrollmentnumber" value="<%= userEnrollment %>" >
                                                   <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
                                                 </div><br>
                                                 <div class="form-group">
@@ -260,7 +260,7 @@
                                       <div class="modal-body">
                                         <form action="/study" method="post">
                                           <div class="form-group">
-                                            <input autocomplete='off' class='form-control' type="text" id="ERN4-<%= i %>" name="myenrollmentnumber" value="ERN000012025" >
+                                            <input autocomplete='off' class='form-control' type="text" id="ERN4-<%= i %>" name="myenrollmentnumber" value="<%= userEnrollment %>" >
                                             <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
                                           </div><br>
                                           <div class="form-group">
@@ -298,7 +298,7 @@
                                         <form action="/study" method="post">
                                           <div class="form-group">
                                             <div class="form-group">
-                                              <input autocomplete='off' class='form-control' type="text" id="ERN5-<%= i %>" name="myenrollmentnumber" value="ERN000012025" >
+                                              <input autocomplete='off' class='form-control' type="text" id="ERN5-<%= i %>" name="myenrollmentnumber" value="<%= userEnrollment %>" >
                                               <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
                                             </div><br>
                                             <input type="hidden" name="uruida" value="<%= uidas[i] %>">
@@ -401,7 +401,7 @@
                     <form action="/study" method="post">
                       <!-- Modal -->
                       <div class="form-group">
-                        <input autocomplete='off' class='form-control' type="text" id="ERN6" name="myenrollmentnumber" value="ERN000012025" >
+                        <input autocomplete='off' class='form-control' type="text" id="ERN6" name="myenrollmentnumber" value="<%= userEnrollment %>" >
                         <small id="" class="form-text text-muted">Verify if your enrollment number is correctly matched.</small><br>
                       
                         <label for="main-group" class="col-form-label">New User Name</label>

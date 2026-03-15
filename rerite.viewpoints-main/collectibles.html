@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+    
+    <title>My Collectibles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/master.css">
+  
+
+  </head>
+  <body>
+<!--Navigation Bar-->
+<nav class="nav nav-pills nav-fill justify-content-center">
+    <a class="nav-link active" href="#"></a>
+    <a class="nav-link" href="index.html">Go back</a>
+  </nav>
+
+
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-4 text-center">
+        <br><br>
+        <h4>Create your own collectible!!</h4>
+        <form>
+            <select class="form-control">
+                <option>Topic</option>
+              </select>
+            <br><br>
+        <h5>Issues from</h5>
+            <label for="start">Start date:</label>
+            <input type="date" id="start" name="trip-start"
+                value="2018-07-22"
+                min="2018-01-01" max="2018-12-31">
+<br><br>
+            <label for="start">End date  :</label>
+            <input type="date" id="start" name="trip-start"
+                value="2018-07-22"
+                min="2018-01-01" max="2018-12-31">
+<br><br>
+
+          <h5>Why this collectible?</h5>
+          <select class="form-control">
+            <option>Competitive exams</option>
+            <option>Research work</option>
+            <option>Fun facts</option>
+            <option>General Knowledge</option>
+            <option>School/ College competitions</option>
+          </select>
+        <br><br>
+        <h5>Number of items required</h5>
+        <label for="quantity">Current Affairs</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10"><br><br>
+
+        <label for="quantity">Academic articles</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="9"><br><br>
+
+        <label for="quantity">Policy Inputs</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="4"><br><br>
+
+        <label for="quantity">Debates</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="12"><br><br>
+        
+        <button type="submit" class="btn btn-primary">Create collectible</button><br>
+        <br>
+        <button type="submit" class="btn btn-primary">Buy this collectible now!</button>
+
+  </body>
+</html>

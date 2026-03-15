@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="/css/master.css">
 </head>
 <body>
-  <div class="container-fluid viewpage">
-    <div class="row align-items-start">
+  <div class="container viewpage" style="max-width: 100%; width: 100%;">
+    <div class="row align-items-start" style="min-height: 100vh;">
 
         <!-- Profile / Sidebar -->
         <div class="col-2">
@@ -25,7 +25,11 @@
           <div class="accordion-item">
           </div>
         </div>
-
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
         </div>
 
 <div class="col-8 pt-3 main-content">
@@ -40,7 +44,7 @@
       </div>
     <% } else { %>
 
-      <div class="accordion" id="catchupAccordion">
+      <div id="listAccordion" class="accordion">
         <% comments.forEach(function(comment, idx) { 
             const collapseId = `collapse-${comment._id || idx}`;
             const headingId = `heading-${comment._id || idx}`;
@@ -67,7 +71,7 @@
               </button>
             </h2>
 
-            <div id="<%= collapseId %>" class="accordion-collapse collapse <%= idx === 0 ? 'show' : '' %>" aria-labelledby="<%= headingId %>" data-bs-parent="#catchupAccordion">
+            <div id="<%= collapseId %>" class="accordion-collapse collapse <%= idx === 0 ? 'show' : '' %>" aria-labelledby="<%= headingId %>" data-bs-parent="#listAccordion">
               <div class="accordion-body">
 
                 <!-- Comment Section -->
@@ -123,6 +127,9 @@
 
     <% } %>
   </div>
+
+  <!-- Right Sidebar Placeholder -->
+  <div class="col-2"></div>
   </div>
   </div>
 

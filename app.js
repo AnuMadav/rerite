@@ -389,6 +389,7 @@ app.get("/list/:listname", async (req, res) => {
         args: [],
         mylistnames: mylistnames || [],
         urusernames: urusernames || [],
+        userEnrollment,
         kindOfDay,
       });
     }
@@ -416,6 +417,7 @@ app.get("/list/:listname", async (req, res) => {
       args,
       mylistnames: mylistnames || [],
       urusernames: urusernames || [],
+      userEnrollment,
       kindOfDay,
     });
   } catch (err) {
@@ -2341,7 +2343,7 @@ app.get("/study", async function (req, res) {
   // Fetch saved lists for this user's enrollment only
   const userSavedLists = await Mysavedarg.find({ 
     myenrollmentnumber: userEnrollment 
-  }).distinct("mylistname");
+  }).distinct("mylistargname");
 
   res.render("study", {
     kindOfDay: day,
@@ -2547,6 +2549,15 @@ app.post("/study", async function (req, res) {
   var urusernameName = req.body.yourusername;
   var urenrollidName = req.body.yourenrollid;
   var mylistnameName = req.body.listname;
+  var myuidargName = req.body.myuida;
+  var anuidargName = req.body.anuida;
+  var uruidargName = req.body.uruida;
+  var myenrollmentnumberName = req.body.myenrollmentnumber;
+  var myusernameName = req.body.myusername
+  var myemailadressName = req.body.myemailadress;
+  var mylistargnameName = req.body.listargname;
+  var urenrollrefnameName = req.body.urenrollrefname;
+
   // If the user submitted a new list name (from the "Add New List" modal),
   // create a Mysavedarg entry so the list shows up in UI helper lists.
   // Avoid creating duplicates.
@@ -2567,14 +2578,6 @@ app.post("/study", async function (req, res) {
       console.error("Error creating new list:", err);
     }
   }
-  var myuidargName = req.body.myuida;
-  var anuidargName = req.body.anuida;
-  var uruidargName = req.body.uruida;
-  var myenrollmentnumberName = req.body.myenrollmentnumber;
-  var myusernameName = req.body.myusername
-  var myemailadressName = req.body.myemailadress;
-  var mylistargnameName = req.body.listargname;
-  var urenrollrefnameName = req.body.urenrollrefname;
 
 
     const mystudyteam = new Mystudyteam({

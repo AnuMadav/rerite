@@ -10,14 +10,14 @@
   <link rel="stylesheet" href="/css/master.css">
 </head>
 <body>
-  <div class="container-fluid viewpage">
-    <div class="row align-items-start">
+  <div class="container viewpage" style="max-width: 100%; width: 100%;">
+    <div class="row align-items-start" style="min-height: 100vh;">
 
         <!-- Profile / Sidebar -->
         <div class="col-2">
           <a class="btn btn-white" href="/study" role="button"><img src="/images/rerite.png" id="logoinpage" style="margin: 5%;" alt=""></a>
         <br><br>
-        <div class="container-fluid">
+        <div class="container">
         <p class="text-center text-muted profile-enrollment"><%= enrollment %></p>
       </div>
         </nav>
@@ -25,7 +25,11 @@
           <div class="accordion-item">
           </div>
         </div>
-
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
         </div>
 
 <div class="col-8 pt-3 main-content">
@@ -40,7 +44,7 @@
       </div>
     <% } else { %>
 
-      <div class="accordion" id="referredAccordion">
+      <div id="listAccordion" class="accordion">
         <% args.forEach(function(arg, idx) { 
             const collapseId = `collapse-${arg.ida || 'x'}-${idx}`;
             const headingId = `heading-${arg.ida || 'x'}-${idx}`;
@@ -64,7 +68,7 @@
               </button>
             </h2>
 
-            <div id="<%= collapseId %>" class="accordion-collapse collapse <%= idx === 0 ? 'show' : '' %>" aria-labelledby="<%= headingId %>" data-bs-parent="#referredAccordion">
+            <div id="<%= collapseId %>" class="accordion-collapse collapse <%= idx === 0 ? 'show' : '' %>" aria-labelledby="<%= headingId %>" data-bs-parent="#listAccordion">
               <div class="accordion-body">
 
                 <% if (arg.trm || arg.texp) { %>
@@ -109,6 +113,9 @@
 
     <% } %>
   </div>
+
+  <!-- Right Sidebar Placeholder -->
+  <div class="col-2"></div>
   </div>
   </div>
 
