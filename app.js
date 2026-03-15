@@ -336,21 +336,21 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb+srv://rerite:vf69tgNdntAsh76@cluster0.zt8sx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-);
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", async function () {
-  console.log("Connected successfully");
-});
+(async () => {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://rerite:vf69tgNdntAsh76@cluster0.zt8sx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    );
+    console.log("Connected successfully");
+  } catch (error) {
+    console.error("Connection error:", error);
+  }
+})();
 
 app.get("/test", async function (req, res) {
   try {
-    const results = Arg.find({ id3: "Mental Health in contemporary times" })
-      .limit(20)
-      .exec();
+    const results = await Arg.find({ id3: "Mental Health in contemporary times" }).limit(20);
     results.forEach((r) => {
       console.log(`${r.id3}: ${r.marg}`);
     });
@@ -686,90 +686,75 @@ const mypolicy1 = new Mypolicy({
   policy: "",
 });
 
-const find = Arg.find(
-  { ida: { $exists: true } },
-  null,
-  { sort: { _id: -1 } },
-  function (err, args) {
-    args.forEach(function (arg) {
-      var mainArgument = arg.marg;
-      var supArgument1 = arg.sarg1;
-      var supArgument2 = arg.sarg2;
-      var supArgument3 = arg.sarg3;
-      var opeddate = arg.opd;
-      var newsjournal = arg.njs;
-      var chapter = arg.id3;
-      var termtitle = arg.trm;
-      var termexplanation = arg.texp;
-      var uida = arg.ida;
-      var wnew = arg.nws;
-      var wpoint1 = arg.pnt1;
-      var wpoint2 = arg.pnt2;
-      var wpoint3 = arg.pnt3;
-      var wpoint4 = arg.pnt4;
-      var wpoint5 = arg.pnt5;
-      var wopinionon = arg.opnn;
-      var wopinion1 = arg.opn1;
-      var wopinionby = arg.opnb;
-      var wbooktitle = arg.btle;
-      var wauthortitle = arg.btar;
-      var wpublication = arg.bpne;
+const find = (async () => {
+  const args = await Arg.find({ ida: { $exists: true } }).sort({ _id: -1 }).limit(100);
+  args.forEach(function (arg) {
+    var mainArgument = arg.marg;
+    var supArgument1 = arg.sarg1;
+    var supArgument2 = arg.sarg2;
+    var supArgument3 = arg.sarg3;
+    var opeddate = arg.opd;
+    var newsjournal = arg.njs;
+    var chapter = arg.id3;
+    var termtitle = arg.trm;
+    var termexplanation = arg.texp;
+    var uida = arg.ida;
+    var wnew = arg.nws;
+    var wpoint1 = arg.pnt1;
+    var wpoint2 = arg.pnt2;
+    var wpoint3 = arg.pnt3;
+    var wpoint4 = arg.pnt4;
+    var wpoint5 = arg.pnt5;
+    var wopinionon = arg.opnn;
+    var wopinion1 = arg.opn1;
+    var wopinionby = arg.opnb;
+    var wbooktitle = arg.btle;
+    var wauthortitle = arg.btar;
+    var wpublication = arg.bpne;
 
-      mainArguments.push(mainArgument);
-      supArgument1s.push(supArgument1);
-      supArgument2s.push(supArgument2);
-      supArgument3s.push(supArgument3);
-      opiniondates.push(opeddate);
-      newspaperjournals.push(newsjournal);
-      chapters.push(chapter);
-      termtitles.push(termtitle);
-      termexplanations.push(termexplanation);
-      uidas.push(uida);
-      wnewss.push(wnew);
-      wpoint1s.push(wpoint1);
-      wpoint2s.push(wpoint2);
-      wpoint3s.push(wpoint3);
-      wpoint4s.push(wpoint4);
-      wpoint5s.push(wpoint5);
-      wopinionons.push(wopinionon);
-      wopinion1s.push(wopinion1);
-      wopinionbys.push(wopinionby);
-      wbooktitles.push(wbooktitle);
-      wauthortitles.push(wauthortitle);
-      wpublications.push(wpublication);
-    });
-  }
-).limit(100);
+    mainArguments.push(mainArgument);
+    supArgument1s.push(supArgument1);
+    supArgument2s.push(supArgument2);
+    supArgument3s.push(supArgument3);
+    opiniondates.push(opeddate);
+    newspaperjournals.push(newsjournal);
+    chapters.push(chapter);
+    termtitles.push(termtitle);
+    termexplanations.push(termexplanation);
+    uidas.push(uida);
+    wnewss.push(wnew);
+    wpoint1s.push(wpoint1);
+    wpoint2s.push(wpoint2);
+    wpoint3s.push(wpoint3);
+    wpoint4s.push(wpoint4);
+    wpoint5s.push(wpoint5);
+    wopinionons.push(wopinionon);
+    wopinion1s.push(wopinion1);
+    wopinionbys.push(wopinionby);
+    wbooktitles.push(wbooktitle);
+    wauthortitles.push(wauthortitle);
+    wpublications.push(wpublication);
+  });
+})();
 
-Mystudyteam.find(
-  { urenrollmentnumber: { $exists: true, $ne: null } },
-  null,
-  { sort: { _id: -1 } },
-  function (err, mystudyteams) {
-    mystudyteams.forEach(function (mystudyteam) {
-      var urusername = mystudyteam.urusername;
+(async () => {
+  const mystudyteams = await Mystudyteam.find({ urenrollmentnumber: { $exists: true, $ne: null } }).sort({ _id: -1 }).limit(10);
+  mystudyteams.forEach(function (mystudyteam) {
+    var urusername = mystudyteam.urusername;
 
-      urusernames.push(urusername);
-    });
-  }
-).limit(10);
+    urusernames.push(urusername);
+  });
+})();
 
-Mysavedarg.find(
-  { mylistname: { $exists: true, $ne: null } },
-  null,
-  { sort: { _id: -1 } },
-  function (err, savedargs) {
-    savedargs.forEach(function (s) {
-      mylistnames.push(s.mylistname);
-    });
-  }
-).limit(4);
+(async () => {
+  const savedargs = await Mysavedarg.find({ mylistname: { $exists: true, $ne: null } }).sort({ _id: -1 }).limit(4);
+  savedargs.forEach(function (s) {
+    mylistnames.push(s.mylistname);
+  });
+})();
 
-Mysocial.find({}, async function (err, socials) {
-  if (err) {
-    console.error("Mysocial.find error:", err);
-    return;
-  }
+(async () => {
+  const socials = await Mysocial.find({});
   socials.forEach(function (s) {
     var myagreecomment = s.myagreecomment || s.agreeName || "";
     var myquerycomment = s.myquerycomment || s.queryName || "";
@@ -777,1157 +762,881 @@ Mysocial.find({}, async function (err, socials) {
     myagreeNames.push(myagreecomment);
     myqueryNames.push(myquerycomment);
   });
-});
+})();
 
-Mypolicy.find(
-  {
-    policy: "rural"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var ruraltitle = mypolicy.title;
-      var ruralserialno = mypolicy.serialno;
-      var rurallink = mypolicy.link;
-      var ruralauthor = mypolicy.author;
-      var ruralbrief = mypolicy.brief;
-      var ruralpolicy = mypolicy.policy;
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "rural" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var ruraltitle = mypolicy.title;
+    var ruralserialno = mypolicy.serialno;
+    var rurallink = mypolicy.link;
+    var ruralauthor = mypolicy.author;
+    var ruralbrief = mypolicy.brief;
+    var ruralpolicy = mypolicy.policy;
 
-      ruraltitles.push(ruraltitle);
-      ruralserialnos.push(ruralserialno);
-      rurallinks.push(rurallink);
-      ruralauthors.push(ruralauthor);
-      ruralbriefs.push(ruralbrief);
-      ruralpolicys.push(ruralpolicy);
-    });
+    ruraltitles.push(ruraltitle);
+    ruralserialnos.push(ruralserialno);
+    rurallinks.push(rurallink);
+    ruralauthors.push(ruralauthor);
+    ruralbriefs.push(ruralbrief);
+    ruralpolicys.push(ruralpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "urban"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var urbantitle = mypolicy.title;
-      var urbanserialno = mypolicy.serialno;
-      var urbanlink = mypolicy.link;
-      var urbanauthor = mypolicy.author;
-      var urbanbrief = mypolicy.brief;
-      var urbanpolicy = mypolicy.policy;
-  
-      urbantitles.push(urbantitle);
-      urbanserialnos.push(urbanserialno);
-      urbanlinks.push(urbanlink);
-      urbanauthors.push(urbanauthor);
-      urbanbriefs.push(urbanbrief);
-      urbanpolicys.push(urbanpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "urban" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var urbantitle = mypolicy.title;
+    var urbanserialno = mypolicy.serialno;
+    var urbanlink = mypolicy.link;
+    var urbanauthor = mypolicy.author;
+    var urbanbrief = mypolicy.brief;
+    var urbanpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "geriatric"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var geriatrictitle = mypolicy.title;
-      var geriatricserialno = mypolicy.serialno;
-      var geriatriclink = mypolicy.link;
-      var geriatricauthor = mypolicy.author;
-      var geriatricbrief = mypolicy.brief;
-      var geriatricpolicy = mypolicy.policy;
-  
-      geriatrictitles.push(geriatrictitle);
-      geriatricserialnos.push(geriatricserialno);
-      geriatriclinks.push(geriatriclink);
-      geriatricauthors.push(geriatricauthor);
-      geriatricbriefs.push(geriatricbrief);
-      geriatricpolicys.push(geriatricpolicy);
-    });
+    urbantitles.push(urbantitle);
+    urbanserialnos.push(urbanserialno);
+    urbanlinks.push(urbanlink);
+    urbanauthors.push(urbanauthor);
+    urbanbriefs.push(urbanbrief);
+    urbanpolicys.push(urbanpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "reservation"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var reservationtitle = mypolicy.title;
-      var reservationserialno = mypolicy.serialno;
-      var reservationlink = mypolicy.link;
-      var reservationauthor = mypolicy.author;
-      var reservationbrief = mypolicy.brief;
-      var reservationpolicy = mypolicy.policy;
-  
-      reservationtitles.push(reservationtitle);
-      reservationserialnos.push(reservationserialno);
-      reservationlinks.push(reservationlink);
-      reservationauthors.push(reservationauthor);
-      reservationbriefs.push(reservationbrief);
-      reservationpolicys.push(reservationpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "geriatric" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var geriatrictitle = mypolicy.title;
+    var geriatricserialno = mypolicy.serialno;
+    var geriatriclink = mypolicy.link;
+    var geriatricauthor = mypolicy.author;
+    var geriatricbrief = mypolicy.brief;
+    var geriatricpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "monetary"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var monetarytitle = mypolicy.title;
-      var monetaryserialno = mypolicy.serialno;
-      var monetarylink = mypolicy.link;
-      var monetaryauthor = mypolicy.author;
-      var monetarybrief = mypolicy.brief;
-      var monetarypolicy = mypolicy.policy;
-  
-      monetarytitles.push(monetarytitle);
-      monetaryserialnos.push(monetaryserialno);
-      monetarylinks.push(monetarylink);
-      monetaryauthors.push(monetaryauthor);
-      monetarybriefs.push(monetarybrief);
-      monetarypolicys.push(monetarypolicy);
-    });
+    geriatrictitles.push(geriatrictitle);
+    geriatricserialnos.push(geriatricserialno);
+    geriatriclinks.push(geriatriclink);
+    geriatricauthors.push(geriatricauthor);
+    geriatricbriefs.push(geriatricbrief);
+    geriatricpolicys.push(geriatricpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "fiscal"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var fiscaltitle = mypolicy.title;
-      var fiscalserialno = mypolicy.serialno;
-      var fiscallink = mypolicy.link;
-      var fiscalauthor = mypolicy.author;
-      var fiscalbrief = mypolicy.brief;
-      var fiscalpolicy = mypolicy.policy;
-  
-      fiscaltitles.push(fiscaltitle);
-      fiscalserialnos.push(fiscalserialno);
-      fiscallinks.push(fiscallink);
-      fiscalauthors.push(fiscalauthor);
-      fiscalbriefs.push(fiscalbrief);
-      fiscalpolicys.push(fiscalpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "reservation" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var reservationtitle = mypolicy.title;
+    var reservationserialno = mypolicy.serialno;
+    var reservationlink = mypolicy.link;
+    var reservationauthor = mypolicy.author;
+    var reservationbrief = mypolicy.brief;
+    var reservationpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "environment"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var environmenttitle = mypolicy.title;
-      var environmentserialno = mypolicy.serialno;
-      var environmentlink = mypolicy.link;
-      var environmentauthor = mypolicy.author;
-      var environmentbrief = mypolicy.brief;
-      var environmentpolicy = mypolicy.policy;
-  
-      environmenttitles.push(environmenttitle);
-      environmentserialnos.push(environmentserialno);
-      environmentlinks.push(environmentlink);
-      environmentauthors.push(environmentauthor);
-      environmentbriefs.push(environmentbrief);
-      environmentpolicys.push(environmentpolicy);
-    });
+    reservationtitles.push(reservationtitle);
+    reservationserialnos.push(reservationserialno);
+    reservationlinks.push(reservationlink);
+    reservationauthors.push(reservationauthor);
+    reservationbriefs.push(reservationbrief);
+    reservationpolicys.push(reservationpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "health"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var healthtitle = mypolicy.title;
-      var healthserialno = mypolicy.serialno;
-      var healthlink = mypolicy.link;
-      var healthauthor = mypolicy.author;
-      var healthbrief = mypolicy.brief;
-      var healthpolicy = mypolicy.policy;
-  
-      healthtitles.push(healthtitle);
-      healthserialnos.push(healthserialno);
-      healthlinks.push(healthlink);
-      healthauthors.push(healthauthor);
-      healthbriefs.push(healthbrief);
-      healthpolicys.push(healthpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "monetary" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var monetarytitle = mypolicy.title;
+    var monetaryserialno = mypolicy.serialno;
+    var monetarylink = mypolicy.link;
+    var monetaryauthor = mypolicy.author;
+    var monetarybrief = mypolicy.brief;
+    var monetarypolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "water"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var watertitle = mypolicy.title;
-      var waterserialno = mypolicy.serialno;
-      var waterlink = mypolicy.link;
-      var waterauthor = mypolicy.author;
-      var waterbrief = mypolicy.brief;
-      var waterpolicy = mypolicy.policy;
-  
-      watertitles.push(watertitle);
-      waterserialnos.push(waterserialno);
-      waterlinks.push(waterlink);
-      waterauthors.push(waterauthor);
-      waterbriefs.push(waterbrief);
-      waterpolicys.push(waterpolicy);
-    });
+    monetarytitles.push(monetarytitle);
+    monetaryserialnos.push(monetaryserialno);
+    monetarylinks.push(monetarylink);
+    monetaryauthors.push(monetaryauthor);
+    monetarybriefs.push(monetarybrief);
+    monetarypolicys.push(monetarypolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "foreign"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var foreigntitle = mypolicy.title;
-      var foreignserialno = mypolicy.serialno;
-      var foreignlink = mypolicy.link;
-      var foreignauthor = mypolicy.author;
-      var foreignbrief = mypolicy.brief;
-      var foreignpolicy = mypolicy.policy;
-  
-      foreigntitles.push(foreigntitle);
-      foreignserialnos.push(foreignserialno);
-      foreignlinks.push(foreignlink);
-      foreignauthors.push(foreignauthor);
-      foreignbriefs.push(foreignbrief);
-      foreignpolicys.push(foreignpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "fiscal" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var fiscaltitle = mypolicy.title;
+    var fiscalserialno = mypolicy.serialno;
+    var fiscallink = mypolicy.link;
+    var fiscalauthor = mypolicy.author;
+    var fiscalbrief = mypolicy.brief;
+    var fiscalpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "infrastructure"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var infrastructuretitle = mypolicy.title;
-      var infrastructureserialno = mypolicy.serialno;
-      var infrastructurelink = mypolicy.link;
-      var infrastructureauthor = mypolicy.author;
-      var infrastructurebrief = mypolicy.brief;
-      var infrastructurepolicy = mypolicy.policy;
-  
-      infrastructuretitles.push(infrastructuretitle);
-      infrastructureserialnos.push(infrastructureserialno);
-      infrastructurelinks.push(infrastructurelink);
-      infrastructureauthors.push(infrastructureauthor);
-      infrastructurebriefs.push(infrastructurebrief);
-      infrastructurepolicys.push(infrastructurepolicy);
-    });
+    fiscaltitles.push(fiscaltitle);
+    fiscalserialnos.push(fiscalserialno);
+    fiscallinks.push(fiscallink);
+    fiscalauthors.push(fiscalauthor);
+    fiscalbriefs.push(fiscalbrief);
+    fiscalpolicys.push(fiscalpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "trade"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var tradetitle = mypolicy.title;
-      var tradeserialno = mypolicy.serialno;
-      var tradelink = mypolicy.link;
-      var tradeauthor = mypolicy.author;
-      var tradebrief = mypolicy.brief;
-      var tradepolicy = mypolicy.policy;
-  
-      tradetitles.push(tradetitle);
-      tradeserialnos.push(tradeserialno);
-      tradelinks.push(tradelink);
-      tradeauthors.push(tradeauthor);
-      tradebriefs.push(tradebrief);
-      tradepolicys.push(tradepolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "environment" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var environmenttitle = mypolicy.title;
+    var environmentserialno = mypolicy.serialno;
+    var environmentlink = mypolicy.link;
+    var environmentauthor = mypolicy.author;
+    var environmentbrief = mypolicy.brief;
+    var environmentpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "youth"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var youthtitle = mypolicy.title;
-      var youthserialno = mypolicy.serialno;
-      var youthlink = mypolicy.link;
-      var youthauthor = mypolicy.author;
-      var youthbrief = mypolicy.brief;
-      var youthpolicy = mypolicy.policy;
-  
-      youthtitles.push(youthtitle);
-      youthserialnos.push(youthserialno);
-      youthlinks.push(youthlink);
-      youthauthors.push(youthauthor);
-      youthbriefs.push(youthbrief);
-      youthpolicys.push(youthpolicy);
-    });
+    environmenttitles.push(environmenttitle);
+    environmentserialnos.push(environmentserialno);
+    environmentlinks.push(environmentlink);
+    environmentauthors.push(environmentauthor);
+    environmentbriefs.push(environmentbrief);
+    environmentpolicys.push(environmentpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "disability"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var disabilitytitle = mypolicy.title;
-      var disabilityserialno = mypolicy.serialno;
-      var disabilitylink = mypolicy.link;
-      var disabilityauthor = mypolicy.author;
-      var disabilitybrief = mypolicy.brief;
-      var disabilitypolicy = mypolicy.policy;
-  
-      disabilitytitles.push(disabilitytitle);
-      disabilityserialnos.push(disabilityserialno);
-      disabilitylinks.push(disabilitylink);
-      disabilityauthors.push(disabilityauthor);
-      disabilitybriefs.push(disabilitybrief);
-      disabilitypolicys.push(disabilitypolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "health" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var healthtitle = mypolicy.title;
+    var healthserialno = mypolicy.serialno;
+    var healthlink = mypolicy.link;
+    var healthauthor = mypolicy.author;
+    var healthbrief = mypolicy.brief;
+    var healthpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "education"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var educationtitle = mypolicy.title;
-      var educationserialno = mypolicy.serialno;
-      var educationlink = mypolicy.link;
-      var educationauthor = mypolicy.author;
-      var educationbrief = mypolicy.brief;
-      var educationpolicy = mypolicy.policy;
-  
-      educationtitles.push(educationtitle);
-      educationserialnos.push(educationserialno);
-      educationlinks.push(educationlink);
-      educationauthors.push(educationauthor);
-      educationbriefs.push(educationbrief);
-      educationpolicys.push(educationpolicy);
-    });
+    healthtitles.push(healthtitle);
+    healthserialnos.push(healthserialno);
+    healthlinks.push(healthlink);
+    healthauthors.push(healthauthor);
+    healthbriefs.push(healthbrief);
+    healthpolicys.push(healthpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "industrial"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var industrialtitle = mypolicy.title;
-      var industrialserialno = mypolicy.serialno;
-      var industriallink = mypolicy.link;
-      var industrialauthor = mypolicy.author;
-      var industrialbrief = mypolicy.brief;
-      var industrialpolicy = mypolicy.policy;
-  
-      industrialtitles.push(industrialtitle);
-      industrialserialnos.push(industrialserialno);
-      industriallinks.push(industriallink);
-      industrialauthors.push(industrialauthor);
-      industrialbriefs.push(industrialbrief);
-      industrialpolicys.push(industrialpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "water" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var watertitle = mypolicy.title;
+    var waterserialno = mypolicy.serialno;
+    var waterlink = mypolicy.link;
+    var waterauthor = mypolicy.author;
+    var waterbrief = mypolicy.brief;
+    var waterpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "manufacturing"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var manufacturingtitle = mypolicy.title;
-      var manufacturingserialno = mypolicy.serialno;
-      var manufacturinglink = mypolicy.link;
-      var manufacturingauthor = mypolicy.author;
-      var manufacturingbrief = mypolicy.brief;
-      var manufacturingpolicy = mypolicy.policy;
-  
-      manufacturingtitles.push(manufacturingtitle);
-      manufacturingserialnos.push(manufacturingserialno);
-      manufacturinglinks.push(manufacturinglink);
-      manufacturingauthors.push(manufacturingauthor);
-      manufacturingbriefs.push(manufacturingbrief);
-      manufacturingpolicys.push(manufacturingpolicy);
-    });
+    watertitles.push(watertitle);
+    waterserialnos.push(waterserialno);
+    waterlinks.push(waterlink);
+    waterauthors.push(waterauthor);
+    waterbriefs.push(waterbrief);
+    waterpolicys.push(waterpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "agricultural"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var agriculturaltitle = mypolicy.title;
-      var agriculturalserialno = mypolicy.serialno;
-      var agriculturallink = mypolicy.link;
-      var agriculturalauthor = mypolicy.author;
-      var agriculturalbrief = mypolicy.brief;
-      var agriculturalpolicy = mypolicy.policy;
-  
-      agriculturaltitles.push(agriculturaltitle);
-      agriculturalserialnos.push(agriculturalserialno);
-      agriculturallinks.push(agriculturallink);
-      agriculturalauthors.push(agriculturalauthor);
-      agriculturalbriefs.push(agriculturalbrief);
-      agriculturalpolicys.push(agriculturalpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "foreign" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var foreigntitle = mypolicy.title;
+    var foreignserialno = mypolicy.serialno;
+    var foreignlink = mypolicy.link;
+    var foreignauthor = mypolicy.author;
+    var foreignbrief = mypolicy.brief;
+    var foreignpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "tribal"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var tribaltitle = mypolicy.title;
-      var tribalserialno = mypolicy.serialno;
-      var triballink = mypolicy.link;
-      var tribalauthor = mypolicy.author;
-      var tribalbrief = mypolicy.brief;
-      var tribalpolicy = mypolicy.policy;
-  
-      tribaltitles.push(tribaltitle);
-      tribalserialnos.push(tribalserialno);
-      triballinks.push(triballink);
-      tribalauthors.push(tribalauthor);
-      tribalbriefs.push(tribalbrief);
-      tribalpolicys.push(tribalpolicy);
-    });
+    foreigntitles.push(foreigntitle);
+    foreignserialnos.push(foreignserialno);
+    foreignlinks.push(foreignlink);
+    foreignauthors.push(foreignauthor);
+    foreignbriefs.push(foreignbrief);
+    foreignpolicys.push(foreignpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "welfare"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var welfaretitle = mypolicy.title;
-      var welfareserialno = mypolicy.serialno;
-      var welfarelink = mypolicy.link;
-      var welfareauthor = mypolicy.author;
-      var welfarebrief = mypolicy.brief;
-      var welfarepolicy = mypolicy.policy;
-  
-      welfaretitles.push(welfaretitle);
-      welfareserialnos.push(welfareserialno);
-      welfarelinks.push(welfarelink);
-      welfareauthors.push(welfareauthor);
-      welfarebriefs.push(welfarebrief);
-      welfarepolicys.push(welfarepolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "infrastructure" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var infrastructuretitle = mypolicy.title;
+    var infrastructureserialno = mypolicy.serialno;
+    var infrastructurelink = mypolicy.link;
+    var infrastructureauthor = mypolicy.author;
+    var infrastructurebrief = mypolicy.brief;
+    var infrastructurepolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "cyber"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var cybertitle = mypolicy.title;
-      var cyberserialno = mypolicy.serialno;
-      var cyberlink = mypolicy.link;
-      var cyberauthor = mypolicy.author;
-      var cyberbrief = mypolicy.brief;
-      var cyberpolicy = mypolicy.policy;
-  
-      cybertitles.push(cybertitle);
-      cyberserialnos.push(cyberserialno);
-      cyberlinks.push(cyberlink);
-      cyberauthors.push(cyberauthor);
-      cyberbriefs.push(cyberbrief);
-      cyberpolicys.push(cyberpolicy);
-    });
+    infrastructuretitles.push(infrastructuretitle);
+    infrastructureserialnos.push(infrastructureserialno);
+    infrastructurelinks.push(infrastructurelink);
+    infrastructureauthors.push(infrastructureauthor);
+    infrastructurebriefs.push(infrastructurebrief);
+    infrastructurepolicys.push(infrastructurepolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "housing"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var housingtitle = mypolicy.title;
-      var housingserialno = mypolicy.serialno;
-      var housinglink = mypolicy.link;
-      var housingauthor = mypolicy.author;
-      var housingbrief = mypolicy.brief;
-      var housingpolicy = mypolicy.policy;
-  
-      housingtitles.push(housingtitle);
-      housingserialnos.push(housingserialno);
-      housinglinks.push(housinglink);
-      housingauthors.push(housingauthor);
-      housingbriefs.push(housingbrief);
-      housingpolicys.push(housingpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "trade" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var tradetitle = mypolicy.title;
+    var tradeserialno = mypolicy.serialno;
+    var tradelink = mypolicy.link;
+    var tradeauthor = mypolicy.author;
+    var tradebrief = mypolicy.brief;
+    var tradepolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "gender"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var gendertitle = mypolicy.title;
-      var genderserialno = mypolicy.serialno;
-      var genderlink = mypolicy.link;
-      var genderauthor = mypolicy.author;
-      var genderbrief = mypolicy.brief;
-      var genderpolicy = mypolicy.policy;
-  
-      gendertitles.push(gendertitle);
-      genderserialnos.push(genderserialno);
-      genderlinks.push(genderlink);
-      genderauthors.push(genderauthor);
-      genderbriefs.push(genderbrief);
-      genderpolicys.push(genderpolicy);
-    });
+    tradetitles.push(tradetitle);
+    tradeserialnos.push(tradeserialno);
+    tradelinks.push(tradelink);
+    tradeauthors.push(tradeauthor);
+    tradebriefs.push(tradebrief);
+    tradepolicys.push(tradepolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "tourism"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var tourismtitle = mypolicy.title;
-      var tourismserialno = mypolicy.serialno;
-      var tourismlink = mypolicy.link;
-      var tourismauthor = mypolicy.author;
-      var tourismbrief = mypolicy.brief;
-      var tourismpolicy = mypolicy.policy;
-  
-      tourismtitles.push(tourismtitle);
-      tourismserialnos.push(tourismserialno);
-      tourismlinks.push(tourismlink);
-      tourismauthors.push(tourismauthor);
-      tourismbriefs.push(tourismbrief);
-      tourismpolicys.push(tourismpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "youth" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var youthtitle = mypolicy.title;
+    var youthserialno = mypolicy.serialno;
+    var youthlink = mypolicy.link;
+    var youthauthor = mypolicy.author;
+    var youthbrief = mypolicy.brief;
+    var youthpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "energy"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var energytitle = mypolicy.title;
-      var energyserialno = mypolicy.serialno;
-      var energylink = mypolicy.link;
-      var energyauthor = mypolicy.author;
-      var energybrief = mypolicy.brief;
-      var energypolicy = mypolicy.policy;
-  
-      energytitles.push(energytitle);
-      energyserialnos.push(energyserialno);
-      energylinks.push(energylink);
-      energyauthors.push(energyauthor);
-      energybriefs.push(energybrief);
-      energypolicys.push(energypolicy);
-    });
+    youthtitles.push(youthtitle);
+    youthserialnos.push(youthserialno);
+    youthlinks.push(youthlink);
+    youthauthors.push(youthauthor);
+    youthbriefs.push(youthbrief);
+    youthpolicys.push(youthpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "economic"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var economictitle = mypolicy.title;
-      var economicserialno = mypolicy.serialno;
-      var economiclink = mypolicy.link;
-      var economicauthor = mypolicy.author;
-      var economicbrief = mypolicy.brief;
-      var economicpolicy = mypolicy.policy;
-  
-      economictitles.push(economictitle);
-      economicserialnos.push(economicserialno);
-      economiclinks.push(economiclink);
-      economicauthors.push(economicauthor);
-      economicbriefs.push(economicbrief);
-      economicpolicys.push(economicpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "disability" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var disabilitytitle = mypolicy.title;
+    var disabilityserialno = mypolicy.serialno;
+    var disabilitylink = mypolicy.link;
+    var disabilityauthor = mypolicy.author;
+    var disabilitybrief = mypolicy.brief;
+    var disabilitypolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "judicial"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var judicialtitle = mypolicy.title;
-      var judicialserialno = mypolicy.serialno;
-      var judiciallink = mypolicy.link;
-      var judicialauthor = mypolicy.author;
-      var judicialbrief = mypolicy.brief;
-      var judicialpolicy = mypolicy.policy;
-  
-      judicialtitles.push(judicialtitle);
-      judicialserialnos.push(judicialserialno);
-      judiciallinks.push(judiciallink);
-      judicialauthors.push(judicialauthor);
-      judicialbriefs.push(judicialbrief);
-      judicialpolicys.push(judicialpolicy);
-    });
+    disabilitytitles.push(disabilitytitle);
+    disabilityserialnos.push(disabilityserialno);
+    disabilitylinks.push(disabilitylink);
+    disabilityauthors.push(disabilityauthor);
+    disabilitybriefs.push(disabilitybrief);
+    disabilitypolicys.push(disabilitypolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "security"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var securitytitle = mypolicy.title;
-      var securityserialno = mypolicy.serialno;
-      var securitylink = mypolicy.link;
-      var securityauthor = mypolicy.author;
-      var securitybrief = mypolicy.brief;
-      var securitypolicy = mypolicy.policy;
-  
-      securitytitles.push(securitytitle);
-      securityserialnos.push(securityserialno);
-      securitylinks.push(securitylink);
-      securityauthors.push(securityauthor);
-      securitybriefs.push(securitybrief);
-      securitypolicys.push(securitypolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "education" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var educationtitle = mypolicy.title;
+    var educationserialno = mypolicy.serialno;
+    var educationlink = mypolicy.link;
+    var educationauthor = mypolicy.author;
+    var educationbrief = mypolicy.brief;
+    var educationpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "inclusive"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var inclusivetitle = mypolicy.title;
-      var inclusiveserialno = mypolicy.serialno;
-      var inclusivelink = mypolicy.link;
-      var inclusiveauthor = mypolicy.author;
-      var inclusivebrief = mypolicy.brief;
-      var inclusivepolicy = mypolicy.policy;
-  
-      inclusivetitles.push(inclusivetitle);
-      inclusiveserialnos.push(inclusiveserialno);
-      inclusivelinks.push(inclusivelink);
-      inclusiveauthors.push(inclusiveauthor);
-      inclusivebriefs.push(inclusivebrief);
-      inclusivepolicys.push(inclusivepolicy);
-    });
+    educationtitles.push(educationtitle);
+    educationserialnos.push(educationserialno);
+    educationlinks.push(educationlink);
+    educationauthors.push(educationauthor);
+    educationbriefs.push(educationbrief);
+    educationpolicys.push(educationpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "telecom"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var telecomtitle = mypolicy.title;
-      var telecomserialno = mypolicy.serialno;
-      var telecomlink = mypolicy.link;
-      var telecomauthor = mypolicy.author;
-      var telecombrief = mypolicy.brief;
-      var telecompolicy = mypolicy.policy;
-  
-      telecomtitles.push(telecomtitle);
-      telecomserialnos.push(telecomserialno);
-      telecomlinks.push(telecomlink);
-      telecomauthors.push(telecomauthor);
-      telecombriefs.push(telecombrief);
-      telecompolicys.push(telecompolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "industrial" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var industrialtitle = mypolicy.title;
+    var industrialserialno = mypolicy.serialno;
+    var industriallink = mypolicy.link;
+    var industrialauthor = mypolicy.author;
+    var industrialbrief = mypolicy.brief;
+    var industrialpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "competition"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var competitiontitle = mypolicy.title;
-      var competitionserialno = mypolicy.serialno;
-      var competitionlink = mypolicy.link;
-      var competitionauthor = mypolicy.author;
-      var competitionbrief = mypolicy.brief;
-      var competitionpolicy = mypolicy.policy;
-  
-      competitiontitles.push(competitiontitle);
-      competitionserialnos.push(competitionserialno);
-      competitionlinks.push(competitionlink);
-      competitionauthors.push(competitionauthor);
-      competitionbriefs.push(competitionbrief);
-      competitionpolicys.push(competitionpolicy);
-    });
+    industrialtitles.push(industrialtitle);
+    industrialserialnos.push(industrialserialno);
+    industriallinks.push(industriallink);
+    industrialauthors.push(industrialauthor);
+    industrialbriefs.push(industrialbrief);
+    industrialpolicys.push(industrialpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "fintech"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var fintechtitle = mypolicy.title;
-      var fintechserialno = mypolicy.serialno;
-      var fintechlink = mypolicy.link;
-      var fintechauthor = mypolicy.author;
-      var fintechbrief = mypolicy.brief;
-      var fintechpolicy = mypolicy.policy;
-  
-      fintechtitles.push(fintechtitle);
-      fintechserialnos.push(fintechserialno);
-      fintechlinks.push(fintechlink);
-      fintechauthors.push(fintechauthor);
-      fintechbriefs.push(fintechbrief);
-      fintechpolicys.push(fintechpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "manufacturing" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var manufacturingtitle = mypolicy.title;
+    var manufacturingserialno = mypolicy.serialno;
+    var manufacturinglink = mypolicy.link;
+    var manufacturingauthor = mypolicy.author;
+    var manufacturingbrief = mypolicy.brief;
+    var manufacturingpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "scitech"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var scitechtitle = mypolicy.title;
-      var scitechserialno = mypolicy.serialno;
-      var scitechlink = mypolicy.link;
-      var scitechauthor = mypolicy.author;
-      var scitechbrief = mypolicy.brief;
-      var scitechpolicy = mypolicy.policy;
-  
-      scitechtitles.push(scitechtitle);
-      scitechserialnos.push(scitechserialno);
-      scitechlinks.push(scitechlink);
-      scitechauthors.push(scitechauthor);
-      scitechbriefs.push(scitechbrief);
-      scitechpolicys.push(scitechpolicy);
-    });
+    manufacturingtitles.push(manufacturingtitle);
+    manufacturingserialnos.push(manufacturingserialno);
+    manufacturinglinks.push(manufacturinglink);
+    manufacturingauthors.push(manufacturingauthor);
+    manufacturingbriefs.push(manufacturingbrief);
+    manufacturingpolicys.push(manufacturingpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "electoral"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var electoraltitle = mypolicy.title;
-      var electoralserialno = mypolicy.serialno;
-      var electorallink = mypolicy.link;
-      var electoralauthor = mypolicy.author;
-      var electoralbrief = mypolicy.brief;
-      var electoralpolicy = mypolicy.policy;
-  
-      electoraltitles.push(electoraltitle);
-      electoralserialnos.push(electoralserialno);
-      electorallinks.push(electorallink);
-      electoralauthors.push(electoralauthor);
-      electoralbriefs.push(electoralbrief);
-      electoralpolicys.push(electoralpolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "agricultural" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var agriculturaltitle = mypolicy.title;
+    var agriculturalserialno = mypolicy.serialno;
+    var agriculturallink = mypolicy.link;
+    var agriculturalauthor = mypolicy.author;
+    var agriculturalbrief = mypolicy.brief;
+    var agriculturalpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "nutrition"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var nutritiontitle = mypolicy.title;
-      var nutritionserialno = mypolicy.serialno;
-      var nutritionlink = mypolicy.link;
-      var nutritionauthor = mypolicy.author;
-      var nutritionbrief = mypolicy.brief;
-      var nutritionpolicy = mypolicy.policy;
-  
-      nutritiontitles.push(nutritiontitle);
-      nutritionserialnos.push(nutritionserialno);
-      nutritionlinks.push(nutritionlink);
-      nutritionauthors.push(nutritionauthor);
-      nutritionbriefs.push(nutritionbrief);
-      nutritionpolicys.push(nutritionpolicy);
-    });
+    agriculturaltitles.push(agriculturaltitle);
+    agriculturalserialnos.push(agriculturalserialno);
+    agriculturallinks.push(agriculturallink);
+    agriculturalauthors.push(agriculturalauthor);
+    agriculturalbriefs.push(agriculturalbrief);
+    agriculturalpolicys.push(agriculturalpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "poverty"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var povertytitle = mypolicy.title;
-      var povertyserialno = mypolicy.serialno;
-      var povertylink = mypolicy.link;
-      var povertyauthor = mypolicy.author;
-      var povertybrief = mypolicy.brief;
-      var povertypolicy = mypolicy.policy;
-  
-      povertytitles.push(povertytitle);
-      povertyserialnos.push(povertyserialno);
-      povertylinks.push(povertylink);
-      povertyauthors.push(povertyauthor);
-      povertybriefs.push(povertybrief);
-      povertypolicys.push(povertypolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "tribal" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var tribaltitle = mypolicy.title;
+    var tribalserialno = mypolicy.serialno;
+    var triballink = mypolicy.link;
+    var tribalauthor = mypolicy.author;
+    var tribalbrief = mypolicy.brief;
+    var tribalpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "labour"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var labourtitle = mypolicy.title;
-      var labourserialno = mypolicy.serialno;
-      var labourlink = mypolicy.link;
-      var labourauthor = mypolicy.author;
-      var labourbrief = mypolicy.brief;
-      var labourpolicy = mypolicy.policy;
-  
-      labourtitles.push(labourtitle);
-      labourserialnos.push(labourserialno);
-      labourlinks.push(labourlink);
-      labourauthors.push(labourauthor);
-      labourbriefs.push(labourbrief);
-      labourpolicys.push(labourpolicy);
-    });
+    tribaltitles.push(tribaltitle);
+    tribalserialnos.push(tribalserialno);
+    triballinks.push(triballink);
+    tribalauthors.push(tribalauthor);
+    tribalbriefs.push(tribalbrief);
+    tribalpolicys.push(tribalpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "peace"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var peacetitle = mypolicy.title;
-      var peaceserialno = mypolicy.serialno;
-      var peacelink = mypolicy.link;
-      var peaceauthor = mypolicy.author;
-      var peacebrief = mypolicy.brief;
-      var peacepolicy = mypolicy.policy;
-  
-      peacetitles.push(peacetitle);
-      peaceserialnos.push(peaceserialno);
-      peacelinks.push(peacelink);
-      peaceauthors.push(peaceauthor);
-      peacebriefs.push(peacebrief);
-      peacepolicys.push(peacepolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "welfare" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var welfaretitle = mypolicy.title;
+    var welfareserialno = mypolicy.serialno;
+    var welfarelink = mypolicy.link;
+    var welfareauthor = mypolicy.author;
+    var welfarebrief = mypolicy.brief;
+    var welfarepolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "space"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var spacetitle = mypolicy.title;
-      var spaceserialno = mypolicy.serialno;
-      var spacelink = mypolicy.link;
-      var spaceauthor = mypolicy.author;
-      var spacebrief = mypolicy.brief;
-      var spacepolicy = mypolicy.policy;
-  
-      spacetitles.push(spacetitle);
-      spaceserialnos.push(spaceserialno);
-      spacelinks.push(spacelink);
-      spaceauthors.push(spaceauthor);
-      spacebriefs.push(spacebrief);
-      spacepolicys.push(spacepolicy);
-    });
+    welfaretitles.push(welfaretitle);
+    welfareserialnos.push(welfareserialno);
+    welfarelinks.push(welfarelink);
+    welfareauthors.push(welfareauthor);
+    welfarebriefs.push(welfarebrief);
+    welfarepolicys.push(welfarepolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "justice"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var justicetitle = mypolicy.title;
-      var justiceserialno = mypolicy.serialno;
-      var justicelink = mypolicy.link;
-      var justiceauthor = mypolicy.author;
-      var justicebrief = mypolicy.brief;
-      var justicepolicy = mypolicy.policy;
-  
-      justicetitles.push(justicetitle);
-      justiceserialnos.push(justiceserialno);
-      justicelinks.push(justicelink);
-      justiceauthors.push(justiceauthor);
-      justicebriefs.push(justicebrief);
-      justicepolicys.push(justicepolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "cyber" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var cybertitle = mypolicy.title;
+    var cyberserialno = mypolicy.serialno;
+    var cyberlink = mypolicy.link;
+    var cyberauthor = mypolicy.author;
+    var cyberbrief = mypolicy.brief;
+    var cyberpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "personnel"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var personneltitle = mypolicy.title;
-      var personnelserialno = mypolicy.serialno;
-      var personnellink = mypolicy.link;
-      var personnelauthor = mypolicy.author;
-      var personnelbrief = mypolicy.brief;
-      var personnelpolicy = mypolicy.policy;
-  
-      personneltitles.push(personneltitle);
-      personnelserialnos.push(personnelserialno);
-      personnellinks.push(personnellink);
-      personnelauthors.push(personnelauthor);
-      personnelbriefs.push(personnelbrief);
-      personnelpolicys.push(personnelpolicy);
-    });
+    cybertitles.push(cybertitle);
+    cyberserialnos.push(cyberserialno);
+    cyberlinks.push(cyberlink);
+    cyberauthors.push(cyberauthor);
+    cyberbriefs.push(cyberbrief);
+    cyberpolicys.push(cyberpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "accountability"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var accountabilitytitle = mypolicy.title;
-      var accountabilityserialno = mypolicy.serialno;
-      var accountabilitylink = mypolicy.link;
-      var accountabilityauthor = mypolicy.author;
-      var accountabilitybrief = mypolicy.brief;
-      var accountabilitypolicy = mypolicy.policy;
-  
-      accountabilitytitles.push(accountabilitytitle);
-      accountabilityserialnos.push(accountabilityserialno);
-      accountabilitylinks.push(accountabilitylink);
-      accountabilityauthors.push(accountabilityauthor);
-      accountabilitybriefs.push(accountabilitybrief);
-      accountabilitypolicys.push(accountabilitypolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "housing" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var housingtitle = mypolicy.title;
+    var housingserialno = mypolicy.serialno;
+    var housinglink = mypolicy.link;
+    var housingauthor = mypolicy.author;
+    var housingbrief = mypolicy.brief;
+    var housingpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "cultural"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var culturaltitle = mypolicy.title;
-      var culturalserialno = mypolicy.serialno;
-      var culturallink = mypolicy.link;
-      var culturalauthor = mypolicy.author;
-      var culturalbrief = mypolicy.brief;
-      var culturalpolicy = mypolicy.policy;
-  
-      culturaltitles.push(culturaltitle);
-      culturalserialnos.push(culturalserialno);
-      culturallinks.push(culturallink);
-      culturalauthors.push(culturalauthor);
-      culturalbriefs.push(culturalbrief);
-      culturalpolicys.push(culturalpolicy);
-    });
+    housingtitles.push(housingtitle);
+    housingserialnos.push(housingserialno);
+    housinglinks.push(housinglink);
+    housingauthors.push(housingauthor);
+    housingbriefs.push(housingbrief);
+    housingpolicys.push(housingpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "freedom"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var freedomtitle = mypolicy.title;
-      var freedomserialno = mypolicy.serialno;
-      var freedomlink = mypolicy.link;
-      var freedomauthor = mypolicy.author;
-      var freedombrief = mypolicy.brief;
-      var freedompolicy = mypolicy.policy;
-  
-      freedomtitles.push(freedomtitle);
-      freedomserialnos.push(freedomserialno);
-      freedomlinks.push(freedomlink);
-      freedomauthors.push(freedomauthor);
-      freedombriefs.push(freedombrief);
-      freedompolicys.push(freedompolicy);
-    });
-  });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "gender" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var gendertitle = mypolicy.title;
+    var genderserialno = mypolicy.serialno;
+    var genderlink = mypolicy.link;
+    var genderauthor = mypolicy.author;
+    var genderbrief = mypolicy.brief;
+    var genderpolicy = mypolicy.policy;
 
-Mypolicy.find(
-  {
-    policy: "citizenship"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var citizenshiptitle = mypolicy.title;
-      var citizenshipserialno = mypolicy.serialno;
-      var citizenshiplink = mypolicy.link;
-      var citizenshipauthor = mypolicy.author;
-      var citizenshipbrief = mypolicy.brief;
-      var citizenshippolicy = mypolicy.policy;
-  
-      citizenshiptitles.push(citizenshiptitle);
-      citizenshipserialnos.push(citizenshipserialno);
-      citizenshiplinks.push(citizenshiplink);
-      citizenshipauthors.push(citizenshipauthor);
-      citizenshipbriefs.push(citizenshipbrief);
-      citizenshippolicys.push(citizenshippolicy);
-    });
+    gendertitles.push(gendertitle);
+    genderserialnos.push(genderserialno);
+    genderlinks.push(genderlink);
+    genderauthors.push(genderauthor);
+    genderbriefs.push(genderbrief);
+    genderpolicys.push(genderpolicy);
   });
+})();
 
-Mypolicy.find(
-  {
-    policy: "misc"
-  },
-  
-  null,
-  { sort: { _id: -1 } },
-  function (err, mypolicies) {
-    mypolicies.forEach(function (mypolicy) {
-      var misctitle = mypolicy.title;
-      var miscserialno = mypolicy.serialno;
-      var misclink = mypolicy.link;
-      var miscauthor = mypolicy.author;
-      var miscbrief = mypolicy.brief;
-      var miscpolicy = mypolicy.policy;
-  
-      misctitles.push(misctitle);
-      miscserialnos.push(miscserialno);
-      misclinks.push(misclink);
-      miscauthors.push(miscauthor);
-      miscbriefs.push(miscbrief);
-      miscpolicys.push(miscpolicy);
-    });
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "tourism" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var tourismtitle = mypolicy.title;
+    var tourismserialno = mypolicy.serialno;
+    var tourismlink = mypolicy.link;
+    var tourismauthor = mypolicy.author;
+    var tourismbrief = mypolicy.brief;
+    var tourismpolicy = mypolicy.policy;
+
+    tourismtitles.push(tourismtitle);
+    tourismserialnos.push(tourismserialno);
+    tourismlinks.push(tourismlink);
+    tourismauthors.push(tourismauthor);
+    tourismbriefs.push(tourismbrief);
+    tourismpolicys.push(tourismpolicy);
   });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "energy" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var energytitle = mypolicy.title;
+    var energyserialno = mypolicy.serialno;
+    var energylink = mypolicy.link;
+    var energyauthor = mypolicy.author;
+    var energybrief = mypolicy.brief;
+    var energypolicy = mypolicy.policy;
+
+    energytitles.push(energytitle);
+    energyserialnos.push(energyserialno);
+    energylinks.push(energylink);
+    energyauthors.push(energyauthor);
+    energybriefs.push(energybrief);
+    energypolicys.push(energypolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "economic" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var economictitle = mypolicy.title;
+    var economicserialno = mypolicy.serialno;
+    var economiclink = mypolicy.link;
+    var economicauthor = mypolicy.author;
+    var economicbrief = mypolicy.brief;
+    var economicpolicy = mypolicy.policy;
+
+    economictitles.push(economictitle);
+    economicserialnos.push(economicserialno);
+    economiclinks.push(economiclink);
+    economicauthors.push(economicauthor);
+    economicbriefs.push(economicbrief);
+    economicpolicys.push(economicpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "judicial" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var judicialtitle = mypolicy.title;
+    var judicialserialno = mypolicy.serialno;
+    var judiciallink = mypolicy.link;
+    var judicialauthor = mypolicy.author;
+    var judicialbrief = mypolicy.brief;
+    var judicialpolicy = mypolicy.policy;
+
+    judicialtitles.push(judicialtitle);
+    judicialserialnos.push(judicialserialno);
+    judiciallinks.push(judiciallink);
+    judicialauthors.push(judicialauthor);
+    judicialbriefs.push(judicialbrief);
+    judicialpolicys.push(judicialpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "security" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var securitytitle = mypolicy.title;
+    var securityserialno = mypolicy.serialno;
+    var securitylink = mypolicy.link;
+    var securityauthor = mypolicy.author;
+    var securitybrief = mypolicy.brief;
+    var securitypolicy = mypolicy.policy;
+
+    securitytitles.push(securitytitle);
+    securityserialnos.push(securityserialno);
+    securitylinks.push(securitylink);
+    securityauthors.push(securityauthor);
+    securitybriefs.push(securitybrief);
+    securitypolicys.push(securitypolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "inclusive" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var inclusivetitle = mypolicy.title;
+    var inclusiveserialno = mypolicy.serialno;
+    var inclusivelink = mypolicy.link;
+    var inclusiveauthor = mypolicy.author;
+    var inclusivebrief = mypolicy.brief;
+    var inclusivepolicy = mypolicy.policy;
+
+    inclusivetitles.push(inclusivetitle);
+    inclusiveserialnos.push(inclusiveserialno);
+    inclusivelinks.push(inclusivelink);
+    inclusiveauthors.push(inclusiveauthor);
+    inclusivebriefs.push(inclusivebrief);
+    inclusivepolicys.push(inclusivepolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "telecom" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var telecomtitle = mypolicy.title;
+    var telecomserialno = mypolicy.serialno;
+    var telecomlink = mypolicy.link;
+    var telecomauthor = mypolicy.author;
+    var telecombrief = mypolicy.brief;
+    var telecompolicy = mypolicy.policy;
+
+    telecomtitles.push(telecomtitle);
+    telecomserialnos.push(telecomserialno);
+    telecomlinks.push(telecomlink);
+    telecomauthors.push(telecomauthor);
+    telecombriefs.push(telecombrief);
+    telecompolicys.push(telecompolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "competition" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var competitiontitle = mypolicy.title;
+    var competitionserialno = mypolicy.serialno;
+    var competitionlink = mypolicy.link;
+    var competitionauthor = mypolicy.author;
+    var competitionbrief = mypolicy.brief;
+    var competitionpolicy = mypolicy.policy;
+
+    competitiontitles.push(competitiontitle);
+    competitionserialnos.push(competitionserialno);
+    competitionlinks.push(competitionlink);
+    competitionauthors.push(competitionauthor);
+    competitionbriefs.push(competitionbrief);
+    competitionpolicys.push(competitionpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "fintech" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var fintechtitle = mypolicy.title;
+    var fintechserialno = mypolicy.serialno;
+    var fintechlink = mypolicy.link;
+    var fintechauthor = mypolicy.author;
+    var fintechbrief = mypolicy.brief;
+    var fintechpolicy = mypolicy.policy;
+
+    fintechtitles.push(fintechtitle);
+    fintechserialnos.push(fintechserialno);
+    fintechlinks.push(fintechlink);
+    fintechauthors.push(fintechauthor);
+    fintechbriefs.push(fintechbrief);
+    fintechpolicys.push(fintechpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "scitech" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var scitechtitle = mypolicy.title;
+    var scitechserialno = mypolicy.serialno;
+    var scitechlink = mypolicy.link;
+    var scitechauthor = mypolicy.author;
+    var scitechbrief = mypolicy.brief;
+    var scitechpolicy = mypolicy.policy;
+
+    scitechtitles.push(scitechtitle);
+    scitechserialnos.push(scitechserialno);
+    scitechlinks.push(scitechlink);
+    scitechauthors.push(scitechauthor);
+    scitechbriefs.push(scitechbrief);
+    scitechpolicys.push(scitechpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "electoral" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var electoraltitle = mypolicy.title;
+    var electoralserialno = mypolicy.serialno;
+    var electorallink = mypolicy.link;
+    var electoralauthor = mypolicy.author;
+    var electoralbrief = mypolicy.brief;
+    var electoralpolicy = mypolicy.policy;
+
+    electoraltitles.push(electoraltitle);
+    electoralserialnos.push(electoralserialno);
+    electorallinks.push(electorallink);
+    electoralauthors.push(electoralauthor);
+    electoralbriefs.push(electoralbrief);
+    electoralpolicys.push(electoralpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "nutrition" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var nutritiontitle = mypolicy.title;
+    var nutritionserialno = mypolicy.serialno;
+    var nutritionlink = mypolicy.link;
+    var nutritionauthor = mypolicy.author;
+    var nutritionbrief = mypolicy.brief;
+    var nutritionpolicy = mypolicy.policy;
+
+    nutritiontitles.push(nutritiontitle);
+    nutritionserialnos.push(nutritionserialno);
+    nutritionlinks.push(nutritionlink);
+    nutritionauthors.push(nutritionauthor);
+    nutritionbriefs.push(nutritionbrief);
+    nutritionpolicys.push(nutritionpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "poverty" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var povertytitle = mypolicy.title;
+    var povertyserialno = mypolicy.serialno;
+    var povertylink = mypolicy.link;
+    var povertyauthor = mypolicy.author;
+    var povertybrief = mypolicy.brief;
+    var povertypolicy = mypolicy.policy;
+
+    povertytitles.push(povertytitle);
+    povertyserialnos.push(povertyserialno);
+    povertylinks.push(povertylink);
+    povertyauthors.push(povertyauthor);
+    povertybriefs.push(povertybrief);
+    povertypolicys.push(povertypolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "labour" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var labourtitle = mypolicy.title;
+    var labourserialno = mypolicy.serialno;
+    var labourlink = mypolicy.link;
+    var labourauthor = mypolicy.author;
+    var labourbrief = mypolicy.brief;
+    var labourpolicy = mypolicy.policy;
+
+    labourtitles.push(labourtitle);
+    labourserialnos.push(labourserialno);
+    labourlinks.push(labourlink);
+    labourauthors.push(labourauthor);
+    labourbriefs.push(labourbrief);
+    labourpolicys.push(labourpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "peace" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var peacetitle = mypolicy.title;
+    var peaceserialno = mypolicy.serialno;
+    var peacelink = mypolicy.link;
+    var peaceauthor = mypolicy.author;
+    var peacebrief = mypolicy.brief;
+    var peacepolicy = mypolicy.policy;
+
+    peacetitles.push(peacetitle);
+    peaceserialnos.push(peaceserialno);
+    peacelinks.push(peacelink);
+    peaceauthors.push(peaceauthor);
+    peacebriefs.push(peacebrief);
+    peacepolicys.push(peacepolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "space" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var spacetitle = mypolicy.title;
+    var spaceserialno = mypolicy.serialno;
+    var spacelink = mypolicy.link;
+    var spaceauthor = mypolicy.author;
+    var spacebrief = mypolicy.brief;
+    var spacepolicy = mypolicy.policy;
+
+    spacetitles.push(spacetitle);
+    spaceserialnos.push(spaceserialno);
+    spacelinks.push(spacelink);
+    spaceauthors.push(spaceauthor);
+    spacebriefs.push(spacebrief);
+    spacepolicys.push(spacepolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "justice" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var justicetitle = mypolicy.title;
+    var justiceserialno = mypolicy.serialno;
+    var justicelink = mypolicy.link;
+    var justiceauthor = mypolicy.author;
+    var justicebrief = mypolicy.brief;
+    var justicepolicy = mypolicy.policy;
+
+    justicetitles.push(justicetitle);
+    justiceserialnos.push(justiceserialno);
+    justicelinks.push(justicelink);
+    justiceauthors.push(justiceauthor);
+    justicebriefs.push(justicebrief);
+    justicepolicys.push(justicepolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "personnel" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var personneltitle = mypolicy.title;
+    var personnelserialno = mypolicy.serialno;
+    var personnellink = mypolicy.link;
+    var personnelauthor = mypolicy.author;
+    var personnelbrief = mypolicy.brief;
+    var personnelpolicy = mypolicy.policy;
+
+    personneltitles.push(personneltitle);
+    personnelserialnos.push(personnelserialno);
+    personnellinks.push(personnellink);
+    personnelauthors.push(personnelauthor);
+    personnelbriefs.push(personnelbrief);
+    personnelpolicys.push(personnelpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "accountability" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var accountabilitytitle = mypolicy.title;
+    var accountabilityserialno = mypolicy.serialno;
+    var accountabilitylink = mypolicy.link;
+    var accountabilityauthor = mypolicy.author;
+    var accountabilitybrief = mypolicy.brief;
+    var accountabilitypolicy = mypolicy.policy;
+
+    accountabilitytitles.push(accountabilitytitle);
+    accountabilityserialnos.push(accountabilityserialno);
+    accountabilitylinks.push(accountabilitylink);
+    accountabilityauthors.push(accountabilityauthor);
+    accountabilitybriefs.push(accountabilitybrief);
+    accountabilitypolicys.push(accountabilitypolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "cultural" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var culturaltitle = mypolicy.title;
+    var culturalserialno = mypolicy.serialno;
+    var culturallink = mypolicy.link;
+    var culturalauthor = mypolicy.author;
+    var culturalbrief = mypolicy.brief;
+    var culturalpolicy = mypolicy.policy;
+
+    culturaltitles.push(culturaltitle);
+    culturalserialnos.push(culturalserialno);
+    culturallinks.push(culturallink);
+    culturalauthors.push(culturalauthor);
+    culturalbriefs.push(culturalbrief);
+    culturalpolicys.push(culturalpolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "freedom" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var freedomtitle = mypolicy.title;
+    var freedomserialno = mypolicy.serialno;
+    var freedomlink = mypolicy.link;
+    var freedomauthor = mypolicy.author;
+    var freedombrief = mypolicy.brief;
+    var freedompolicy = mypolicy.policy;
+
+    freedomtitles.push(freedomtitle);
+    freedomserialnos.push(freedomserialno);
+    freedomlinks.push(freedomlink);
+    freedomauthors.push(freedomauthor);
+    freedombriefs.push(freedombrief);
+    freedompolicys.push(freedompolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "citizenship" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var citizenshiptitle = mypolicy.title;
+    var citizenshipserialno = mypolicy.serialno;
+    var citizenshiplink = mypolicy.link;
+    var citizenshipauthor = mypolicy.author;
+    var citizenshipbrief = mypolicy.brief;
+    var citizenshippolicy = mypolicy.policy;
+
+    citizenshiptitles.push(citizenshiptitle);
+    citizenshipserialnos.push(citizenshipserialno);
+    citizenshiplinks.push(citizenshiplink);
+    citizenshipauthors.push(citizenshipauthor);
+    citizenshipbriefs.push(citizenshipbrief);
+    citizenshippolicys.push(citizenshippolicy);
+  });
+})();
+
+(async () => {
+  const mypolicies = await Mypolicy.find({ policy: "misc" }).sort({ _id: -1 });
+  mypolicies.forEach(function (mypolicy) {
+    var misctitle = mypolicy.title;
+    var miscserialno = mypolicy.serialno;
+    var misclink = mypolicy.link;
+    var miscauthor = mypolicy.author;
+    var miscbrief = mypolicy.brief;
+    var miscpolicy = mypolicy.policy;
+
+    misctitles.push(misctitle);
+    miscserialnos.push(miscserialno);
+    misclinks.push(misclink);
+    miscauthors.push(miscauthor);
+    miscbriefs.push(miscbrief);
+    miscpolicys.push(miscpolicy);
+  });
+})();
     
 app.get("/index", async function (req, res) {
   var today = new Date();
@@ -2478,7 +2187,7 @@ app.post("/index", async function (req, res) {
     bpne: publicationName,
   });
 
-  arg.save();
+  await arg.save();
 
   res.redirect("/index");
 });
@@ -2629,12 +2338,11 @@ app.post("/basicsearch", async function (req, res) {
     var bsearchtopic = req.body.chapter || req.body.topic || req.body.subject;
 
     const mybasicsearch = new Basicsearch({ basicsearch: bsearchtopic });
-    mybasicsearch.save().catch((e) => console.error("Basicsearch save error:", e));
+    await mybasicsearch.save();
 
     const docs = await Arg.find({ id3: bsearchtopic })
       .sort({ _id: -1 })
-      .limit(200)
-      .exec();
+      .limit(200);
 
     const res_uida = [];
     const res_mainArguments = [];
@@ -2746,8 +2454,7 @@ app.post("/advancedsearch", async function (req, res) {
       ],
     })
       .sort({ _id: -1 })
-      .limit(1000)
-      .exec();
+      .limit(1000);
 
     const res_uida = [];
     const res_mainArguments = [];
