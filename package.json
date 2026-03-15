@@ -9,7 +9,7 @@
   "author": "Maadhava Anusuyaa C",
   "license": "ISC",
   "engines": {
-    "node": "16.13.2"
+    "node": "18.x"
   },
   "dependencies": {
     "body-parser": "^1.19.2",
@@ -18,8 +18,8 @@
     "express-session": "^1.17.3",
     "jquery": "^3.6.0",
     "json-stringify-date": "^1.0.12",
-    "mongodb": "^4.4.0",
-    "mongoose": "^6.2.2"
+    "mongodb": "^5.9.2",
+    "mongoose": "^7.8.9"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
