@@ -102,7 +102,9 @@
 <div id= "overflow">
 <ul>
   <% if (!args || args.length === 0) { %>
-      <div class="alert alert-info mt-3">No arguments saved in this list yet.</div>
+      <div class="empty-accordion-placeholder">
+        <div class="alert alert-info mt-3">No arguments saved in this list yet.</div>
+      </div>
   <% } else { %>
 
       <div class="accordion" id="listAccordion">
