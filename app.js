@@ -340,7 +340,7 @@ const mongoose = require("mongoose");
 (async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://rerite:vf69tgNdntAsh76@cluster0.zt8sx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+      process.env.MONGODB_URI
     );
     console.log("Connected successfully");
   } catch (error) {
