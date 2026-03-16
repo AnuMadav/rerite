@@ -97,16 +97,10 @@
 
 <div class="col-8 pt-3 main-content">
   <h2 class="text-center"> <%= listname %></h2>
-  <small class="text-muted"><%= userEnrollment %></small>
 <br>
-<div id= "overflow">
-<ul>
+<div id="overflow">
   <% if (!args || args.length === 0) { %>
-      <div class="accordion" id="listAccordion">
-        <div class="accordion-item">
-          <div class="alert alert-info mt-3">No arguments saved in this list yet.</div>
-        </div>
-      </div>
+    <div class="alert alert-info mt-3">No arguments saved in this list yet.</div>
   <% } else { %>
 
       <div class="accordion" id="listAccordion">
@@ -339,7 +333,6 @@
         <% }) %>
       </div> <!-- accordion -->
   <% } %>
-</ul>
 </div>
 
   </div> <!-- col-8 -->
